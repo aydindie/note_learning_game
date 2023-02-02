@@ -23,11 +23,8 @@ class CountdownTimer extends StatelessWidget {
         width: MediaQuery.of(context).size.width / 4,
         height: MediaQuery.of(context).size.width / 4,
         ringColor: Colors.black,
-        ringGradient: null,
         fillColor: Colors.blueAccent[100]!,
-        fillGradient: null,
         backgroundColor: Colors.transparent,
-        backgroundGradient: null,
         strokeWidth: 5.0,
         strokeCap: StrokeCap.round,
         textStyle: const TextStyle(

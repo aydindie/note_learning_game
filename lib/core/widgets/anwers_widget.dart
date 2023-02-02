@@ -1,22 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 
-import '../../Note/viewmodel/note_view_model.dart';
-import '../../feature/home/home_view.dart';
+import '../../features/Note/viewmodel/note_view_model.dart';
+import '../../features/Note/view/home_view.dart';
 
 class AnswersWidget extends StatelessWidget {
   const AnswersWidget({
     Key? key,
-    required this.h,
-    required this.w,
-    required this.viewModel,
   }) : super(key: key);
 
-  final double h;
-  final double w;
-  final NoteViewModel viewModel;
   final _crossAxisCount = 3;
   final _itemCount = 7;
   final _containerWRatio = 0.25;
@@ -24,6 +19,9 @@ class AnswersWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final w = MediaQuery.of(context).size.width;
+    final h = MediaQuery.of(context).size.height;
+    final viewModel = Provider.of<NoteViewModel>(context);
     return SizedBox(
       height: h * 0.4,
       child: StaggeredGridView.countBuilder(
@@ -34,14 +32,10 @@ class AnswersWidget extends StatelessWidget {
         shrinkWrap: true,
         crossAxisCount: _crossAxisCount,
         itemCount: _itemCount,
-        itemBuilder: (BuildContext context, int index) => Container(
-            child: Center(
+        itemBuilder: (BuildContext context, int index) => Center(
           child: InkWell(
             onTap: () {
-              print("tapped $index");
-              //TODO: BURADA SORUDAN VERI ALIP BURADA KONTROL ETMEK GEREKİYOR
               if (viewModel.noteIndex % 7 == index) {
-                print("noteIndex: ${viewModel.noteIndex} index: $index girdi");
                 viewModel.scoreIncrement();
                 viewModel.updateRandomIndex();
               }
@@ -62,7 +56,7 @@ class AnswersWidget extends StatelessWidget {
               ),
             ),
           ),
-        )),
+        ),
         staggeredTileBuilder: (int index) => StaggeredTile.count(
             index == (_itemCount - 1) ? _crossAxisCount : 1, 1),
       ),

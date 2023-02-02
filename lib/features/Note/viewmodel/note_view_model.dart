@@ -1,10 +1,13 @@
+// ignore_for_file: library_private_types_in_public_api, constant_identifier_names
+
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
-import 'package:note_learning_game/Note/model/note_model.dart';
-import 'package:note_learning_game/Note/service/INoteService.dart';
 
+import '../model/note_model.dart';
+import '../service/INoteService.dart';
 import '../service/note_service.dart';
 part 'note_view_model.g.dart';
 
@@ -34,9 +37,12 @@ abstract class _NoteViewModelBase with Store {
 
   @action
   void updateRandomIndex() {
-    if (items.isNotEmpty) {
+    if (itemCount > 0) {
       noteIndex = Random().nextInt(items.length);
-      print("noteIndex: $noteIndex");
+    } else {
+      if (kDebugMode) {
+        print("items boş");
+      }
     }
   }
 

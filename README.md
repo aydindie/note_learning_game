@@ -14,3 +14,10 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+ ## Eklenebilecek Özellikler
+ - 1. Random aynı nota tekrar gelmemeli
+ - 2. Nota basıldığında ses çıkması
+  -3. BaseView olayı
+  
+

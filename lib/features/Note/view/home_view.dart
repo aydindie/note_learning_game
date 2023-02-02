@@ -2,22 +2,18 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 
-import '../../Note/viewmodel/note_view_model.dart';
-import '../../core/widgets/anwers_widget.dart';
-import '../../core/widgets/countdown_timer.dart';
-import '../../core/widgets/question_widget.dart';
-import '../../core/widgets/top_iconbuttons.dart';
+import '../../../core/widgets/anwers_widget.dart';
+import '../../../core/widgets/countdown_timer.dart';
+import '../../../core/widgets/question_widget.dart';
+import '../../../core/widgets/top_iconbuttons.dart';
+import '../viewmodel/note_view_model.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
     Key? key,
-    required this.viewModel,
-    required this.title,
   }) : super(key: key);
-  final NoteViewModel viewModel;
-
-  final String title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -26,13 +22,12 @@ class MyHomePage extends StatefulWidget {
 final List<String> anwerList = ["do", "re", "mi", "fa", "sol", "la", "si"];
 
 class _MyHomePageState extends State<MyHomePage> {
-  //final NoteViewModel viewModel = NoteViewModel();
-
   final CountDownController _countDownController = CountDownController();
 
   // controller
   @override
   Widget build(BuildContext context) {
+    final viewModel = Provider.of<NoteViewModel>(context);
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -46,28 +41,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 const SizedBox(
                   height: 10,
                 ),
-
                 CountdownTimer(countDownController: _countDownController),
                 Observer(
                   builder: (_) {
-                    print("Score: ${widget.viewModel.score}");
                     return scoreBar(h, w, Colors.blueAccent.shade100,
-                        "Score: ${widget.viewModel.score}");
+                        "Score: ${viewModel.score}");
                   },
                 ),
-
                 const SizedBox(
                   height: 20,
                 ),
                 QuestionWidget(
-                  h: h,
-                  w: w,
-                  viewModel: widget.viewModel,
+                  viewModel: viewModel,
                 ),
 
                 //numpad gridview
 
-                AnswersWidget(h: h, w: w, viewModel: widget.viewModel),
+                const AnswersWidget(),
               ],
             ),
           ),

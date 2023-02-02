@@ -2,7 +2,7 @@
     {
 "generalName": "C2",
 "noteNameId": 1,
-"notePic": "filelocation1",
+"notePic": "filelocation1do",
 "noteId": 31,
 "noteSound": "soundaddress1"
 },
@@ -10,7 +10,7 @@
 {
 "generalName": "D2",
 "noteNameId": 2,
-"notePic": "filelocation2",
+"notePic": "filelocation2re",
 "noteId": 32,
 "noteSound": "soundaddress2"
 },
@@ -18,7 +18,7 @@
 {
 "generalName": "E2",
 "noteNameId": 3,
-"notePic": "filelocation3",
+"notePic": "filelocation3mi",
 "noteId": 33,
 "noteSound": "soundaddress3"
 }
@@ -26,7 +26,7 @@
 {
 "generalName": "F2",
 "noteNameId": 4,
-"notePic": "filelocation4",
+"notePic": "filelocation4fa",
 "noteId": 34,
 "noteSound": "soundaddress4"
 }
@@ -34,48 +34,48 @@
 {
 "generalName": "G2",
 "noteNameId": 5,
-"notePic": "filelocation5",
+"notePic": "filelocation5sol",
 "noteId": 35,
 "noteSound": "soundaddress5"
 }
 ,
 {
-"generalName": "C3",
+"generalName": "A3",
 "noteNameId": 1,
-"notePic": "filelocation6",
-"noteId": 36,
+"notePic": "filelocation6la",
+"noteId": 6,
 "noteSound": "soundaddress6"
 },
 
 {
-"generalName": "D3",
+"generalName": "B3",
 "noteNameId": 2,
-"notePic": "filelocation7",
-"noteId": 37,
+"notePic": "filelocation7si",
+"noteId": 7,
 "noteSound": "soundaddress7"
 }
 ,
 {
-"generalName": "E3",
+"generalName": "C3",
 "noteNameId": 3,
-"notePic": "filelocation8",
-"noteId": 38,
+"notePic": "filelocation8do",
+"noteId": 8,
 "noteSound": "soundaddress8"
 }
 ,
 {
-"generalName": "F3",
+"generalName": "D3",
 "noteNameId": 4,
-"notePic": "filelocation9",
-"noteId": 39,
+"notePic": "filelocation9re",
+"noteId": 9,
 "noteSound": "soundaddress9"
 }
 ,
 {
-"generalName": "G3",
+"generalName": "E3",
 "noteNameId": 5,
-"notePic": "filelocation10",
-"noteId": 40,
+"notePic": "filelocation10mi",
+"noteId": 10,
 "noteSound": "soundaddress10"
 }
 ]

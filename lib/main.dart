@@ -1,27 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'Note/viewmodel/note_view_model.dart';
-import 'feature/home/home_view.dart';
+import 'features/Note/model/note_model.dart';
+import 'features/Note/viewmodel/note_view_model.dart';
+import 'features/Note/view/home_view.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-  final NoteViewModel viewModel = NoteViewModel();
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(
-        title: 'aa',
-        viewModel: viewModel,
-      ),
-    );
-  }
+  Widget build(BuildContext context) => MultiProvider(providers: [
+        Provider<NoteViewModel>(
+          create: (context) => NoteViewModel(),
+        ),
+        Provider<NoteModel>(
+          create: (_) => NoteModel(),
+        )
+      ], child: const MaterialApp(home: MyHomePage()));
 }
