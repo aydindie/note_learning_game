@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'home_view.dart';
+import 'Note/viewmodel/note_view_model.dart';
+import 'feature/home/home_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+  final NoteViewModel viewModel = NoteViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(
+        title: 'aa',
+        viewModel: viewModel,
+      ),
     );
   }
 }

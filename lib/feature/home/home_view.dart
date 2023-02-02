@@ -1,0 +1,103 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+
+import '../../Note/viewmodel/note_view_model.dart';
+import '../../core/widgets/anwers_widget.dart';
+import '../../core/widgets/countdown_timer.dart';
+import '../../core/widgets/question_widget.dart';
+import '../../core/widgets/top_iconbuttons.dart';
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({
+    Key? key,
+    required this.viewModel,
+    required this.title,
+  }) : super(key: key);
+  final NoteViewModel viewModel;
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+final List<String> anwerList = ["do", "re", "mi", "fa", "sol", "la", "si"];
+
+class _MyHomePageState extends State<MyHomePage> {
+  //final NoteViewModel viewModel = NoteViewModel();
+
+  final CountDownController _countDownController = CountDownController();
+
+  // controller
+  @override
+  Widget build(BuildContext context) {
+    final h = MediaQuery.of(context).size.height;
+    final w = MediaQuery.of(context).size.width;
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+          child: Center(
+            child: Column(
+              children: [
+                const TopIconButtons(),
+                const SizedBox(
+                  height: 10,
+                ),
+
+                CountdownTimer(countDownController: _countDownController),
+                Observer(
+                  builder: (_) {
+                    print("Score: ${widget.viewModel.score}");
+                    return scoreBar(h, w, Colors.blueAccent.shade100,
+                        "Score: ${widget.viewModel.score}");
+                  },
+                ),
+
+                const SizedBox(
+                  height: 20,
+                ),
+                QuestionWidget(
+                  h: h,
+                  w: w,
+                  viewModel: widget.viewModel,
+                ),
+
+                //numpad gridview
+
+                AnswersWidget(h: h, w: w, viewModel: widget.viewModel),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Container scoreBar(double h, double w, Color color, String text) {
+    return Container(
+      alignment: Alignment.center,
+      height: h * 0.04,
+      width: w * 0.3,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+}
+
+
+
+
+//  Ink.image(
+//   fit: BoxFit.cover,
+//   image: const NetworkImage(
+//       'https://www.kindacode.com/wp-content/uploads/2022/07/bottle.jpeg'),
+// ),
