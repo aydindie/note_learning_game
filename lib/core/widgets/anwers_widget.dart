@@ -34,6 +34,7 @@ class AnswersWidget extends StatelessWidget {
         itemCount: _itemCount,
         itemBuilder: (BuildContext context, int index) => Center(
           child: InkWell(
+            enableFeedback: false,
             onTap: () {
               if (viewModel.noteIndex % 7 == index) {
                 viewModel.scoreIncrement();

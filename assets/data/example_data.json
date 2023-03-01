@@ -1,6 +1,6 @@
 [
     {
-"generalName": "C2",
+"generalName": "C4",
 "noteNameId": 1,
 "notePic": "filelocation1do",
 "noteId": 31,
@@ -8,7 +8,7 @@
 },
 
 {
-"generalName": "D2",
+"generalName": "D4",
 "noteNameId": 2,
 "notePic": "filelocation2re",
 "noteId": 32,
@@ -16,7 +16,7 @@
 },
 
 {
-"generalName": "E2",
+"generalName": "E4",
 "noteNameId": 3,
 "notePic": "filelocation3mi",
 "noteId": 33,
@@ -24,7 +24,7 @@
 }
 ,
 {
-"generalName": "F2",
+"generalName": "F4",
 "noteNameId": 4,
 "notePic": "filelocation4fa",
 "noteId": 34,
@@ -32,7 +32,7 @@
 }
 ,
 {
-"generalName": "G2",
+"generalName": "G4",
 "noteNameId": 5,
 "notePic": "filelocation5sol",
 "noteId": 35,
@@ -40,7 +40,7 @@
 }
 ,
 {
-"generalName": "A3",
+"generalName": "A5",
 "noteNameId": 1,
 "notePic": "filelocation6la",
 "noteId": 6,
@@ -48,7 +48,7 @@
 },
 
 {
-"generalName": "B3",
+"generalName": "B5",
 "noteNameId": 2,
 "notePic": "filelocation7si",
 "noteId": 7,
@@ -56,7 +56,7 @@
 }
 ,
 {
-"generalName": "C3",
+"generalName": "C5",
 "noteNameId": 3,
 "notePic": "filelocation8do",
 "noteId": 8,
@@ -64,7 +64,7 @@
 }
 ,
 {
-"generalName": "D3",
+"generalName": "D5",
 "noteNameId": 4,
 "notePic": "filelocation9re",
 "noteId": 9,
@@ -72,7 +72,7 @@
 }
 ,
 {
-"generalName": "E3",
+"generalName": "E5",
 "noteNameId": 5,
 "notePic": "filelocation10mi",
 "noteId": 10,
