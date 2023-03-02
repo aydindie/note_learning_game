@@ -1,64 +1,81 @@
-// ignore_for_file: constant_identifier_names
+// // ignore_for_file: constant_identifier_names
 
-import 'package:mobx/mobx.dart';
-part 'settings_store.g.dart';
+// import 'package:mobx/mobx.dart';
+// part 'settings_store.g.dart';
 
-class SettingsViewModel = _SettingsViewModelBase with _$SettingsViewModel;
+// final List<String> siList = ["do", "re", "mi", "fa", "sol", "la", "si"];
+// final List<String> tiList = ["do", "re", "mi", "fa", "sol", "la", "ti"];
+// final List<String> bList = ["C", "D", "E", "F", "G", "A", "B"];
+// final List<String> hList = ["C", "D", "E", "F", "G", "A", "B"];
+// class SettingsViewModel = _SettingsViewModelBase with _$SettingsViewModel;
 
-abstract class _SettingsViewModelBase with Store {
-  @observable
-  bool isSoundOn = true;
+// abstract class _SettingsViewModelBase with Store {
+//   @computed
+//   List<String> get defaultList {
+//     switch (noteNamesPreferences) {
+//       case NoteNamesPreferences.B:
+//         return bList;
+//       case NoteNamesPreferences.H:
+//         return hList;
+//       case NoteNamesPreferences.SI:
+//         return siList;
+//       case NoteNamesPreferences.TI:
+//         return tiList;
 
-  @action
-  void changeSound() {
-    isSoundOn = !isSoundOn;
-  }
+//       default:
+//         return siList;
+//     }
+//   }
 
-  @observable
-  bool isDarkMode = false;
+//   @observable
+//   bool isSoundOn = true;
 
-  @action
-  void changeTheme() {
-    isDarkMode = !isDarkMode;
-  }
+//   @action
+//   void changeSound() {
+//     isSoundOn = !isSoundOn;
+//   }
 
-  @observable
-  bool isTrebleOn = true;
+//   @observable
+//   bool isDarkMode = false;
 
-  @action
-  void changeTreble() {
-    isTrebleOn = !isTrebleOn;
-  }
+//   @action
+//   void changeTheme() {
+//     isDarkMode = !isDarkMode;
+//   }
 
-  @observable
-  bool isBassOn = true;
-
-  @action
-  void changeBass() {
-    isBassOn = !isBassOn;
-  }
-
-  @observable
-  bool isAltoOn = true;
-
-  @action
-  void changeAlto() {
-    isAltoOn = !isAltoOn;
-  }
-
-  @observable
-  NoteNamesPreferences noteNamesPreferences = NoteNamesPreferences.SI;
-
-  @action
-  void changeNoteNamesPreferences(NoteNamesPreferences noteNamesPreferences) {
-    this.noteNamesPreferences = noteNamesPreferences;
-  }
-  
-
+//   @observable
+//   bool isTrebleOn = true;
 
   
 
+//   @action
+//   void changeTreble() {
+//     isTrebleOn = !isTrebleOn;
+//   }
 
-}
+//   @observable
+//   bool isBassOn = true;
 
-enum NoteNamesPreferences { B, H, SI,TI }
+//   @action
+//   void changeBass() {
+//     isBassOn = !isBassOn;
+//   }
+
+//   @observable
+//   bool isAltoOn = true;
+
+//   @action
+//   void changeAlto() {
+//     isAltoOn = !isAltoOn;
+//   }
+
+//   @observable
+//   NoteNamesPreferences noteNamesPreferences = NoteNamesPreferences.SI;
+
+//   @action
+//   void changeNoteNamesPreferences(NoteNamesPreferences noteNamesPreferences) {
+//     this.noteNamesPreferences = noteNamesPreferences;
+//   }
+// }
+
+// enum NoteNamesPreferences { B, H, SI, TI }

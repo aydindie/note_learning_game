@@ -18,7 +18,10 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-final List<String> anwerList = ["do", "re", "mi", "fa", "sol", "la", "si"];
+final List<String> siList = ["do", "re", "mi", "fa", "sol", "la", "si"];
+final List<String> tiList = ["do", "re", "mi", "fa", "sol", "la", "ti"];
+final List<String> bList= ["C","D","E","F","G","A","B"];
+final List<String> hList = ["C", "D", "E", "F", "G", "A", "B"];
 
 class _MyHomePageState extends State<MyHomePage> {
   final CountDownController _countDownController = CountDownController();

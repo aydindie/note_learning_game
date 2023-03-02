@@ -14,14 +14,9 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  final SettingsViewModel settingsViewModel = SettingsViewModel();
-
   @override
   Widget build(BuildContext context) => MultiProvider(
           providers: [
-            Provider<SettingsViewModel>(
-              create: (context) => SettingsViewModel(),
-            ),
             Provider<NoteViewModel>(
               create: (context) => NoteViewModel(),
             ),
@@ -30,10 +25,6 @@ class MyApp extends StatelessWidget {
             )
           ],
           child: Observer(builder: (_) {
-            return MaterialApp(
-                theme: settingsViewModel.isDarkMode
-                    ? ThemeData.dark()
-                    : ThemeData.light(),
-                home: const MyHomePage());
+            return MaterialApp(home: const MyHomePage());
           }));
 }

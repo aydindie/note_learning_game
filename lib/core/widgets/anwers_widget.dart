@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:note_learning_game/features/Settings/viewmodel/settings_store.dart';
 import 'package:provider/provider.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
@@ -22,6 +24,8 @@ class AnswersWidget extends StatelessWidget {
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
     final viewModel = Provider.of<NoteViewModel>(context);
+
+
     return SizedBox(
       height: h * 0.4,
       child: StaggeredGridView.countBuilder(
@@ -49,17 +53,17 @@ class AnswersWidget extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
               child: Center(
-                child: Text(
-                  anwerList[index],
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
+                child: Observer(
+                  builder: (context) => Text(
+                    viewModel.defaultList[index],
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),
           ),
         ),
-        staggeredTileBuilder: (int index) => StaggeredTile.count(
-            index == (_itemCount - 1) ? _crossAxisCount : 1, 1),
+        staggeredTileBuilder: (int index) => StaggeredTile.count(index == (_itemCount - 1) ? _crossAxisCount : 1, 1),
       ),
     );
   }

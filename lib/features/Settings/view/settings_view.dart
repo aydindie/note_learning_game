@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:note_learning_game/features/Note/viewmodel/note_view_model.dart';
 import 'package:provider/provider.dart';
 
 import 'package:note_learning_game/features/Settings/viewmodel/settings_store.dart';
@@ -18,7 +19,7 @@ class SettingsView extends StatefulWidget {
 class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
-    final settingsViewModel = Provider.of<SettingsViewModel>(context);
+    final viewModel = Provider.of<NoteViewModel>(context);
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.grey,
@@ -54,7 +55,7 @@ class _SettingsViewState extends State<SettingsView> {
                       width: MediaQuery.of(context).size.width * 0.12,
                       height: MediaQuery.of(context).size.width * 0.16,
                       decoration: BoxDecoration(
-                        color: settingsViewModel.isTrebleOn
+                        color: viewModel.isTrebleOn
                             ? Colors.green
                             : Colors.grey,
                         borderRadius: BorderRadius.circular(15),
@@ -64,7 +65,7 @@ class _SettingsViewState extends State<SettingsView> {
                             vertical: 10, horizontal: 8),
                         child: InkWell(
                           enableFeedback: false,
-                          onTap: () => settingsViewModel.changeTreble(),
+                          onTap: () => viewModel.changeTreble(),
                           child: const Image(
                               image: AssetImage('assets/images/treble.png')),
                         ),
@@ -76,7 +77,7 @@ class _SettingsViewState extends State<SettingsView> {
                       width: MediaQuery.of(context).size.width * 0.12,
                       height: MediaQuery.of(context).size.width * 0.16,
                       decoration: BoxDecoration(
-                        color: settingsViewModel.isBassOn
+                        color: viewModel.isBassOn
                             ? Colors.green
                             : Colors.grey,
                         borderRadius: BorderRadius.circular(15),
@@ -86,7 +87,7 @@ class _SettingsViewState extends State<SettingsView> {
                             vertical: 10, horizontal: 8),
                         child: InkWell(
                           enableFeedback: false,
-                          onTap: () => settingsViewModel.changeBass(),
+                          onTap: () => viewModel.changeBass(),
                           child: const Image(
                               image: AssetImage('assets/images/bass.png')),
                         ),
@@ -131,7 +132,7 @@ class _SettingsViewState extends State<SettingsView> {
                     width: MediaQuery.of(context).size.width * 0.2,
                     height: MediaQuery.of(context).size.width * 0.12,
                     decoration: BoxDecoration(
-                      color: settingsViewModel.noteNamesPreferences ==
+                      color: viewModel.noteNamesPreferences ==
                               NoteNamesPreferences.B
                           ? Colors.green
                           : Colors.grey,
@@ -143,7 +144,7 @@ class _SettingsViewState extends State<SettingsView> {
                       child: InkWell(
                           enableFeedback: false,
                           onTap: () =>
-                              settingsViewModel.changeNoteNamesPreferences(
+                              viewModel.changeNoteNamesPreferences(
                                   NoteNamesPreferences.B),
                           child: const Center(
                             child: Text("C..G,A,B"),
@@ -159,7 +160,7 @@ class _SettingsViewState extends State<SettingsView> {
                     width: MediaQuery.of(context).size.width * 0.2,
                     height: MediaQuery.of(context).size.width * 0.12,
                     decoration: BoxDecoration(
-                      color: settingsViewModel.noteNamesPreferences ==
+                      color: viewModel.noteNamesPreferences ==
                               NoteNamesPreferences.H
                           ? Colors.green
                           : Colors.grey,
@@ -171,7 +172,7 @@ class _SettingsViewState extends State<SettingsView> {
                       child: InkWell(
                           enableFeedback: false,
                           onTap: () =>
-                              settingsViewModel.changeNoteNamesPreferences(
+                              viewModel.changeNoteNamesPreferences(
                                   NoteNamesPreferences.H),
                           child: const Center(
                             child: Text("C..G,A,H"),
@@ -187,7 +188,7 @@ class _SettingsViewState extends State<SettingsView> {
                     width: MediaQuery.of(context).size.width * 0.2,
                     height: MediaQuery.of(context).size.width * 0.12,
                     decoration: BoxDecoration(
-                      color: settingsViewModel.noteNamesPreferences ==
+                      color: viewModel.noteNamesPreferences ==
                               NoteNamesPreferences.SI
                           ? Colors.green
                           : Colors.grey,
@@ -199,7 +200,7 @@ class _SettingsViewState extends State<SettingsView> {
                       child: InkWell(
                           enableFeedback: false,
                           onTap: () =>
-                              settingsViewModel.changeNoteNamesPreferences(
+                              viewModel.changeNoteNamesPreferences(
                                   NoteNamesPreferences.SI),
                           child: const Center(
                             child: Text("do..sol,la,si"),
@@ -215,7 +216,7 @@ class _SettingsViewState extends State<SettingsView> {
                     width: MediaQuery.of(context).size.width * 0.2,
                     height: MediaQuery.of(context).size.width * 0.12,
                     decoration: BoxDecoration(
-                      color: settingsViewModel.noteNamesPreferences ==
+                      color: viewModel.noteNamesPreferences ==
                               NoteNamesPreferences.TI
                           ? Colors.green
                           : Colors.grey,
@@ -227,7 +228,7 @@ class _SettingsViewState extends State<SettingsView> {
                       child: InkWell(
                           enableFeedback: false,
                           onTap: () =>
-                              settingsViewModel.changeNoteNamesPreferences(
+                              viewModel.changeNoteNamesPreferences(
                                   NoteNamesPreferences.TI),
                           child: const Center(
                             child: Text("do..sol,la,ti"),
@@ -240,10 +241,10 @@ class _SettingsViewState extends State<SettingsView> {
 
             Observer(builder: (_) {
               return Container(
-                child: settingsViewModel.isDarkMode
+                child: viewModel.isDarkMode
                     ? IconButton(
                         onPressed: () {
-                          settingsViewModel.changeTheme();
+                          viewModel.changeTheme();
                         },
                         icon: const Icon(
                           Icons.brightness_4_outlined,
@@ -251,7 +252,7 @@ class _SettingsViewState extends State<SettingsView> {
                         ))
                     : IconButton(
                         onPressed: () {
-                          settingsViewModel.changeTheme();
+                          viewModel.changeTheme();
                         },
                         icon: const Icon(
                           Icons.brightness_7_outlined,
