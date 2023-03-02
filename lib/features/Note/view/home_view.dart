@@ -5,7 +5,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/widgets/anwers_widget.dart';
-import '../../../core/widgets/countdown_timer.dart';
 import '../../../core/widgets/question_widget.dart';
 import '../../../core/widgets/top_iconbuttons.dart';
 import '../viewmodel/note_view_model.dart';
@@ -27,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // controller
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<NoteViewModel>(context);
+    final noteViewModel = Provider.of<NoteViewModel>(context);
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -41,18 +40,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 const SizedBox(
                   height: 10,
                 ),
-                CountdownTimer(countDownController: _countDownController),
+                //CountdownTimer(countDownController: _countDownController),
                 Observer(
                   builder: (_) {
                     return scoreBar(h, w, Colors.blueAccent.shade100,
-                        "Score: ${viewModel.score}");
+                        "Score: ${noteViewModel.score}");
                   },
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 QuestionWidget(
-                  viewModel: viewModel,
+                  viewModel: noteViewModel,
                 ),
 
                 //numpad gridview

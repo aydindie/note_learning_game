@@ -1,81 +1,220 @@
+
 [
-    {
-"generalName": "C4",
+
+        {
+"generalName": "C2",
 "noteNameId": 1,
-"notePic": "filelocation1do",
-"noteId": 31,
-"noteSound": "soundaddress1"
+"notePic": "c2do",
+"noteId": 1,
+"noteSound": "c2do"
+},
+   {
+"generalName": "D2",
+"noteNameId": 2,
+"notePic": "d2re",
+"noteId": 2,
+"noteSound": "d2re"
+},
+{
+"generalName": "E2",
+"noteNameId": 3,
+"notePic": "e2mi",
+"noteId": 3,
+"noteSound": "e2mi"
+},
+{
+"generalName": "F2",
+"noteNameId": 4,
+"notePic": "f2fa",
+"noteId": 4,
+"noteSound": "f2fa"
+},
+{
+"generalName": "G2",
+"noteNameId": 5,
+"notePic": "g2sol",
+"noteId": 5,
+"noteSound": "g2sol"
+},
+{
+"generalName": "A2",
+"noteNameId": 6,
+"notePic": "a2la",
+"noteId": 6,
+"noteSound": "a2la"
+},
+{
+"generalName": "B2",
+"noteNameId": 7,
+"notePic": "b2si",
+"noteId": 7,
+"noteSound": "b2si"
+},
+{
+"generalName": "C3",
+"noteNameId": 8,
+"notePic": "c3do",
+"noteId": 8,
+"noteSound": "c3do"
+},
+{
+"generalName": "D3",
+"noteNameId": 9,
+"notePic": "d3re",
+"noteId": 9,
+"noteSound": "d3re"
+},
+{
+"generalName": "E3",
+"noteNameId": 10,
+"notePic": "e3mi",
+"noteId": 10,
+"noteSound": "e3mi"
+},
+{
+"generalName": "F3",
+"noteNameId": 11,
+"notePic": "f3fa",
+"noteId": 11,
+"noteSound": "f3fa"
+},
+{
+"generalName": "G3",
+"noteNameId": 12,
+"notePic": "g3sol",
+"noteId": 12,
+"noteSound": "g3sol"
+},
+{
+"generalName": "A3",
+"noteNameId": 13,
+"notePic": "a3la",
+"noteId": 13,
+"noteSound": "a3la"
+},
+{
+"generalName": "B3",
+
+"noteNameId": 14,
+"notePic": "b3si",
+"noteId": 14,
+"noteSound": "b3si"
 },
 
+{
+"generalName": "C4",
+"noteNameId": 15,
+"notePic": "c4do",
+"noteId": 15,
+"noteSound": "c4do"
+},
 {
 "generalName": "D4",
-"noteNameId": 2,
-"notePic": "filelocation2re",
-"noteId": 32,
-"noteSound": "soundaddress2"
+"noteNameId": 16,
+"notePic": "d4re",
+"noteId": 16,
+"noteSound": "d4re"
 },
-
 {
 "generalName": "E4",
-"noteNameId": 3,
-"notePic": "filelocation3mi",
-"noteId": 33,
-"noteSound": "soundaddress3"
-}
-,
+"noteNameId": 17,
+"notePic": "e4mi",
+"noteId": 17,
+"noteSound": "e4mi"
+},
 {
 "generalName": "F4",
-"noteNameId": 4,
-"notePic": "filelocation4fa",
-"noteId": 34,
-"noteSound": "soundaddress4"
-}
-,
+"noteNameId": 18,
+"notePic": "f4fa",
+"noteId": 18,
+"noteSound": "f4fa"
+},
 {
 "generalName": "G4",
-"noteNameId": 5,
-"notePic": "filelocation5sol",
-"noteId": 35,
-"noteSound": "soundaddress5"
-}
-,
-{
-"generalName": "A5",
-"noteNameId": 1,
-"notePic": "filelocation6la",
-"noteId": 6,
-"noteSound": "soundaddress6"
-},
+"noteNameId": 19,
+"notePic": "g4sol",
 
+"noteId": 19,
+"noteSound": "g4sol"
+},
 {
-"generalName": "B5",
-"noteNameId": 2,
-"notePic": "filelocation7si",
-"noteId": 7,
-"noteSound": "soundaddress7"
-}
-,
+"generalName": "A4",
+"noteNameId": 20,
+"notePic": "a4la",
+
+"noteId": 20,
+"noteSound": "a4la"
+},
+{
+"generalName": "B4",
+"noteNameId": 21,
+"notePic": "b4si",
+"noteId": 21,
+"noteSound": "b4si"
+},
 {
 "generalName": "C5",
-"noteNameId": 3,
-"notePic": "filelocation8do",
-"noteId": 8,
-"noteSound": "soundaddress8"
-}
-,
+"noteNameId": 22,
+"notePic": "c5do",
+"noteId": 22,
+"noteSound": "c5do"
+},
 {
 "generalName": "D5",
-"noteNameId": 4,
-"notePic": "filelocation9re",
-"noteId": 9,
-"noteSound": "soundaddress9"
-}
-,
+"noteNameId": 23,
+"notePic": "d5re",
+"noteId": 23,
+"noteSound": "d5re"
+},
 {
 "generalName": "E5",
-"noteNameId": 5,
-"notePic": "filelocation10mi",
-"noteId": 10,
-"noteSound": "soundaddress10"
+"noteNameId": 24,
+"notePic": "e5mi",
+"noteId": 24,
+"noteSound": "e5mi"
+},
+{
+"generalName": "F5",
+"noteNameId": 25,
+"notePic": "f5fa",
+"noteId": 25,
+"noteSound": "f5fa"
+},
+{
+"generalName": "G5",
+"noteNameId": 26,
+"notePic": "g5sol",
+
+"noteId": 26,
+"noteSound": "g5sol"
+},
+{
+
+"generalName": "A5",
+"noteNameId": 27,
+"notePic": "a5la",
+
+"noteId": 27,
+"noteSound": "a5la"
+},
+{
+"generalName": "B5",
+"noteNameId": 28,
+"notePic": "b5si",
+"noteId": 28,
+"noteSound": "b5si"
+},
+{
+"generalName": "C6",
+"noteNameId": 29,
+"notePic": "c6do",
+"noteId": 29,
+"noteSound": "c6do"
 }
+
+
+
+
+
+ 
 ]

@@ -1,23 +1,92 @@
 # note_learning_game
 
-A new Flutter project.
+## Eklenebilecek Özellikler
 
-## Getting Started
+- aynı notayı dinleyebilmeli
+- 1.  Random aynı nota tekrar gelmemeli
+- 2.  Nota basıldığında ses çıkması
+      -3. BaseView olayı
 
-This project is a starting point for a Flutter application.
+/\* Son Json Dosyası
 
-A few resources to get you started if this is your first Flutter project:
+    {
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+"generalName": "C4",
+"noteNameId": 1,
+"notePic": "filelocation1do",
+"noteId": 31,
+"noteSound": "soundaddress1"
+},
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+{
+"generalName": "D4",
+"noteNameId": 2,
+"notePic": "filelocation2re",
+"noteId": 32,
+"noteSound": "soundaddress2"
+},
 
- ## Eklenebilecek Özellikler
- - 1. Random aynı nota tekrar gelmemeli
- - 2. Nota basıldığında ses çıkması
-  -3. BaseView olayı
-  
+{
+"generalName": "E4",
+"noteNameId": 3,
+"notePic": "filelocation3mi",
+"noteId": 33,
+"noteSound": "soundaddress3"
+}
+,
+{
+"generalName": "F4",
+"noteNameId": 4,
+"notePic": "filelocation4fa",
+"noteId": 34,
+"noteSound": "soundaddress4"
+}
+,
+{
+"generalName": "G4",
+"noteNameId": 5,
+"notePic": "filelocation5sol",
+"noteId": 35,
+"noteSound": "soundaddress5"
+}
+,
+{
+"generalName": "A5",
+"noteNameId": 1,
+"notePic": "filelocation6la",
+"noteId": 6,
+"noteSound": "soundaddress6"
+},
 
+{
+"generalName": "B5",
+"noteNameId": 2,
+"notePic": "filelocation7si",
+"noteId": 7,
+"noteSound": "soundaddress7"
+}
+,
+{
+"generalName": "C5",
+"noteNameId": 3,
+"notePic": "filelocation8do",
+"noteId": 8,
+"noteSound": "soundaddress8"
+}
+,
+{
+"generalName": "D5",
+"noteNameId": 4,
+"notePic": "filelocation9re",
+"noteId": 9,
+"noteSound": "soundaddress9"
+}
+,
+{
+"generalName": "E5",
+"noteNameId": 5,
+"notePic": "filelocation10mi",
+"noteId": 10,
+"noteSound": "soundaddress10"
+}
+\*/

@@ -45,3 +45,4 @@ flutter:
     - assets/
     - assets/data/example_data.json
     - assets/piano-mp3/
+    - assets/images/
