@@ -5,12 +5,12 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
-import 'package:note_learning_game/features/Settings/viewmodel/settings_store.dart';
 
 import '../model/note_model.dart';
 import '../service/INoteService.dart';
 import '../service/note_service.dart';
 part 'note_view_model.g.dart';
+
 final List<String> siList = ["do", "re", "mi", "fa", "sol", "la", "si"];
 final List<String> tiList = ["do", "re", "mi", "fa", "sol", "la", "ti"];
 final List<String> bList = ["C", "D", "E", "F", "G", "A", "B"];
@@ -18,7 +18,7 @@ final List<String> hList = ["C", "D", "E", "F", "G", "A", "B"];
 class NoteViewModel = _NoteViewModelBase with _$NoteViewModel;
 
 abstract class _NoteViewModelBase with Store {
-    @computed
+  @computed
   List<String> get defaultList {
     switch (noteNamesPreferences) {
       case NoteNamesPreferences.B:
@@ -112,13 +112,15 @@ abstract class _NoteViewModelBase with Store {
         noteIndex = Random().nextInt(items.length);
       } else if (isTrebleOn && !(isBassOn)) {
         //ilk14
-        noteIndex = Random().nextInt(14) + 1;
+        noteIndex = Random().nextInt(14);
       } else if (!(isTrebleOn) && (isBassOn)) {
         //15-28
-        noteIndex = Random().nextInt(14) + 15;
+        noteIndex = Random().nextInt(14) + 14;
       } else {
         //hepsi
+        //29tane var
         noteIndex = Random().nextInt(items.length);
+        //0-28
       }
     } else {
       if (kDebugMode) {
@@ -151,4 +153,5 @@ abstract class _NoteViewModelBase with Store {
 }
 
 enum LifeState { IDLE, LOADING, DONE }
+
 enum NoteNamesPreferences { B, H, SI, TI }
