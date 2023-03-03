@@ -127,6 +127,22 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
     });
   }
 
+  late final _$countDownControllerAtom =
+      Atom(name: '_NoteViewModelBase.countDownController', context: context);
+
+  @override
+  CountDownController get countDownController {
+    _$countDownControllerAtom.reportRead();
+    return super.countDownController;
+  }
+
+  @override
+  set countDownController(CountDownController value) {
+    _$countDownControllerAtom.reportWrite(value, super.countDownController, () {
+      super.countDownController = value;
+    });
+  }
+
   late final _$noteNamesPreferencesAtom =
       Atom(name: '_NoteViewModelBase.noteNamesPreferences', context: context);
 
@@ -291,6 +307,17 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
   }
 
   @override
+  void restartCountDown() {
+    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
+        name: '_NoteViewModelBase.restartCountDown');
+    try {
+      return super.restartCountDown();
+    } finally {
+      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeLanguagePreferences(LanguagePreferences languagePreferences) {
     final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
         name: '_NoteViewModelBase.changeLanguagePreferences');
@@ -365,6 +392,7 @@ isTrebleOn: ${isTrebleOn},
 isBassOn: ${isBassOn},
 isAltoOn: ${isAltoOn},
 languagePreferences: ${languagePreferences},
+countDownController: ${countDownController},
 noteNamesPreferences: ${noteNamesPreferences},
 durationPreferences: ${durationPreferences},
 items: ${items},

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:note_learning_game/features/Onboard/size_config.dart';
 
-import 'onboarding_contents.dart';
+import '../../models/onboarding_contents.dart';
+import '../../utils/size_config.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);

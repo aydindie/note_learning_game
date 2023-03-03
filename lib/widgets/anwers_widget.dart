@@ -1,13 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:note_learning_game/features/Settings/viewmodel/settings_store.dart';
 import 'package:provider/provider.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 
-import '../../features/Note/viewmodel/note_view_model.dart';
-import '../../features/Note/view/home_view.dart';
+import '../ui/Note/view/home_view.dart';
+import '../stores/note_view_model.dart';
 
 class AnswersWidget extends StatelessWidget {
   const AnswersWidget({

@@ -2,13 +2,15 @@
 
 import 'dart:math';
 
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 
-import '../model/note_model.dart';
-import '../service/INoteService.dart';
-import '../service/note_service.dart';
+import '../models/note/note_model.dart';
+import '../ui/Note/service/INoteService.dart';
+import '../ui/Note/service/note_service.dart';
+
 part 'note_view_model.g.dart';
 
 final List<String> siList = ["do", "re", "mi", "fa", "sol", "la", "si"];
@@ -19,6 +21,7 @@ const String duration_twenty = "20s";
 const String duration_minute = "1 min";
 const String duration_five_min = "5 min";
 const String duration_none = "None";
+
 class NoteViewModel = _NoteViewModelBase with _$NoteViewModel;
 
 abstract class _NoteViewModelBase with Store {
@@ -98,6 +101,18 @@ abstract class _NoteViewModelBase with Store {
 
   @observable
   LanguagePreferences languagePreferences = LanguagePreferences.English;
+
+  @observable
+  CountDownController countDownController = CountDownController();
+
+
+
+  @action
+  void restartCountDown() {
+    //check duration
+
+    countDownController.restart(duration: defaultDuration);
+  }
 
   @action
   void changeLanguagePreferences(LanguagePreferences languagePreferences) {

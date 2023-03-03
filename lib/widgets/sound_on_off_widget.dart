@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:note_learning_game/features/Note/viewmodel/note_view_model.dart';
 import 'package:provider/provider.dart';
 
-import '../../features/Settings/viewmodel/settings_store.dart';
+import '../stores/note_view_model.dart';
+
 
 class SoundOnOffWidget extends StatefulWidget {
   const SoundOnOffWidget({

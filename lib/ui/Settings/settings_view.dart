@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:note_learning_game/features/Note/viewmodel/note_view_model.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/widgets/sound_on_off_widget.dart';
-import '../../../core/widgets/text_widget.dart';
+import '../../stores/note_view_model.dart';
+import '../../widgets/sound_on_off_widget.dart';
+import '../../widgets/text_widget.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
@@ -144,10 +144,13 @@ class _SettingsViewState extends State<SettingsView> {
                           vertical: 10, horizontal: 8),
                       child: InkWell(
                           enableFeedback: false,
-                          onTap: () => viewModel.changeDurationPreferences(
-                              DurationPreferences.TWENTY),
+                          onTap: () {
+                            viewModel.changeDurationPreferences(
+                                DurationPreferences.TWENTY);
+                            viewModel.restartCountDown();
+                          },
                           child: const Center(
-                            child: Text("a"),
+                            child: Text("20s"),
                           )),
                     ),
                   );
@@ -171,8 +174,11 @@ class _SettingsViewState extends State<SettingsView> {
                           vertical: 10, horizontal: 8),
                       child: InkWell(
                           enableFeedback: false,
-                          onTap: () => viewModel.changeDurationPreferences(
-                              DurationPreferences.MINUTE),
+                          onTap: () {
+                            viewModel.changeDurationPreferences(
+                                DurationPreferences.MINUTE);
+                            viewModel.restartCountDown();
+                          },
                           child: const Center(
                             child: Text("min"),
                           )),
@@ -198,8 +204,11 @@ class _SettingsViewState extends State<SettingsView> {
                           vertical: 10, horizontal: 8),
                       child: InkWell(
                           enableFeedback: false,
-                          onTap: () => viewModel.changeDurationPreferences(
-                              DurationPreferences.FIVE_MIN),
+                          onTap: () {
+                            viewModel.changeDurationPreferences(
+                                DurationPreferences.FIVE_MIN);
+                            viewModel.restartCountDown();
+                          },
                           child: const Center(
                             child: Text("5 min"),
                           )),
@@ -223,8 +232,12 @@ class _SettingsViewState extends State<SettingsView> {
                           vertical: 10, horizontal: 8),
                       child: InkWell(
                           enableFeedback: false,
-                          onTap: () => viewModel.changeDurationPreferences(
-                              DurationPreferences.NONE),
+                          onTap: () {
+                            viewModel.changeDurationPreferences(
+                                DurationPreferences.NONE);
+
+                            viewModel.restartCountDown();
+                          },
                           child: const Center(
                             child: Text("None"),
                           )),

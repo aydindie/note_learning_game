@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 
-import '../model/note_model.dart';
+import '../../../models/note/note_model.dart';
 
 abstract class INoteService {
   Future<List<NoteModel>> getAllNotes();

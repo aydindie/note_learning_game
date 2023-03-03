@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/widgets/anwers_widget.dart';
-import '../../../core/widgets/countdown_timer.dart';
-import '../../../core/widgets/question_widget.dart';
-import '../../../core/widgets/top_iconbuttons.dart';
-import '../viewmodel/note_view_model.dart';
+import '../../../stores/note_view_model.dart';
+import '../../../widgets/anwers_widget.dart';
+import '../../../widgets/countdown_timer.dart';
+import '../../../widgets/question_widget.dart';
+import '../../../widgets/top_iconbuttons.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
@@ -25,7 +25,6 @@ final List<String> bList = ["C", "D", "E", "F", "G", "A", "B"];
 final List<String> hList = ["C", "D", "E", "F", "G", "A", "B"];
 
 class _MyHomePageState extends State<MyHomePage> {
-  final CountDownController _countDownController = CountDownController();
 
   // controller
   @override
@@ -44,7 +43,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 const SizedBox(
                   height: 10,
                 ),
-                CountdownTimer(countDownController: _countDownController),
+                Observer(builder: (_) {
+                  return CountdownTimer(
+                     );
+                }),
                 Observer(
                   builder: (_) {
                     return scoreBar(h, w, Colors.blueAccent.shade100,

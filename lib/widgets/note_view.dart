@@ -2,10 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import 'package:note_learning_game/core/widgets/note_cards.dart';
+import 'package:note_learning_game/widgets/note_cards.dart';
 import 'package:provider/provider.dart';
 
-import '../../features/Note/viewmodel/note_view_model.dart';
+import '../stores/note_view_model.dart';
+
 
 class NoteView extends StatelessWidget {
   const NoteView({

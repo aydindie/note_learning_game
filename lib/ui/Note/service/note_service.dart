@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
-import '../model/note_model.dart';
+import '../../../models/note/note_model.dart';
 import 'INoteService.dart';
 
 class NoteService extends INoteService {
