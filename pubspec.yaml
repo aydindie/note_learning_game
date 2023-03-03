@@ -46,3 +46,9 @@ flutter:
     - assets/data/example_data.json
     - assets/piano-mp3/
     - assets/images/
+
+  fonts:
+    - family: Mulish
+      fonts:
+        - asset: assets/fonts/Mulish-Light.ttf
+        - asset: assets/fonts/Mulish-SemiBold.ttf

@@ -2,7 +2,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:note_learning_game/features/Note/viewmodel/note_view_model.dart';
-import 'package:note_learning_game/features/Settings/viewmodel/settings_store.dart';
 import 'package:provider/provider.dart';
 
 import '../../features/Note/model/note_model.dart';
@@ -21,11 +20,15 @@ class NoteCard extends StatefulWidget {
 class _NoteCardState extends State<NoteCard> {
   @override
   Widget build(BuildContext context) {
-    final  viewmodel = Provider.of<NoteViewModel>(context);
+    final viewmodel = Provider.of<NoteViewModel>(context);
     final player = AudioCache();
     print("piano-mp3/${widget.noteModel.generalName.toString()}.mp3");
-    viewmodel.isSoundOn ? player.play("piano-mp3/${widget.noteModel.generalName.toString()}.mp3") : null;
+    viewmodel.isSoundOn
+        ? player
+            .play("piano-mp3/${widget.noteModel.generalName.toString()}.mp3")
+        : null;
     return InkWell(
+      enableFeedback: false, //basarken buton sesi gelmemesi için
       onTap: () {
         setState(() {});
       },

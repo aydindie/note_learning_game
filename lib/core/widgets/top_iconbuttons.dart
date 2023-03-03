@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_learning_game/core/widgets/sound_on_off_widget.dart';
+import 'package:note_learning_game/features/Onboard/onboarding_screen.dart';
 
 import '../../features/Settings/view/settings_view.dart';
 
@@ -23,7 +24,10 @@ class _TopIconButtonsState extends State<TopIconButtons> {
           children: [
             //info and settings iconbutton
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const OnboardingScreen()));
+                },
                 icon: const Icon(
                   Icons.info_outline,
                   size: 31,
