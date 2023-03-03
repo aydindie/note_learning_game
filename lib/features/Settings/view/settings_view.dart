@@ -4,8 +4,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:note_learning_game/features/Note/viewmodel/note_view_model.dart';
 import 'package:provider/provider.dart';
 
-import 'package:note_learning_game/features/Settings/viewmodel/settings_store.dart';
-
 import '../../../core/widgets/sound_on_off_widget.dart';
 import '../../../core/widgets/text_widget.dart';
 
@@ -20,6 +18,13 @@ class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<NoteViewModel>(context);
+    const List<String> list = <String>[
+      "English",
+      "German",
+      "French",
+      "Turkish"
+    ];
+    LanguagePreferences dropdownValue = viewModel.languagePreferences;
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.grey,
@@ -55,9 +60,8 @@ class _SettingsViewState extends State<SettingsView> {
                       width: MediaQuery.of(context).size.width * 0.12,
                       height: MediaQuery.of(context).size.width * 0.16,
                       decoration: BoxDecoration(
-                        color: viewModel.isTrebleOn
-                            ? Colors.green
-                            : Colors.grey,
+                        color:
+                            viewModel.isTrebleOn ? Colors.green : Colors.grey,
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Padding(
@@ -77,9 +81,7 @@ class _SettingsViewState extends State<SettingsView> {
                       width: MediaQuery.of(context).size.width * 0.12,
                       height: MediaQuery.of(context).size.width * 0.16,
                       decoration: BoxDecoration(
-                        color: viewModel.isBassOn
-                            ? Colors.green
-                            : Colors.grey,
+                        color: viewModel.isBassOn ? Colors.green : Colors.grey,
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Padding(
@@ -120,8 +122,120 @@ class _SettingsViewState extends State<SettingsView> {
               ],
             ),
             const SizedBox(height: 10),
+            //note
+            //==============DURATION BUTTONS=================
             const TextWidget(text: "Duration"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Observer(builder: (_) {
+                  return Container(
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    height: MediaQuery.of(context).size.width * 0.12,
+                    decoration: BoxDecoration(
+                      color: viewModel.durationPreferences ==
+                              DurationPreferences.TWENTY
+                          ? Colors.green
+                          : Colors.grey,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 8),
+                      child: InkWell(
+                          enableFeedback: false,
+                          onTap: () => viewModel.changeDurationPreferences(
+                              DurationPreferences.TWENTY),
+                          child: const Center(
+                            child: Text("a"),
+                          )),
+                    ),
+                  );
+                }),
+                //observer
+
+                SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                Observer(builder: (_) {
+                  return Container(
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    height: MediaQuery.of(context).size.width * 0.12,
+                    decoration: BoxDecoration(
+                      color: viewModel.durationPreferences ==
+                              DurationPreferences.MINUTE
+                          ? Colors.green
+                          : Colors.grey,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 8),
+                      child: InkWell(
+                          enableFeedback: false,
+                          onTap: () => viewModel.changeDurationPreferences(
+                              DurationPreferences.MINUTE),
+                          child: const Center(
+                            child: Text("min"),
+                          )),
+                    ),
+                  );
+                }),
+
+                //observer
+                SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                Observer(builder: (_) {
+                  return Container(
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    height: MediaQuery.of(context).size.width * 0.12,
+                    decoration: BoxDecoration(
+                      color: viewModel.durationPreferences ==
+                              DurationPreferences.FIVE_MIN
+                          ? Colors.green
+                          : Colors.grey,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 8),
+                      child: InkWell(
+                          enableFeedback: false,
+                          onTap: () => viewModel.changeDurationPreferences(
+                              DurationPreferences.FIVE_MIN),
+                          child: const Center(
+                            child: Text("5 min"),
+                          )),
+                    ),
+                  );
+                }),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                Observer(builder: (_) {
+                  return Container(
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    height: MediaQuery.of(context).size.width * 0.12,
+                    decoration: BoxDecoration(
+                      color: viewModel.durationPreferences ==
+                              DurationPreferences.NONE
+                          ? Colors.green
+                          : Colors.grey,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 8),
+                      child: InkWell(
+                          enableFeedback: false,
+                          onTap: () => viewModel.changeDurationPreferences(
+                              DurationPreferences.NONE),
+                          child: const Center(
+                            child: Text("None"),
+                          )),
+                    ),
+                  );
+                }),
+              ],
+            ),
+
             const SizedBox(height: 10),
+
             const TextWidget(text: "Note Names Prefences"),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -143,9 +257,8 @@ class _SettingsViewState extends State<SettingsView> {
                           vertical: 10, horizontal: 8),
                       child: InkWell(
                           enableFeedback: false,
-                          onTap: () =>
-                              viewModel.changeNoteNamesPreferences(
-                                  NoteNamesPreferences.B),
+                          onTap: () => viewModel.changeNoteNamesPreferences(
+                              NoteNamesPreferences.B),
                           child: const Center(
                             child: Text("C..G,A,B"),
                           )),
@@ -171,9 +284,8 @@ class _SettingsViewState extends State<SettingsView> {
                           vertical: 10, horizontal: 8),
                       child: InkWell(
                           enableFeedback: false,
-                          onTap: () =>
-                              viewModel.changeNoteNamesPreferences(
-                                  NoteNamesPreferences.H),
+                          onTap: () => viewModel.changeNoteNamesPreferences(
+                              NoteNamesPreferences.H),
                           child: const Center(
                             child: Text("C..G,A,H"),
                           )),
@@ -199,9 +311,8 @@ class _SettingsViewState extends State<SettingsView> {
                           vertical: 10, horizontal: 8),
                       child: InkWell(
                           enableFeedback: false,
-                          onTap: () =>
-                              viewModel.changeNoteNamesPreferences(
-                                  NoteNamesPreferences.SI),
+                          onTap: () => viewModel.changeNoteNamesPreferences(
+                              NoteNamesPreferences.SI),
                           child: const Center(
                             child: Text("do..sol,la,si"),
                           )),
@@ -227,9 +338,8 @@ class _SettingsViewState extends State<SettingsView> {
                           vertical: 10, horizontal: 8),
                       child: InkWell(
                           enableFeedback: false,
-                          onTap: () =>
-                              viewModel.changeNoteNamesPreferences(
-                                  NoteNamesPreferences.TI),
+                          onTap: () => viewModel.changeNoteNamesPreferences(
+                              NoteNamesPreferences.TI),
                           child: const Center(
                             child: Text("do..sol,la,ti"),
                           )),
@@ -238,6 +348,42 @@ class _SettingsViewState extends State<SettingsView> {
                 }),
               ],
             ),
+            const SizedBox(height: 10),
+            const TextWidget(text: "Language"),
+            DropdownButton(
+                value: dropdownValue,
+                icon: const Icon(Icons.arrow_downward),
+                elevation: 16,
+                style: const TextStyle(color: Colors.deepPurple),
+                underline: Container(
+                  height: 2,
+                  color: Colors.deepPurpleAccent,
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    //change the language enum.
+                    viewModel.changeLanguagePreferences(
+                        value as LanguagePreferences);
+                  });
+                },
+                items: const [
+                  DropdownMenuItem(
+                    value: LanguagePreferences.English,
+                    child: Text('English'),
+                  ),
+                  DropdownMenuItem(
+                    value: LanguagePreferences.German,
+                    child: Text('German'),
+                  ),
+                  DropdownMenuItem(
+                    value: LanguagePreferences.French,
+                    child: Text('French'),
+                  ),
+                  DropdownMenuItem(
+                    value: LanguagePreferences.Turkish,
+                    child: Text('Turkish'),
+                  ),
+                ]),
 
             Observer(builder: (_) {
               return Container(

@@ -12,7 +12,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) => MultiProvider(
@@ -25,6 +25,6 @@ class MyApp extends StatelessWidget {
             )
           ],
           child: Observer(builder: (_) {
-            return MaterialApp(home: const MyHomePage());
+            return const MaterialApp(home: MyHomePage());
           }));
 }

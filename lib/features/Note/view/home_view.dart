@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/widgets/anwers_widget.dart';
+import '../../../core/widgets/countdown_timer.dart';
 import '../../../core/widgets/question_widget.dart';
 import '../../../core/widgets/top_iconbuttons.dart';
 import '../viewmodel/note_view_model.dart';
@@ -20,7 +21,7 @@ class MyHomePage extends StatefulWidget {
 
 final List<String> siList = ["do", "re", "mi", "fa", "sol", "la", "si"];
 final List<String> tiList = ["do", "re", "mi", "fa", "sol", "la", "ti"];
-final List<String> bList= ["C","D","E","F","G","A","B"];
+final List<String> bList = ["C", "D", "E", "F", "G", "A", "B"];
 final List<String> hList = ["C", "D", "E", "F", "G", "A", "B"];
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -43,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 const SizedBox(
                   height: 10,
                 ),
-                //CountdownTimer(countDownController: _countDownController),
+                CountdownTimer(countDownController: _countDownController),
                 Observer(
                   builder: (_) {
                     return scoreBar(h, w, Colors.blueAccent.shade100,

@@ -15,6 +15,10 @@ final List<String> siList = ["do", "re", "mi", "fa", "sol", "la", "si"];
 final List<String> tiList = ["do", "re", "mi", "fa", "sol", "la", "ti"];
 final List<String> bList = ["C", "D", "E", "F", "G", "A", "B"];
 final List<String> hList = ["C", "D", "E", "F", "G", "A", "B"];
+const String duration_twenty = "20s";
+const String duration_minute = "1 min";
+const String duration_five_min = "5 min";
+const String duration_none = "None";
 class NoteViewModel = _NoteViewModelBase with _$NoteViewModel;
 
 abstract class _NoteViewModelBase with Store {
@@ -32,6 +36,23 @@ abstract class _NoteViewModelBase with Store {
 
       default:
         return siList;
+    }
+  }
+
+  @computed
+  int get defaultDuration {
+    switch (durationPreferences) {
+      case DurationPreferences.TWENTY:
+        return 20;
+      case DurationPreferences.MINUTE:
+        return 60;
+      case DurationPreferences.FIVE_MIN:
+        return 300;
+      case DurationPreferences.NONE:
+        return 0;
+
+      default:
+        return 0;
     }
   }
 
@@ -76,11 +97,27 @@ abstract class _NoteViewModelBase with Store {
   }
 
   @observable
+  LanguagePreferences languagePreferences = LanguagePreferences.English;
+
+  @action
+  void changeLanguagePreferences(LanguagePreferences languagePreferences) {
+    this.languagePreferences = languagePreferences;
+  }
+
+  @observable
   NoteNamesPreferences noteNamesPreferences = NoteNamesPreferences.SI;
 
   @action
   void changeNoteNamesPreferences(NoteNamesPreferences noteNamesPreferences) {
     this.noteNamesPreferences = noteNamesPreferences;
+  }
+
+  @observable
+  DurationPreferences durationPreferences = DurationPreferences.NONE;
+
+  @action
+  void changeDurationPreferences(DurationPreferences durationPreferences) {
+    this.durationPreferences = durationPreferences;
   }
 
   BuildContext? contextt;
@@ -155,3 +192,8 @@ abstract class _NoteViewModelBase with Store {
 enum LifeState { IDLE, LOADING, DONE }
 
 enum NoteNamesPreferences { B, H, SI, TI }
+
+enum DurationPreferences { TWENTY, MINUTE, FIVE_MIN, NONE }
+
+//"English", "German", "French", "Turkish"
+enum LanguagePreferences { English, German, French, Turkish }

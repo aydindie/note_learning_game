@@ -16,6 +16,13 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
       (_$defaultListComputed ??= Computed<List<String>>(() => super.defaultList,
               name: '_NoteViewModelBase.defaultList'))
           .value;
+  Computed<int>? _$defaultDurationComputed;
+
+  @override
+  int get defaultDuration =>
+      (_$defaultDurationComputed ??= Computed<int>(() => super.defaultDuration,
+              name: '_NoteViewModelBase.defaultDuration'))
+          .value;
   Computed<int>? _$itemCountComputed;
 
   @override
@@ -104,6 +111,22 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
     });
   }
 
+  late final _$languagePreferencesAtom =
+      Atom(name: '_NoteViewModelBase.languagePreferences', context: context);
+
+  @override
+  LanguagePreferences get languagePreferences {
+    _$languagePreferencesAtom.reportRead();
+    return super.languagePreferences;
+  }
+
+  @override
+  set languagePreferences(LanguagePreferences value) {
+    _$languagePreferencesAtom.reportWrite(value, super.languagePreferences, () {
+      super.languagePreferences = value;
+    });
+  }
+
   late final _$noteNamesPreferencesAtom =
       Atom(name: '_NoteViewModelBase.noteNamesPreferences', context: context);
 
@@ -118,6 +141,22 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
     _$noteNamesPreferencesAtom.reportWrite(value, super.noteNamesPreferences,
         () {
       super.noteNamesPreferences = value;
+    });
+  }
+
+  late final _$durationPreferencesAtom =
+      Atom(name: '_NoteViewModelBase.durationPreferences', context: context);
+
+  @override
+  DurationPreferences get durationPreferences {
+    _$durationPreferencesAtom.reportRead();
+    return super.durationPreferences;
+  }
+
+  @override
+  set durationPreferences(DurationPreferences value) {
+    _$durationPreferencesAtom.reportWrite(value, super.durationPreferences, () {
+      super.durationPreferences = value;
     });
   }
 
@@ -252,11 +291,33 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
   }
 
   @override
+  void changeLanguagePreferences(LanguagePreferences languagePreferences) {
+    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
+        name: '_NoteViewModelBase.changeLanguagePreferences');
+    try {
+      return super.changeLanguagePreferences(languagePreferences);
+    } finally {
+      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeNoteNamesPreferences(NoteNamesPreferences noteNamesPreferences) {
     final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
         name: '_NoteViewModelBase.changeNoteNamesPreferences');
     try {
       return super.changeNoteNamesPreferences(noteNamesPreferences);
+    } finally {
+      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeDurationPreferences(DurationPreferences durationPreferences) {
+    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
+        name: '_NoteViewModelBase.changeDurationPreferences');
+    try {
+      return super.changeDurationPreferences(durationPreferences);
     } finally {
       _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -303,12 +364,15 @@ isDarkMode: ${isDarkMode},
 isTrebleOn: ${isTrebleOn},
 isBassOn: ${isBassOn},
 isAltoOn: ${isAltoOn},
+languagePreferences: ${languagePreferences},
 noteNamesPreferences: ${noteNamesPreferences},
+durationPreferences: ${durationPreferences},
 items: ${items},
 pageLifes: ${pageLifes},
 noteIndex: ${noteIndex},
 score: ${score},
 defaultList: ${defaultList},
+defaultDuration: ${defaultDuration},
 itemCount: ${itemCount}
     ''';
   }
