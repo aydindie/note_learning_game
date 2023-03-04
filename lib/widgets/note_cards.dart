@@ -22,6 +22,7 @@ class _NoteCardState extends State<NoteCard> {
   Widget build(BuildContext context) {
     final soundStore = Provider.of<SoundStore>(context);
     final player = AudioCache();
+    // ignore: avoid_print
     print("piano-mp3/${widget.noteModel.generalName.toString()}.mp3");
     soundStore.soundBool
         ? player

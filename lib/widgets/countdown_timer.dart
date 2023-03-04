@@ -23,6 +23,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
     return Observer(builder: (_) {
       //TODO: burada controllerin dispose olmaması için 0 pixellik bir container oluşturuldu. Bu çözüm geçici bir çözüm. Daha iyi bir çözüm bulunmalı.
       return viewModel.durationPreferences == DurationPreferences.NONE
+          // ignore: avoid_unnecessary_containers
           ? Container(
               child: CircularCountDownTimer(
                 width: 0,

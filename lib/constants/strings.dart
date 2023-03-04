@@ -8,4 +8,4 @@ const String duration_twenty = "20s";
 const String duration_minute = "1 min";
 const String duration_five_min = "5 min";
 const String duration_none = "None";
-final String path = "assets/data/example_data.json";
+const String path = "assets/data/example_data.json";

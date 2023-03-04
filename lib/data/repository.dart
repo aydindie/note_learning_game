@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'dart:async';
 
 import 'package:note_learning_game/data/sharedpref/shared_preference_helper.dart';
