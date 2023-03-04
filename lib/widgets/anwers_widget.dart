@@ -5,8 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 
-import '../ui/Note/view/home_view.dart';
-import '../stores/note_view_model.dart';
+import '../stores/all_store.dart';
 
 class AnswersWidget extends StatelessWidget {
   const AnswersWidget({
@@ -22,8 +21,7 @@ class AnswersWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
-    final viewModel = Provider.of<NoteViewModel>(context);
-
+    final viewModel = Provider.of<AllStore>(context);
 
     return SizedBox(
       height: h * 0.4,
@@ -55,14 +53,16 @@ class AnswersWidget extends StatelessWidget {
                 child: Observer(
                   builder: (context) => Text(
                     viewModel.defaultList[index],
-                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
             ),
           ),
         ),
-        staggeredTileBuilder: (int index) => StaggeredTile.count(index == (_itemCount - 1) ? _crossAxisCount : 1, 1),
+        staggeredTileBuilder: (int index) => StaggeredTile.count(
+            index == (_itemCount - 1) ? _crossAxisCount : 1, 1),
       ),
     );
   }

@@ -5,8 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:note_learning_game/widgets/note_cards.dart';
 import 'package:provider/provider.dart';
 
-import '../stores/note_view_model.dart';
-
+import '../stores/all_store.dart';
 
 class NoteView extends StatelessWidget {
   const NoteView({
@@ -15,7 +14,7 @@ class NoteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<NoteViewModel>(context);
+    final viewModel = Provider.of<AllStore>(context);
     if (viewModel.contextt == null) {
       viewModel.setContext(context);
     }
@@ -35,13 +34,13 @@ class NoteView extends StatelessWidget {
     });
   }
 
-  Widget buildObserverCard(NoteViewModel viewModel) {
+  Widget buildObserverCard(AllStore viewModel) {
     return NoteCard(
       noteModel: viewModel.items[viewModel.noteIndex],
     );
   }
 
-  Observer buildObserverBody(NoteViewModel viewModel) {
+  Observer buildObserverBody(AllStore viewModel) {
     return Observer(builder: (_) {
       return ListView.builder(
         itemCount: viewModel.items.length,

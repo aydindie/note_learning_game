@@ -31,6 +31,9 @@ dependencies:
   # audio
   audioplayers: ^0.20.1
 
+  #storage shared
+  shared_preferences: ^2.0.18
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:note_learning_game/stores/sound_store.dart';
 import 'package:provider/provider.dart';
 
-import '../models/note/note_model.dart';
-import '../stores/note_view_model.dart';
+import '../models/note_model.dart';
 
 class NoteCard extends StatefulWidget {
   final NoteModel noteModel;
@@ -20,10 +20,10 @@ class NoteCard extends StatefulWidget {
 class _NoteCardState extends State<NoteCard> {
   @override
   Widget build(BuildContext context) {
-    final viewmodel = Provider.of<NoteViewModel>(context);
+    final soundStore = Provider.of<SoundStore>(context);
     final player = AudioCache();
     print("piano-mp3/${widget.noteModel.generalName.toString()}.mp3");
-    viewmodel.isSoundOn
+    soundStore.soundBool
         ? player
             .play("piano-mp3/${widget.noteModel.generalName.toString()}.mp3")
         : null;
@@ -44,7 +44,7 @@ class _NoteCardState extends State<NoteCard> {
                 width: 75,
                 child: Padding(
                   padding: EdgeInsets.all(1.0),
-                  child: Image(image: NetworkImage("https://picsum.photos/75")),
+                  child: Image(image: AssetImage("assets/images/alto.png")),
                 ),
               ),
               Text(

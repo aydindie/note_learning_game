@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../stores/note_view_model.dart';
-
+import '../stores/sound_store.dart';
 
 class SoundOnOffWidget extends StatefulWidget {
   const SoundOnOffWidget({
@@ -17,20 +16,20 @@ class SoundOnOffWidget extends StatefulWidget {
 class _SoundOnOffWidgetState extends State<SoundOnOffWidget> {
   @override
   Widget build(BuildContext context) {
-    final viewmodel = Provider.of<NoteViewModel>(context);
+    final soundStore = Provider.of<SoundStore>(context);
 
     return Observer(builder: (_) {
       return Container(
         decoration: BoxDecoration(
-          color: viewmodel.isSoundOn ? Colors.green : Colors.red,
+          color: soundStore.soundBool ? Colors.green : Colors.red,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 11),
           child: InkWell(
             enableFeedback: false,
-            onTap: () => viewmodel.changeSound(),
-            child: viewmodel.isSoundOn
+            onTap: () => soundStore.changeSound(),
+            child: soundStore.soundBool
                 ? const Icon(
                     Icons.volume_up,
                     size: 31,

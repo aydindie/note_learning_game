@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'note_view_model.dart';
+part of 'all_store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,63 +8,30 @@ part of 'note_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$NoteViewModel on _NoteViewModelBase, Store {
+mixin _$AllStore on _AllStoreBase, Store {
   Computed<List<String>>? _$defaultListComputed;
 
   @override
   List<String> get defaultList =>
       (_$defaultListComputed ??= Computed<List<String>>(() => super.defaultList,
-              name: '_NoteViewModelBase.defaultList'))
+              name: '_AllStoreBase.defaultList'))
           .value;
   Computed<int>? _$defaultDurationComputed;
 
   @override
   int get defaultDuration =>
       (_$defaultDurationComputed ??= Computed<int>(() => super.defaultDuration,
-              name: '_NoteViewModelBase.defaultDuration'))
+              name: '_AllStoreBase.defaultDuration'))
           .value;
   Computed<int>? _$itemCountComputed;
 
   @override
-  int get itemCount =>
-      (_$itemCountComputed ??= Computed<int>(() => super.itemCount,
-              name: '_NoteViewModelBase.itemCount'))
-          .value;
-
-  late final _$isSoundOnAtom =
-      Atom(name: '_NoteViewModelBase.isSoundOn', context: context);
-
-  @override
-  bool get isSoundOn {
-    _$isSoundOnAtom.reportRead();
-    return super.isSoundOn;
-  }
-
-  @override
-  set isSoundOn(bool value) {
-    _$isSoundOnAtom.reportWrite(value, super.isSoundOn, () {
-      super.isSoundOn = value;
-    });
-  }
-
-  late final _$isDarkModeAtom =
-      Atom(name: '_NoteViewModelBase.isDarkMode', context: context);
-
-  @override
-  bool get isDarkMode {
-    _$isDarkModeAtom.reportRead();
-    return super.isDarkMode;
-  }
-
-  @override
-  set isDarkMode(bool value) {
-    _$isDarkModeAtom.reportWrite(value, super.isDarkMode, () {
-      super.isDarkMode = value;
-    });
-  }
+  int get itemCount => (_$itemCountComputed ??=
+          Computed<int>(() => super.itemCount, name: '_AllStoreBase.itemCount'))
+      .value;
 
   late final _$isTrebleOnAtom =
-      Atom(name: '_NoteViewModelBase.isTrebleOn', context: context);
+      Atom(name: '_AllStoreBase.isTrebleOn', context: context);
 
   @override
   bool get isTrebleOn {
@@ -80,7 +47,7 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
   }
 
   late final _$isBassOnAtom =
-      Atom(name: '_NoteViewModelBase.isBassOn', context: context);
+      Atom(name: '_AllStoreBase.isBassOn', context: context);
 
   @override
   bool get isBassOn {
@@ -96,7 +63,7 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
   }
 
   late final _$isAltoOnAtom =
-      Atom(name: '_NoteViewModelBase.isAltoOn', context: context);
+      Atom(name: '_AllStoreBase.isAltoOn', context: context);
 
   @override
   bool get isAltoOn {
@@ -112,7 +79,7 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
   }
 
   late final _$languagePreferencesAtom =
-      Atom(name: '_NoteViewModelBase.languagePreferences', context: context);
+      Atom(name: '_AllStoreBase.languagePreferences', context: context);
 
   @override
   LanguagePreferences get languagePreferences {
@@ -128,7 +95,7 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
   }
 
   late final _$countDownControllerAtom =
-      Atom(name: '_NoteViewModelBase.countDownController', context: context);
+      Atom(name: '_AllStoreBase.countDownController', context: context);
 
   @override
   CountDownController get countDownController {
@@ -144,7 +111,7 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
   }
 
   late final _$noteNamesPreferencesAtom =
-      Atom(name: '_NoteViewModelBase.noteNamesPreferences', context: context);
+      Atom(name: '_AllStoreBase.noteNamesPreferences', context: context);
 
   @override
   NoteNamesPreferences get noteNamesPreferences {
@@ -161,7 +128,7 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
   }
 
   late final _$durationPreferencesAtom =
-      Atom(name: '_NoteViewModelBase.durationPreferences', context: context);
+      Atom(name: '_AllStoreBase.durationPreferences', context: context);
 
   @override
   DurationPreferences get durationPreferences {
@@ -176,8 +143,7 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
     });
   }
 
-  late final _$itemsAtom =
-      Atom(name: '_NoteViewModelBase.items', context: context);
+  late final _$itemsAtom = Atom(name: '_AllStoreBase.items', context: context);
 
   @override
   List<NoteModel> get items {
@@ -193,7 +159,7 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
   }
 
   late final _$pageLifesAtom =
-      Atom(name: '_NoteViewModelBase.pageLifes', context: context);
+      Atom(name: '_AllStoreBase.pageLifes', context: context);
 
   @override
   LifeState get pageLifes {
@@ -209,7 +175,7 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
   }
 
   late final _$noteIndexAtom =
-      Atom(name: '_NoteViewModelBase.noteIndex', context: context);
+      Atom(name: '_AllStoreBase.noteIndex', context: context);
 
   @override
   int get noteIndex {
@@ -224,8 +190,7 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
     });
   }
 
-  late final _$scoreAtom =
-      Atom(name: '_NoteViewModelBase.score', context: context);
+  late final _$scoreAtom = Atom(name: '_AllStoreBase.score', context: context);
 
   @override
   int get score {
@@ -241,153 +206,129 @@ mixin _$NoteViewModel on _NoteViewModelBase, Store {
   }
 
   late final _$fetchItemsAsyncAction =
-      AsyncAction('_NoteViewModelBase.fetchItems', context: context);
+      AsyncAction('_AllStoreBase.fetchItems', context: context);
 
   @override
   Future<void> fetchItems() {
     return _$fetchItemsAsyncAction.run(() => super.fetchItems());
   }
 
-  late final _$_NoteViewModelBaseActionController =
-      ActionController(name: '_NoteViewModelBase', context: context);
-
-  @override
-  void changeSound() {
-    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
-        name: '_NoteViewModelBase.changeSound');
-    try {
-      return super.changeSound();
-    } finally {
-      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void changeTheme() {
-    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
-        name: '_NoteViewModelBase.changeTheme');
-    try {
-      return super.changeTheme();
-    } finally {
-      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
+  late final _$_AllStoreBaseActionController =
+      ActionController(name: '_AllStoreBase', context: context);
 
   @override
   void changeTreble() {
-    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
-        name: '_NoteViewModelBase.changeTreble');
+    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
+        name: '_AllStoreBase.changeTreble');
     try {
       return super.changeTreble();
     } finally {
-      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
+      _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void changeBass() {
-    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
-        name: '_NoteViewModelBase.changeBass');
+    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
+        name: '_AllStoreBase.changeBass');
     try {
       return super.changeBass();
     } finally {
-      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
+      _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void changeAlto() {
-    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
-        name: '_NoteViewModelBase.changeAlto');
+    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
+        name: '_AllStoreBase.changeAlto');
     try {
       return super.changeAlto();
     } finally {
-      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
+      _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void restartCountDown() {
-    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
-        name: '_NoteViewModelBase.restartCountDown');
+    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
+        name: '_AllStoreBase.restartCountDown');
     try {
       return super.restartCountDown();
     } finally {
-      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
+      _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void changeLanguagePreferences(LanguagePreferences languagePreferences) {
-    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
-        name: '_NoteViewModelBase.changeLanguagePreferences');
+    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
+        name: '_AllStoreBase.changeLanguagePreferences');
     try {
       return super.changeLanguagePreferences(languagePreferences);
     } finally {
-      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
+      _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void changeNoteNamesPreferences(NoteNamesPreferences noteNamesPreferences) {
-    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
-        name: '_NoteViewModelBase.changeNoteNamesPreferences');
+    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
+        name: '_AllStoreBase.changeNoteNamesPreferences');
     try {
       return super.changeNoteNamesPreferences(noteNamesPreferences);
     } finally {
-      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
+      _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void changeDurationPreferences(DurationPreferences durationPreferences) {
-    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
-        name: '_NoteViewModelBase.changeDurationPreferences');
+    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
+        name: '_AllStoreBase.changeDurationPreferences');
     try {
       return super.changeDurationPreferences(durationPreferences);
     } finally {
-      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
+      _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void scoreIncrement() {
-    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
-        name: '_NoteViewModelBase.scoreIncrement');
+    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
+        name: '_AllStoreBase.scoreIncrement');
     try {
       return super.scoreIncrement();
     } finally {
-      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
+      _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void updateRandomIndex() {
-    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
-        name: '_NoteViewModelBase.updateRandomIndex');
+    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
+        name: '_AllStoreBase.updateRandomIndex');
     try {
       return super.updateRandomIndex();
     } finally {
-      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
+      _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setContext(BuildContext? context) {
-    final _$actionInfo = _$_NoteViewModelBaseActionController.startAction(
-        name: '_NoteViewModelBase.setContext');
+    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
+        name: '_AllStoreBase.setContext');
     try {
       return super.setContext(context);
     } finally {
-      _$_NoteViewModelBaseActionController.endAction(_$actionInfo);
+      _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   String toString() {
     return '''
-isSoundOn: ${isSoundOn},
-isDarkMode: ${isDarkMode},
 isTrebleOn: ${isTrebleOn},
 isBassOn: ${isBassOn},
 isAltoOn: ${isAltoOn},

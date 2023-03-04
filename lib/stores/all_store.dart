@@ -7,24 +7,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 
-import '../models/note/note_model.dart';
-import '../ui/Note/service/INoteService.dart';
-import '../ui/Note/service/note_service.dart';
+import '../constants/enums.dart';
+import '../constants/strings.dart';
+import '../models/note_model.dart';
+import '../data/service/INoteService.dart';
+import '../data/service/note_service.dart';
 
-part 'note_view_model.g.dart';
+part 'all_store.g.dart';
 
-final List<String> siList = ["do", "re", "mi", "fa", "sol", "la", "si"];
-final List<String> tiList = ["do", "re", "mi", "fa", "sol", "la", "ti"];
-final List<String> bList = ["C", "D", "E", "F", "G", "A", "B"];
-final List<String> hList = ["C", "D", "E", "F", "G", "A", "B"];
-const String duration_twenty = "20s";
-const String duration_minute = "1 min";
-const String duration_five_min = "5 min";
-const String duration_none = "None";
+class AllStore = _AllStoreBase with _$AllStore;
 
-class NoteViewModel = _NoteViewModelBase with _$NoteViewModel;
-
-abstract class _NoteViewModelBase with Store {
+abstract class _AllStoreBase with Store {
   @computed
   List<String> get defaultList {
     switch (noteNamesPreferences) {
@@ -60,22 +53,6 @@ abstract class _NoteViewModelBase with Store {
   }
 
   @observable
-  bool isSoundOn = true;
-
-  @action
-  void changeSound() {
-    isSoundOn = !isSoundOn;
-  }
-
-  @observable
-  bool isDarkMode = false;
-
-  @action
-  void changeTheme() {
-    isDarkMode = !isDarkMode;
-  }
-
-  @observable
   bool isTrebleOn = true;
 
   @action
@@ -105,13 +82,12 @@ abstract class _NoteViewModelBase with Store {
   @observable
   CountDownController countDownController = CountDownController();
 
-
-
   @action
   void restartCountDown() {
-    //check duration
+    //Restartlanıyor ancak dispose edilmediğinden akmaya devam ediyor bu yüzden pause yapıyoruz ki autoStart gibi gözükmesin
 
     countDownController.restart(duration: defaultDuration);
+    countDownController.pause();
   }
 
   @action
@@ -182,9 +158,10 @@ abstract class _NoteViewModelBase with Store {
   }
 
   @action
-  _NoteViewModelBase() {
+  _AllStoreBase() {
     homeService = NoteService();
   }
+
   @action
   void setContext(BuildContext? context) {
     contextt = context;
@@ -197,18 +174,4 @@ abstract class _NoteViewModelBase with Store {
     items = await homeService.getAllNotes();
     pageLifes = LifeState.DONE;
   }
-
-  // @computed
-  // int get getRandomIndex{
-
-  // }
 }
-
-enum LifeState { IDLE, LOADING, DONE }
-
-enum NoteNamesPreferences { B, H, SI, TI }
-
-enum DurationPreferences { TWENTY, MINUTE, FIVE_MIN, NONE }
-
-//"English", "German", "French", "Turkish"
-enum LanguagePreferences { English, German, French, Turkish }

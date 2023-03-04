@@ -1,14 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../../../stores/note_view_model.dart';
-import '../../../widgets/anwers_widget.dart';
-import '../../../widgets/countdown_timer.dart';
-import '../../../widgets/question_widget.dart';
-import '../../../widgets/top_iconbuttons.dart';
+import '../../stores/all_store.dart';
+import '../../stores/theme_store.dart';
+import '../../widgets/anwers_widget.dart';
+import '../../widgets/countdown_timer.dart';
+import '../../widgets/question_widget.dart';
+import '../../widgets/top_iconbuttons.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
@@ -19,17 +19,13 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-final List<String> siList = ["do", "re", "mi", "fa", "sol", "la", "si"];
-final List<String> tiList = ["do", "re", "mi", "fa", "sol", "la", "ti"];
-final List<String> bList = ["C", "D", "E", "F", "G", "A", "B"];
-final List<String> hList = ["C", "D", "E", "F", "G", "A", "B"];
-
 class _MyHomePageState extends State<MyHomePage> {
-
   // controller
   @override
   Widget build(BuildContext context) {
-    final noteViewModel = Provider.of<NoteViewModel>(context);
+    final noteViewModel = Provider.of<AllStore>(context);
+    final themeStore = Provider.of<ThemeStore>(context);
+
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -44,8 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 10,
                 ),
                 Observer(builder: (_) {
-                  return CountdownTimer(
-                     );
+                  return const CountdownTimer();
                 }),
                 Observer(
                   builder: (_) {
@@ -63,6 +58,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 //numpad gridview
 
                 const AnswersWidget(),
+                const SizedBox(
+                  height: 50,
+                ),
+                Observer(builder: (_) {
+                  return Center(
+                    child: Switch(
+                      value: themeStore.isDarkMode,
+                      onChanged: (value) {
+                        themeStore.toggleTheme();
+                      },
+                    ),
+                  );
+                }),
               ],
             ),
           ),

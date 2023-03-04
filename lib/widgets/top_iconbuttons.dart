@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:note_learning_game/widgets/sound_on_off_widget.dart';
-import 'package:note_learning_game/ui/Onboard/onboarding_screen.dart';
+import 'package:note_learning_game/ui/Onboard/onboarding.dart';
 
-import '../ui/Settings/settings_view.dart';
+import '../ui/Settings/settings.dart';
 
 class TopIconButtons extends StatefulWidget {
   const TopIconButtons({

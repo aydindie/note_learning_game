@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../../stores/note_view_model.dart';
+import '../../constants/enums.dart';
+import '../../stores/all_store.dart';
 import '../../widgets/sound_on_off_widget.dart';
+import '../../widgets/tema_widget.dart';
 import '../../widgets/text_widget.dart';
 
 class SettingsView extends StatefulWidget {
@@ -17,7 +19,7 @@ class SettingsView extends StatefulWidget {
 class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<NoteViewModel>(context);
+    final viewModel = Provider.of<AllStore>(context);
     const List<String> list = <String>[
       "English",
       "German",
@@ -398,27 +400,7 @@ class _SettingsViewState extends State<SettingsView> {
                   ),
                 ]),
 
-            Observer(builder: (_) {
-              return Container(
-                child: viewModel.isDarkMode
-                    ? IconButton(
-                        onPressed: () {
-                          viewModel.changeTheme();
-                        },
-                        icon: const Icon(
-                          Icons.brightness_4_outlined,
-                          size: 31,
-                        ))
-                    : IconButton(
-                        onPressed: () {
-                          viewModel.changeTheme();
-                        },
-                        icon: const Icon(
-                          Icons.brightness_7_outlined,
-                          size: 31,
-                        )),
-              );
-            }),
+            const TemaWidget(),
           ],
         ),
       ),

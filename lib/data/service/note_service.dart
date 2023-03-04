@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
-import '../../../models/note/note_model.dart';
+import '../../constants/strings.dart';
+import '../../models/note_model.dart';
 import 'INoteService.dart';
 
 class NoteService extends INoteService {
 
-  final String path = "assets/data/example_data.json";
 
   @override
   Future<List<NoteModel>> getAllNotes() async {

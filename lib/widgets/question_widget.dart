@@ -1,21 +1,19 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import '../stores/note_view_model.dart';
+import '../stores/all_store.dart';
 import 'note_view.dart';
 
-
 class QuestionWidget extends StatelessWidget {
-  final NoteViewModel viewModel;
+  final AllStore viewModel;
   const QuestionWidget({
     Key? key,
     required this.viewModel,
-
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-      final w = MediaQuery.of(context).size.width;
+    final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
     return Container(
         height: h * 0.18,
@@ -26,10 +24,7 @@ class QuestionWidget extends StatelessWidget {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            NoteView(
-            )
-          ],
+          children: const [NoteView()],
         ));
   }
 }

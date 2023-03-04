@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../stores/note_view_model.dart';
+import '../constants/enums.dart';
+import '../stores/all_store.dart';
 
 class CountdownTimer extends StatefulWidget {
   const CountdownTimer({
@@ -17,7 +18,7 @@ class CountdownTimer extends StatefulWidget {
 class _CountdownTimerState extends State<CountdownTimer> {
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<NoteViewModel>(context);
+    final viewModel = Provider.of<AllStore>(context);
 
     return Observer(builder: (_) {
       //TODO: burada controllerin dispose olmaması için 0 pixellik bir container oluşturuldu. Bu çözüm geçici bir çözüm. Daha iyi bir çözüm bulunmalı.
@@ -50,7 +51,8 @@ class _CountdownTimerState extends State<CountdownTimer> {
                   debugPrint('Countdown Changed $timeStamp');
                 },
                 timeFormatterFunction: (defaultFormatterFunction, duration) {
-                  if (duration.inMilliseconds == 10000 ||
+                  if (duration.inMilliseconds ==
+                          viewModel.defaultDuration * 1000 ||
                       duration.inMilliseconds == 0) {
                     return "Start";
                   } else {
@@ -93,7 +95,8 @@ class _CountdownTimerState extends State<CountdownTimer> {
                   debugPrint('Countdown Changed $timeStamp');
                 },
                 timeFormatterFunction: (defaultFormatterFunction, duration) {
-                  if (duration.inMilliseconds == 10000 ||
+                  if (duration.inMilliseconds ==
+                          viewModel.defaultDuration * 1000 ||
                       duration.inMilliseconds == 0) {
                     return "Start";
                   } else {
