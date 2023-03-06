@@ -140,10 +140,11 @@ abstract class _AllStoreBase with Store {
         noteIndex = Random().nextInt(items.length);
       } else if (isTrebleOn && !(isBassOn)) {
         //ilk14
-        noteIndex = Random().nextInt(14);
+        noteIndex = Random().nextInt(14) + 14;
       } else if (!(isTrebleOn) && (isBassOn)) {
         //15-28
-        noteIndex = Random().nextInt(14) + 14;
+        noteIndex =
+            Random().nextInt(14); //0-13 gösteriyor bizim dizide yani 1 14
       } else {
         //hepsi
         //29tane var
