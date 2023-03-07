@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 
+import '../constants/enums.dart';
 import '../stores/all_store.dart';
 
 class AnswersWidget extends StatelessWidget {
@@ -33,13 +34,29 @@ class AnswersWidget extends StatelessWidget {
         shrinkWrap: true,
         crossAxisCount: _crossAxisCount,
         itemCount: _itemCount,
-        itemBuilder: (BuildContext context, int index) => Center(
-          child: InkWell(
+        itemBuilder: (BuildContext context, int index) =>
+            Center(child: Observer(builder: (_) {
+          return InkWell(
             enableFeedback: false,
             onTap: () {
               if (viewModel.noteIndex % 7 == index) {
-                viewModel.scoreIncrement();
-                viewModel.updateRandomIndex();
+                if (viewModel.durationPreferences == DurationPreferences.NONE) {
+                  viewModel.changeScore();
+                  viewModel.updateRandomIndex();
+                } else if (viewModel.durationPreferences ==
+                    DurationPreferences.TWENTY) {
+                  viewModel.changeScore20s();
+                  viewModel.updateRandomIndex();
+                } else if (viewModel.durationPreferences ==
+                    DurationPreferences.MINUTE) {
+                  viewModel.changeScore1m();
+                  viewModel.updateRandomIndex();
+                } else if (viewModel.durationPreferences ==
+                    DurationPreferences.FIVE_MIN) {
+                  viewModel.changeScore5m();
+                  viewModel.updateRandomIndex();
+                }
+                //TODO: DİĞERLERİNİ EKLE
               }
             },
             child: Container(
@@ -59,8 +76,8 @@ class AnswersWidget extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ),
+          );
+        })),
         staggeredTileBuilder: (int index) => StaggeredTile.count(
             index == (_itemCount - 1) ? _crossAxisCount : 1, 1),
       ),

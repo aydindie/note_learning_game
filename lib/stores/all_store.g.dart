@@ -30,6 +30,54 @@ mixin _$AllStore on _AllStoreBase, Store {
           Computed<int>(() => super.itemCount, name: '_AllStoreBase.itemCount'))
       .value;
 
+  late final _$isCounterStartedAtom =
+      Atom(name: '_AllStoreBase.isCounterStarted', context: context);
+
+  @override
+  bool get isCounterStarted {
+    _$isCounterStartedAtom.reportRead();
+    return super.isCounterStarted;
+  }
+
+  @override
+  set isCounterStarted(bool value) {
+    _$isCounterStartedAtom.reportWrite(value, super.isCounterStarted, () {
+      super.isCounterStarted = value;
+    });
+  }
+
+  late final _$isCounterFinishedAtom =
+      Atom(name: '_AllStoreBase.isCounterFinished', context: context);
+
+  @override
+  bool get isCounterFinished {
+    _$isCounterFinishedAtom.reportRead();
+    return super.isCounterFinished;
+  }
+
+  @override
+  set isCounterFinished(bool value) {
+    _$isCounterFinishedAtom.reportWrite(value, super.isCounterFinished, () {
+      super.isCounterFinished = value;
+    });
+  }
+
+  late final _$durationPreferencesAtom =
+      Atom(name: '_AllStoreBase.durationPreferences', context: context);
+
+  @override
+  DurationPreferences get durationPreferences {
+    _$durationPreferencesAtom.reportRead();
+    return super.durationPreferences;
+  }
+
+  @override
+  set durationPreferences(DurationPreferences value) {
+    _$durationPreferencesAtom.reportWrite(value, super.durationPreferences, () {
+      super.durationPreferences = value;
+    });
+  }
+
   late final _$isTrebleOnAtom =
       Atom(name: '_AllStoreBase.isTrebleOn', context: context);
 
@@ -59,22 +107,6 @@ mixin _$AllStore on _AllStoreBase, Store {
   set isBassOn(bool value) {
     _$isBassOnAtom.reportWrite(value, super.isBassOn, () {
       super.isBassOn = value;
-    });
-  }
-
-  late final _$isAltoOnAtom =
-      Atom(name: '_AllStoreBase.isAltoOn', context: context);
-
-  @override
-  bool get isAltoOn {
-    _$isAltoOnAtom.reportRead();
-    return super.isAltoOn;
-  }
-
-  @override
-  set isAltoOn(bool value) {
-    _$isAltoOnAtom.reportWrite(value, super.isAltoOn, () {
-      super.isAltoOn = value;
     });
   }
 
@@ -124,22 +156,6 @@ mixin _$AllStore on _AllStoreBase, Store {
     _$noteNamesPreferencesAtom.reportWrite(value, super.noteNamesPreferences,
         () {
       super.noteNamesPreferences = value;
-    });
-  }
-
-  late final _$durationPreferencesAtom =
-      Atom(name: '_AllStoreBase.durationPreferences', context: context);
-
-  @override
-  DurationPreferences get durationPreferences {
-    _$durationPreferencesAtom.reportRead();
-    return super.durationPreferences;
-  }
-
-  @override
-  set durationPreferences(DurationPreferences value) {
-    _$durationPreferencesAtom.reportWrite(value, super.durationPreferences, () {
-      super.durationPreferences = value;
     });
   }
 
@@ -205,6 +221,160 @@ mixin _$AllStore on _AllStoreBase, Store {
     });
   }
 
+  late final _$score20sAtom =
+      Atom(name: '_AllStoreBase.score20s', context: context);
+
+  @override
+  int get score20s {
+    _$score20sAtom.reportRead();
+    return super.score20s;
+  }
+
+  @override
+  set score20s(int value) {
+    _$score20sAtom.reportWrite(value, super.score20s, () {
+      super.score20s = value;
+    });
+  }
+
+  late final _$best20sScoreAtom =
+      Atom(name: '_AllStoreBase.best20sScore', context: context);
+
+  @override
+  int get best20sScore {
+    _$best20sScoreAtom.reportRead();
+    return super.best20sScore;
+  }
+
+  @override
+  set best20sScore(int value) {
+    _$best20sScoreAtom.reportWrite(value, super.best20sScore, () {
+      super.best20sScore = value;
+    });
+  }
+
+  late final _$score1mAtom =
+      Atom(name: '_AllStoreBase.score1m', context: context);
+
+  @override
+  int get score1m {
+    _$score1mAtom.reportRead();
+    return super.score1m;
+  }
+
+  @override
+  set score1m(int value) {
+    _$score1mAtom.reportWrite(value, super.score1m, () {
+      super.score1m = value;
+    });
+  }
+
+  late final _$best1mScoreAtom =
+      Atom(name: '_AllStoreBase.best1mScore', context: context);
+
+  @override
+  int get best1mScore {
+    _$best1mScoreAtom.reportRead();
+    return super.best1mScore;
+  }
+
+  @override
+  set best1mScore(int value) {
+    _$best1mScoreAtom.reportWrite(value, super.best1mScore, () {
+      super.best1mScore = value;
+    });
+  }
+
+  late final _$score5mAtom =
+      Atom(name: '_AllStoreBase.score5m', context: context);
+
+  @override
+  int get score5m {
+    _$score5mAtom.reportRead();
+    return super.score5m;
+  }
+
+  @override
+  set score5m(int value) {
+    _$score5mAtom.reportWrite(value, super.score5m, () {
+      super.score5m = value;
+    });
+  }
+
+  late final _$best5mScoreAtom =
+      Atom(name: '_AllStoreBase.best5mScore', context: context);
+
+  @override
+  int get best5mScore {
+    _$best5mScoreAtom.reportRead();
+    return super.best5mScore;
+  }
+
+  @override
+  set best5mScore(int value) {
+    _$best5mScoreAtom.reportWrite(value, super.best5mScore, () {
+      super.best5mScore = value;
+    });
+  }
+
+  late final _$changeDurationPreferencesAsyncAction =
+      AsyncAction('_AllStoreBase.changeDurationPreferences', context: context);
+
+  @override
+  Future<void> changeDurationPreferences(
+      DurationPreferences durationPreferences) {
+    return _$changeDurationPreferencesAsyncAction
+        .run(() => super.changeDurationPreferences(durationPreferences));
+  }
+
+  late final _$changeTrebleAsyncAction =
+      AsyncAction('_AllStoreBase.changeTreble', context: context);
+
+  @override
+  Future<void> changeTreble() {
+    return _$changeTrebleAsyncAction.run(() => super.changeTreble());
+  }
+
+  late final _$changeBassAsyncAction =
+      AsyncAction('_AllStoreBase.changeBass', context: context);
+
+  @override
+  Future<void> changeBass() {
+    return _$changeBassAsyncAction.run(() => super.changeBass());
+  }
+
+  late final _$changeScoreAsyncAction =
+      AsyncAction('_AllStoreBase.changeScore', context: context);
+
+  @override
+  Future<void> changeScore() {
+    return _$changeScoreAsyncAction.run(() => super.changeScore());
+  }
+
+  late final _$changeScore20sAsyncAction =
+      AsyncAction('_AllStoreBase.changeScore20s', context: context);
+
+  @override
+  Future<void> changeScore20s() {
+    return _$changeScore20sAsyncAction.run(() => super.changeScore20s());
+  }
+
+  late final _$changeScore1mAsyncAction =
+      AsyncAction('_AllStoreBase.changeScore1m', context: context);
+
+  @override
+  Future<void> changeScore1m() {
+    return _$changeScore1mAsyncAction.run(() => super.changeScore1m());
+  }
+
+  late final _$changeScore5mAsyncAction =
+      AsyncAction('_AllStoreBase.changeScore5m', context: context);
+
+  @override
+  Future<void> changeScore5m() {
+    return _$changeScore5mAsyncAction.run(() => super.changeScore5m());
+  }
+
   late final _$fetchItemsAsyncAction =
       AsyncAction('_AllStoreBase.fetchItems', context: context);
 
@@ -217,33 +387,44 @@ mixin _$AllStore on _AllStoreBase, Store {
       ActionController(name: '_AllStoreBase', context: context);
 
   @override
-  void changeTreble() {
+  void counterStarted() {
     final _$actionInfo = _$_AllStoreBaseActionController.startAction(
-        name: '_AllStoreBase.changeTreble');
+        name: '_AllStoreBase.counterStarted');
     try {
-      return super.changeTreble();
+      return super.counterStarted();
     } finally {
       _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void changeBass() {
+  void counterStopped() {
     final _$actionInfo = _$_AllStoreBaseActionController.startAction(
-        name: '_AllStoreBase.changeBass');
+        name: '_AllStoreBase.counterStopped');
     try {
-      return super.changeBass();
+      return super.counterStopped();
     } finally {
       _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void changeAlto() {
+  void counterFinished() {
     final _$actionInfo = _$_AllStoreBaseActionController.startAction(
-        name: '_AllStoreBase.changeAlto');
+        name: '_AllStoreBase.counterFinished');
     try {
-      return super.changeAlto();
+      return super.counterFinished();
+    } finally {
+      _$_AllStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void counterNotFinished() {
+    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
+        name: '_AllStoreBase.counterNotFinished');
+    try {
+      return super.counterNotFinished();
     } finally {
       _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -283,28 +464,6 @@ mixin _$AllStore on _AllStoreBase, Store {
   }
 
   @override
-  void changeDurationPreferences(DurationPreferences durationPreferences) {
-    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
-        name: '_AllStoreBase.changeDurationPreferences');
-    try {
-      return super.changeDurationPreferences(durationPreferences);
-    } finally {
-      _$_AllStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void scoreIncrement() {
-    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
-        name: '_AllStoreBase.scoreIncrement');
-    try {
-      return super.scoreIncrement();
-    } finally {
-      _$_AllStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void updateRandomIndex() {
     final _$actionInfo = _$_AllStoreBaseActionController.startAction(
         name: '_AllStoreBase.updateRandomIndex');
@@ -329,17 +488,24 @@ mixin _$AllStore on _AllStoreBase, Store {
   @override
   String toString() {
     return '''
+isCounterStarted: ${isCounterStarted},
+isCounterFinished: ${isCounterFinished},
+durationPreferences: ${durationPreferences},
 isTrebleOn: ${isTrebleOn},
 isBassOn: ${isBassOn},
-isAltoOn: ${isAltoOn},
 languagePreferences: ${languagePreferences},
 countDownController: ${countDownController},
 noteNamesPreferences: ${noteNamesPreferences},
-durationPreferences: ${durationPreferences},
 items: ${items},
 pageLifes: ${pageLifes},
 noteIndex: ${noteIndex},
 score: ${score},
+score20s: ${score20s},
+best20sScore: ${best20sScore},
+score1m: ${score1m},
+best1mScore: ${best1mScore},
+score5m: ${score5m},
+best5mScore: ${best5mScore},
 defaultList: ${defaultList},
 defaultDuration: ${defaultDuration},
 itemCount: ${itemCount}

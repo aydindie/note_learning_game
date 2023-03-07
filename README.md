@@ -8,6 +8,8 @@
 - 3. BaseView olayı
 - sound pakedinin son halini kullan
 - uygulama ilk açılırken default değerler olsun ardından değiştiğinde kaydedilsin storage
+- işin bitince pianoyu kütüphane olarak kullan
+
 
 
 

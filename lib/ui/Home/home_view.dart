@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
+import '../../constants/enums.dart';
 import '../../stores/all_store.dart';
 import '../../stores/theme_store.dart';
 import '../../widgets/anwers_widget.dart';
@@ -37,19 +38,70 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 const TopIconButtons(),
                 const SizedBox(
-                  height: 10,
+                  height: 2,
                 ),
+                Observer(builder: (_) {
+                  return Container(
+                    child: noteViewModel.durationPreferences ==
+                            DurationPreferences.NONE
+                        ? const SizedBox(
+                            height: 0,
+                          )
+                        : noteViewModel.durationPreferences ==
+                                DurationPreferences.TWENTY
+                            ? Observer(
+                                builder: (_) {
+                                  return scoreBar(h, w, Colors.yellow,
+                                      "BestScore: ${noteViewModel.best20sScore}");
+                                },
+                              )
+                            : noteViewModel.durationPreferences ==
+                                    DurationPreferences.MINUTE
+                                ? Observer(
+                                    builder: (_) {
+                                      return scoreBar(h, w, Colors.yellow,
+                                          "BestScore: ${noteViewModel.best1mScore}");
+                                    },
+                                  )
+                                : noteViewModel.durationPreferences ==
+                                        DurationPreferences.FIVE_MIN
+                                    ? Observer(
+                                        builder: (_) {
+                                          return scoreBar(h, w, Colors.yellow,
+                                              "BestScore: ${noteViewModel.best5mScore}");
+                                        },
+                                      )
+                                    : null,
+                  );
+                }),
+
                 Observer(builder: (_) {
                   return const CountdownTimer();
                 }),
                 Observer(
                   builder: (_) {
-                    return scoreBar(h, w, Colors.blueAccent.shade100,
-                        "Score: ${noteViewModel.score}");
+                    return scoreBar(
+                        h,
+                        w,
+                        Colors.blueAccent.shade100,
+                        noteViewModel.durationPreferences ==
+                                DurationPreferences.NONE
+                            ? "Score: ${noteViewModel.score}"
+                            : noteViewModel.durationPreferences ==
+                                    DurationPreferences.TWENTY
+                                ? "Score: ${noteViewModel.score20s}"
+                                : noteViewModel.durationPreferences ==
+                                        DurationPreferences.MINUTE
+                                    ? "Score: ${noteViewModel.score1m}"
+                                    : noteViewModel.durationPreferences ==
+                                            DurationPreferences.FIVE_MIN
+                                        ? "Score: ${noteViewModel.score5m}"
+                                        : "DUMEN");
                   },
                 ),
+
                 const SizedBox(
-                  height: 20,
+                  height: 5,
                 ),
                 QuestionWidget(
                   viewModel: noteViewModel,
@@ -58,19 +110,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 //numpad gridview
 
                 const AnswersWidget(),
-                const SizedBox(
-                  height: 50,
-                ),
-                Observer(builder: (_) {
-                  return Center(
-                    child: Switch(
-                      value: themeStore.isDarkMode,
-                      onChanged: (value) {
-                        themeStore.toggleTheme();
-                      },
-                    ),
-                  );
-                }),
+
+                // Observer(builder: (_) {
+                //   return Center(
+                //     child: Switch(
+                //       value: themeStore.isDarkMode,
+                //       onChanged: (value) {
+                //         themeStore.toggleTheme();
+                //       },
+                //     ),
+                //   );
+                // }),
               ],
             ),
           ),

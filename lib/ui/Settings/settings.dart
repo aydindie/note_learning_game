@@ -150,6 +150,7 @@ class _SettingsViewState extends State<SettingsView> {
                             viewModel.changeDurationPreferences(
                                 DurationPreferences.TWENTY);
                             viewModel.restartCountDown();
+                            viewModel.countDownController.reset();
                           },
                           child: const Center(
                             child: Text("20s"),
@@ -180,6 +181,7 @@ class _SettingsViewState extends State<SettingsView> {
                             viewModel.changeDurationPreferences(
                                 DurationPreferences.MINUTE);
                             viewModel.restartCountDown();
+                            viewModel.countDownController.reset();
                           },
                           child: const Center(
                             child: Text("min"),
@@ -210,6 +212,7 @@ class _SettingsViewState extends State<SettingsView> {
                             viewModel.changeDurationPreferences(
                                 DurationPreferences.FIVE_MIN);
                             viewModel.restartCountDown();
+                            viewModel.countDownController.reset();
                           },
                           child: const Center(
                             child: Text("5 min"),
@@ -239,6 +242,7 @@ class _SettingsViewState extends State<SettingsView> {
                                 DurationPreferences.NONE);
 
                             viewModel.restartCountDown();
+                            viewModel.countDownController.reset();
                           },
                           child: const Center(
                             child: Text("None"),
