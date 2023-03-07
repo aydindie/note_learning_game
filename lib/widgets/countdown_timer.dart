@@ -75,60 +75,62 @@ class _CountdownTimerState extends State<CountdownTimer> {
                       })
                     : Container(),
                 Observer(builder: (_) {
-                  return InkWell(
-                    onTap: () {
-                      viewModel.countDownController.start();
+                  return
+                      //  InkWell(
+                      //   onTap: () {
+                      //     viewModel.countDownController.start();
+                      //   },
+                      //   child:
+                      CircularCountDownTimer(
+                    duration: viewModel.defaultDuration,
+                    initialDuration: 0,
+                    controller: viewModel.countDownController,
+                    width: MediaQuery.of(context).size.width / 4,
+                    height: MediaQuery.of(context).size.width / 4,
+                    ringColor: Colors.black,
+                    fillColor: Colors.blueAccent[100]!,
+                    backgroundColor: Colors.transparent,
+                    strokeWidth: 5.0,
+                    strokeCap: StrokeCap.round,
+                    textStyle: const TextStyle(
+                        fontSize: 33.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
+                    textFormat: CountdownTextFormat.S,
+                    isReverse: true,
+                    isReverseAnimation: false,
+                    isTimerTextShown: true,
+                    autoStart: false,
+                    onStart: () {
+                      viewModel.resetScore20s();
+                      viewModel.resetScore1m();
+                      viewModel.resetScore5m();
+                      viewModel.counterStarted();
+                      viewModel.counterNotFinished();
                     },
-                    child: CircularCountDownTimer(
-                      duration: viewModel.defaultDuration,
-                      initialDuration: 0,
-                      controller: viewModel.countDownController,
-                      width: MediaQuery.of(context).size.width / 4,
-                      height: MediaQuery.of(context).size.width / 4,
-                      ringColor: Colors.black,
-                      fillColor: Colors.blueAccent[100]!,
-                      backgroundColor: Colors.transparent,
-                      strokeWidth: 5.0,
-                      strokeCap: StrokeCap.round,
-                      textStyle: const TextStyle(
-                          fontSize: 33.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                      textFormat: CountdownTextFormat.S,
-                      isReverse: true,
-                      isReverseAnimation: false,
-                      isTimerTextShown: true,
-                      autoStart: false,
-                      onStart: () {
-                        viewModel.resetScore20s();
-                        viewModel.resetScore1m();
-                        viewModel.resetScore5m();
-                        viewModel.counterStarted();
-                        viewModel.counterNotFinished();
-                      },
-                      onComplete: () {
-                        debugPrint('Countdown Ended');
-                        viewModel.counterStopped();
-                        viewModel.counterFinished();
-                        viewModel.resetScore20s();
-                        viewModel.resetScore1m();
-                        viewModel.resetScore5m();
-                      },
-                      onChange: (String timeStamp) {
-                        debugPrint('Countdown Changed $timeStamp');
-                      },
-                      timeFormatterFunction:
-                          (defaultFormatterFunction, duration) {
-                        if (duration.inMilliseconds ==
-                                viewModel.defaultDuration * 1000 ||
-                            duration.inMilliseconds == 0) {
-                          return "Start";
-                        } else {
-                          return Function.apply(
-                              defaultFormatterFunction, [duration]);
-                        }
-                      },
-                    ),
+                    onComplete: () {
+                      debugPrint('Countdown Ended');
+                      viewModel.counterStopped();
+                      viewModel.counterFinished();
+                      viewModel.resetScore20s();
+                      viewModel.resetScore1m();
+                      viewModel.resetScore5m();
+                    },
+                    onChange: (String timeStamp) {
+                      debugPrint('Countdown Changed $timeStamp');
+                    },
+                    timeFormatterFunction:
+                        (defaultFormatterFunction, duration) {
+                      if (duration.inMilliseconds ==
+                              viewModel.defaultDuration * 1000 ||
+                          duration.inMilliseconds == 0) {
+                        return "Start";
+                      } else {
+                        return Function.apply(
+                            defaultFormatterFunction, [duration]);
+                      }
+                    },
+                    // ),
                   );
                 }),
               ],

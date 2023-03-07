@@ -36,6 +36,7 @@ dependencies:
 
   #storage shared
   shared_preferences: ^2.0.18
+  easy_localization: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +54,7 @@ flutter:
     - assets/data/example_data.json
     - assets/piano-mp3/
     - assets/images/
+    - assets/translations/
 
   fonts:
     - family: Mulish

@@ -136,6 +136,20 @@ class SharedPreferenceHelper {
 
     return ourIntsave;
   }
+  //======================NoteNamesPreferences====================
+  Future<NoteNamesPreferences?> getNoteNamesPreferences() async {
+    SharedPreferences sharedPreference = await SharedPreferences.getInstance();
+    var ourIntget = sharedPreference.getInt(Preferences.current_note_names);
+    return NoteNamesPreferences.values[ourIntget ?? 0];
+  }
+
+  Future<bool> saveNoteNamesPreferences(NoteNamesPreferences value) async {
+    SharedPreferences sharedPreference = await SharedPreferences.getInstance();
+    var ourIntsave = await sharedPreference.setInt(
+        Preferences.current_note_names, value.index);
+
+    return ourIntsave;
+  }
 
   SharedPreferenceHelper() {
     getSoundOn();
@@ -146,5 +160,6 @@ class SharedPreferenceHelper {
     getBestScore20s();
     getBestScore1m();
     getBestScore5m();
+    getNoteNamesPreferences();
   }
 }

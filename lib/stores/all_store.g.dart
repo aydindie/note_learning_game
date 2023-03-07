@@ -343,6 +343,16 @@ mixin _$AllStore on _AllStoreBase, Store {
     return _$changeBassAsyncAction.run(() => super.changeBass());
   }
 
+  late final _$changeNoteNamesPreferencesAsyncAction =
+      AsyncAction('_AllStoreBase.changeNoteNamesPreferences', context: context);
+
+  @override
+  Future<void> changeNoteNamesPreferences(
+      NoteNamesPreferences noteNamesPreferences) {
+    return _$changeNoteNamesPreferencesAsyncAction
+        .run(() => super.changeNoteNamesPreferences(noteNamesPreferences));
+  }
+
   late final _$changeScoreAsyncAction =
       AsyncAction('_AllStoreBase.changeScore', context: context);
 
@@ -447,17 +457,6 @@ mixin _$AllStore on _AllStoreBase, Store {
         name: '_AllStoreBase.changeLanguagePreferences');
     try {
       return super.changeLanguagePreferences(languagePreferences);
-    } finally {
-      _$_AllStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void changeNoteNamesPreferences(NoteNamesPreferences noteNamesPreferences) {
-    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
-        name: '_AllStoreBase.changeNoteNamesPreferences');
-    try {
-      return super.changeNoteNamesPreferences(noteNamesPreferences);
     } finally {
       _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }

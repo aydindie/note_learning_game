@@ -154,13 +154,25 @@ abstract class _AllStoreBase with Store {
     this.languagePreferences = languagePreferences;
   }
 
+  //==================NoteNames==================
+
   @observable
   NoteNamesPreferences noteNamesPreferences = NoteNamesPreferences.SI;
 
-  @action
-  void changeNoteNamesPreferences(NoteNamesPreferences noteNamesPreferences) {
-    this.noteNamesPreferences = noteNamesPreferences;
+  void getNoteNamesFromShared() async {
+    noteNamesPreferences =
+        await SharedPreferenceHelper().getNoteNamesPreferences() ??
+            NoteNamesPreferences.SI;
   }
+  
+  @action
+  Future<void> changeNoteNamesPreferences(
+      NoteNamesPreferences noteNamesPreferences) async {
+    this.noteNamesPreferences = noteNamesPreferences;
+    await SharedPreferenceHelper().saveNoteNamesPreferences(noteNamesPreferences);
+  }
+
+//================================================
 
   BuildContext? contextt;
   late INoteService homeService;
@@ -327,6 +339,7 @@ abstract class _AllStoreBase with Store {
     getScore20sFromShared();
     getScore1mFromShared();
     getScore5mFromShared();
+    getNoteNamesFromShared();
   }
 
   @action

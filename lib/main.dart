@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:note_learning_game/stores/sound_store.dart';
@@ -8,8 +9,21 @@ import 'package:provider/provider.dart';
 import 'models/note_model.dart';
 import 'stores/all_store.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
+  runApp(
+    EasyLocalization(
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale('tr', 'TR'),
+        ],
+        path:
+            'assets/translations', // <-- change the path of the translation files
+        fallbackLocale: const Locale('en', 'US'),
+        child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -33,6 +47,9 @@ class MyApp extends StatelessWidget {
           builder: (context) {
             final themeStore = Provider.of<ThemeStore>(context);
             return MaterialApp(
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
               title: 'Flutter MobX Theme Example',
               theme: themeStore.themeData,
               home: const MyHomePage(),
