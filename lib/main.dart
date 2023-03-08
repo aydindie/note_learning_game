@@ -20,12 +20,12 @@ void main() async {
           Locale('tr', 'TR'),
         ],
         path:
-            'assets/translations', // <-- change the path of the translation files
+        'assets/translations', // <-- change the path of the translation files
         fallbackLocale: const Locale('en', 'US'),
         child: const MyApp()),
   );
 }
-
+//DIKEY OLSUN
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -50,7 +50,6 @@ class MyApp extends StatelessWidget {
               localizationsDelegates: context.localizationDelegates,
               supportedLocales: context.supportedLocales,
               locale: context.locale,
-              title: 'Flutter MobX Theme Example',
               theme: themeStore.themeData,
               home: const MyHomePage(),
             );

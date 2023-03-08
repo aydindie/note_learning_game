@@ -1,4 +1,20 @@
 {
-    "msg": "bu Türkçe",
-    "title": "Türkçe"
+    "title": "Türkçe",
+    "best_score": "En iyi puan",
+    "start": "Başlangıç",
+    "score": "Gol",
+    "settings": "Ayarlar",
+    "sound": "Ses",
+    "clef": "Anahtar",
+    "duration": "Süre",
+    "20s": "20s",
+    "min": "dakika",
+    "5min": "5 dakika",
+    "none": "Hiçbiri",
+    "note_names_prefences": "Nota İsimlendirme Tercihleri",
+    "language": "Dil",
+    "english": "İngilizce",
+    "german": "Almanca",
+    "french": "Fransızca",
+    "turkish": "Türkçe"
 }

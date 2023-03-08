@@ -9,3 +9,4 @@ const String duration_minute = "1 min";
 const String duration_five_min = "5 min";
 const String duration_none = "None";
 const String path = "assets/data/example_data.json";
+const List<String> list = <String>["English", "German", "French", "Turkish"];

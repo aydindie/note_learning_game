@@ -1,4 +1,20 @@
 {
-    "msg": "this isenglish text",
-    "title": "english"
+    "title": "english",
+    "best_score": "Best Score",
+    "start": "Start",
+    "score": "Score",
+    "settings": "Settings",
+    "sound": "Sound",
+    "clef": "Clef",
+    "duration": "Duration",
+    "20s": "20s",
+    "min": "min",
+    "5min": "5 min",
+    "none": "None",
+    "note_names_prefences": "Note Names Prefences",
+    "language": "Language",
+    "english": "English",
+    "german": "German",
+    "french": "French",
+    "turkish": "Turkish"
 }
