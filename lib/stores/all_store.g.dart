@@ -343,6 +343,16 @@ mixin _$AllStore on _AllStoreBase, Store {
     return _$changeBassAsyncAction.run(() => super.changeBass());
   }
 
+  late final _$changeLanguagePreferencesAsyncAction =
+      AsyncAction('_AllStoreBase.changeLanguagePreferences', context: context);
+
+  @override
+  Future<void> changeLanguagePreferences(
+      LanguagePreferences languagePreferences) {
+    return _$changeLanguagePreferencesAsyncAction
+        .run(() => super.changeLanguagePreferences(languagePreferences));
+  }
+
   late final _$changeNoteNamesPreferencesAsyncAction =
       AsyncAction('_AllStoreBase.changeNoteNamesPreferences', context: context);
 
@@ -446,17 +456,6 @@ mixin _$AllStore on _AllStoreBase, Store {
         name: '_AllStoreBase.restartCountDown');
     try {
       return super.restartCountDown();
-    } finally {
-      _$_AllStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void changeLanguagePreferences(LanguagePreferences languagePreferences) {
-    final _$actionInfo = _$_AllStoreBaseActionController.startAction(
-        name: '_AllStoreBase.changeLanguagePreferences');
-    try {
-      return super.changeLanguagePreferences(languagePreferences);
     } finally {
       _$_AllStoreBaseActionController.endAction(_$actionInfo);
     }

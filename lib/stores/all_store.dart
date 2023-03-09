@@ -3,6 +3,7 @@
 import 'dart:math';
 
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
@@ -136,7 +137,7 @@ abstract class _AllStoreBase with Store {
   // }
 
   @observable
-  LanguagePreferences languagePreferences = LanguagePreferences.English;
+  LanguagePreferences languagePreferences = LanguagePreferences.en_US;
 
   @observable
   CountDownController countDownController = CountDownController();
@@ -150,8 +151,13 @@ abstract class _AllStoreBase with Store {
   }
 
   @action
-  void changeLanguagePreferences(LanguagePreferences languagePreferences) {
+  Future<void> changeLanguagePreferences(
+      LanguagePreferences languagePreferences) async {
     this.languagePreferences = languagePreferences;
+    var a = languagePreferences.name.split("_");
+    print(a[0]);
+    print(a[1]);
+    await contextt!.setLocale(Locale(a[0], a[1]));
   }
 
   //==================NoteNames==================
@@ -164,17 +170,19 @@ abstract class _AllStoreBase with Store {
         await SharedPreferenceHelper().getNoteNamesPreferences() ??
             NoteNamesPreferences.SI;
   }
-  
+
   @action
   Future<void> changeNoteNamesPreferences(
       NoteNamesPreferences noteNamesPreferences) async {
     this.noteNamesPreferences = noteNamesPreferences;
-    await SharedPreferenceHelper().saveNoteNamesPreferences(noteNamesPreferences);
+    await SharedPreferenceHelper()
+        .saveNoteNamesPreferences(noteNamesPreferences);
   }
 
 //================================================
 
   BuildContext? contextt;
+  BuildContext? context2;
   late INoteService homeService;
   @observable
   List<NoteModel> items = [];

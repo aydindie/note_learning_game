@@ -13,10 +13,8 @@ class AnswersWidget extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final _crossAxisCount = 3;
+  final _crossAxisCount = 6;
   final _itemCount = 7;
-  final _containerWRatio = 0.25;
-  final _containerHRatio = 0.2;
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +23,9 @@ class AnswersWidget extends StatelessWidget {
     final viewModel = Provider.of<AllStore>(context);
 
     return SizedBox(
-      height: h * 0.4,
       child: StaggeredGridView.countBuilder(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 25,
-        ),
+        mainAxisSpacing: 5,
+        crossAxisSpacing: 5,
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         crossAxisCount: _crossAxisCount,
@@ -37,49 +33,46 @@ class AnswersWidget extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) =>
             Center(child: Observer(builder: (_) {
           return InkWell(
-            enableFeedback: false,
-            onTap: () {
-              if (viewModel.noteIndex % 7 == index) {
-                if (viewModel.durationPreferences == DurationPreferences.NONE) {
-                  viewModel.changeScore();
-                  viewModel.updateRandomIndex();
-                } else if (viewModel.durationPreferences ==
-                    DurationPreferences.TWENTY) {
-                  viewModel.changeScore20s();
-                  viewModel.updateRandomIndex();
-                } else if (viewModel.durationPreferences ==
-                    DurationPreferences.MINUTE) {
-                  viewModel.changeScore1m();
-                  viewModel.updateRandomIndex();
-                } else if (viewModel.durationPreferences ==
-                    DurationPreferences.FIVE_MIN) {
-                  viewModel.changeScore5m();
-                  viewModel.updateRandomIndex();
+              enableFeedback: false,
+              onTap: () {
+                if (viewModel.noteIndex % 7 == index) {
+                  if (viewModel.durationPreferences ==
+                      DurationPreferences.NONE) {
+                    viewModel.changeScore();
+                    viewModel.updateRandomIndex();
+                  } else if (viewModel.durationPreferences ==
+                      DurationPreferences.TWENTY) {
+                    viewModel.changeScore20s();
+                    viewModel.updateRandomIndex();
+                  } else if (viewModel.durationPreferences ==
+                      DurationPreferences.MINUTE) {
+                    viewModel.changeScore1m();
+                    viewModel.updateRandomIndex();
+                  } else if (viewModel.durationPreferences ==
+                      DurationPreferences.FIVE_MIN) {
+                    viewModel.changeScore5m();
+                    viewModel.updateRandomIndex();
+                  }
+                  //TODO: DİĞERLERİNİ EKLE
                 }
-                //TODO: DİĞERLERİNİ EKLE
-              }
-            },
-            child: Container(
-              height: w * _containerHRatio,
-              width: w * _containerWRatio,
-              decoration: const BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              child: Center(
-                child: Observer(
-                  builder: (context) => Text(
+              },
+              child: Container(
+                width: w / 3.2,
+                decoration: const BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                child: Center(
+                  child: Text(
                     viewModel.defaultList[index],
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
-              ),
-            ),
-          );
+              ));
         })),
         staggeredTileBuilder: (int index) => StaggeredTile.count(
-            index == (_itemCount - 1) ? _crossAxisCount : 1, 1),
+            index == (_itemCount - 1) ? _crossAxisCount : 2, 1),
       ),
     );
   }

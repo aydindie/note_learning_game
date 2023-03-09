@@ -7,4 +7,4 @@ enum NoteNamesPreferences { B, H, SI, TI }
 enum DurationPreferences { TWENTY, MINUTE, FIVE_MIN, NONE }
 
 //"English", "German", "French", "Turkish"
-enum LanguagePreferences { English, German, French, Turkish }
+enum LanguagePreferences { en_US, de_DE, fr_FR, tr_TR }

@@ -18,13 +18,16 @@ void main() async {
         supportedLocales: const [
           Locale('en', 'US'),
           Locale('tr', 'TR'),
+          Locale('de', 'DE'),
+          Locale('fr', 'FR'),
         ],
         path:
-        'assets/translations', // <-- change the path of the translation files
+            'assets/translations', // <-- change the path of the translation files
         fallbackLocale: const Locale('en', 'US'),
         child: const MyApp()),
   );
 }
+
 //DIKEY OLSUN
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

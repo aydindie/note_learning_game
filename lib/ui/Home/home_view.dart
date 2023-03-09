@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/enums.dart';
 import '../../stores/all_store.dart';
-import '../../stores/theme_store.dart';
 import '../../widgets/anwers_widget.dart';
 import '../../widgets/countdown_timer.dart';
 import '../../widgets/question_widget.dart';
@@ -25,7 +25,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final noteViewModel = Provider.of<AllStore>(context);
-    final themeStore = Provider.of<ThemeStore>(context);
 
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
@@ -52,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ? Observer(
                                 builder: (_) {
                                   return scoreBar(h, w, Colors.yellow,
-                                      "BestScore: ${noteViewModel.best20sScore}");
+                                      "${"best_score".tr()}: ${noteViewModel.best20sScore}");
                                 },
                               )
                             : noteViewModel.durationPreferences ==
@@ -60,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ? Observer(
                                     builder: (_) {
                                       return scoreBar(h, w, Colors.yellow,
-                                          "BestScore: ${noteViewModel.best1mScore}");
+                                          "${"best_score".tr()}: ${noteViewModel.best1mScore}");
                                     },
                                   )
                                 : noteViewModel.durationPreferences ==
@@ -68,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ? Observer(
                                         builder: (_) {
                                           return scoreBar(h, w, Colors.yellow,
-                                              "BestScore: ${noteViewModel.best5mScore}");
+                                              "${"best_score".tr()}: ${noteViewModel.best5mScore}");
                                         },
                                       )
                                     : null,
@@ -86,17 +85,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         Colors.blueAccent.shade100,
                         noteViewModel.durationPreferences ==
                                 DurationPreferences.NONE
-                            ? "Score: ${noteViewModel.score}"
+                            ? "${"score".tr()}: ${noteViewModel.score}"
                             : noteViewModel.durationPreferences ==
                                     DurationPreferences.TWENTY
-                                ? "Score: ${noteViewModel.score20s}"
+                                ? "${"score".tr()}: ${noteViewModel.score20s}"
                                 : noteViewModel.durationPreferences ==
                                         DurationPreferences.MINUTE
-                                    ? "Score: ${noteViewModel.score1m}"
+                                    ? "${"score".tr()}: ${noteViewModel.score1m}"
                                     : noteViewModel.durationPreferences ==
                                             DurationPreferences.FIVE_MIN
-                                        ? "Score: ${noteViewModel.score5m}"
-                                        : "DUMEN");
+                                        ? "${"score".tr()}: ${noteViewModel.score5m}"
+                                        : "score".tr());
                   },
                 ),
 
@@ -106,7 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 QuestionWidget(
                   viewModel: noteViewModel,
                 ),
-
+                SizedBox(
+                  height: h * 0.03,
+                ),
                 //numpad gridview
 
                 const AnswersWidget(),
@@ -129,18 +130,20 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Container scoreBar(double h, double w, Color color, String text) {
-    return Container(
-      alignment: Alignment.center,
-      height: h * 0.04,
-      width: w * 0.3,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
-      ),
-      child: Text(
-        text,
-        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+  FittedBox scoreBar(double h, double w, Color color, String text) {
+    return FittedBox(
+      child: Container(
+        alignment: Alignment.center,
+        height: h * 0.04,
+        width: w * 0.3,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+        ),
+        child: Text(
+          text,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }

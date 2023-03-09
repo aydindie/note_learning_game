@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../constants/enums.dart';
 import '../constants/isDebug.dart';
 import '../stores/all_store.dart';
+import '../stores/theme_store.dart';
 
 class CountdownTimer extends StatefulWidget {
   const CountdownTimer({
@@ -20,6 +21,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<AllStore>(context);
+    final themeModel = Provider.of<ThemeStore>(context);
 
     return Observer(builder: (_) {
       //TODO: burada controllerin dispose olmaması için 0 pixellik bir container oluşturuldu. Bu çözüm geçici bir çözüm. Daha iyi bir çözüm bulunmalı.
@@ -37,9 +39,9 @@ class _CountdownTimerState extends State<CountdownTimer> {
                 backgroundColor: Colors.transparent,
                 strokeWidth: 5.0,
                 strokeCap: StrokeCap.round,
-                textStyle: const TextStyle(
+                textStyle: TextStyle(
                     fontSize: 33.0,
-                    color: Colors.black,
+                    color: themeModel.isDarkMode ? Colors.white : Colors.black,
                     fontWeight: FontWeight.bold),
                 isReverse: true,
                 autoStart: false,
@@ -92,9 +94,10 @@ class _CountdownTimerState extends State<CountdownTimer> {
                     backgroundColor: Colors.transparent,
                     strokeWidth: 5.0,
                     strokeCap: StrokeCap.round,
-                    textStyle: const TextStyle(
+                    textStyle: TextStyle(
                         fontSize: 33.0,
-                        color: Colors.black,
+                        color:
+                            themeModel.isDarkMode ? Colors.white : Colors.black,
                         fontWeight: FontWeight.bold),
                     textFormat: CountdownTextFormat.S,
                     isReverse: true,
@@ -119,13 +122,16 @@ class _CountdownTimerState extends State<CountdownTimer> {
                     onChange: (String timeStamp) {
                       debugPrint('Countdown Changed $timeStamp');
                     },
+
                     timeFormatterFunction:
                         (defaultFormatterFunction, duration) {
-                      if (duration.inMilliseconds ==
-                              viewModel.defaultDuration * 1000 ||
-                          duration.inMilliseconds == 0) {
-                        return "Start";
-                      } else {
+                      // if (duration.inMilliseconds ==
+                      //         viewModel.defaultDuration * 1000 ||
+                      //     duration.inMilliseconds == 0) {
+                      //   return "start".tr();
+                      // } else
+
+                      {
                         return Function.apply(
                             defaultFormatterFunction, [duration]);
                       }

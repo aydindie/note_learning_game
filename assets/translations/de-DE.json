@@ -1,0 +1,20 @@
+{
+    "title": "Deutsch",
+    "best_score": "bestesErgebnis",
+    "start": "start",
+    "score": "Punktzahl",
+    "settings": "Einstellungen",
+    "sound": "Klang",
+    "clef": "Notenschlüssel",
+    "duration": "Dauer",
+    "20s": "20S",
+    "min": "Minuten",
+    "5min": "5 Minuten",
+    "none": "Keiner",
+    "note_names_prefences": "Beachten Sie Namenseinstellungen",
+    "language": "Sprache",
+    "english": "Englisch",
+    "german": "Deutsch",
+    "french": "Französisch",
+    "turkish": "Türkisch"
+}
