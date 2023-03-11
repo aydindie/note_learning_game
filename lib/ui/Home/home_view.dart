@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../constants/enums.dart';
 import '../../stores/all_store.dart';
+import '../../utils/colors.dart';
 import '../../widgets/anwers_widget.dart';
 import '../../widgets/countdown_timer.dart';
 import '../../widgets/question_widget.dart';
@@ -50,7 +51,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                 DurationPreferences.TWENTY
                             ? Observer(
                                 builder: (_) {
-                                  return scoreBar(h, w, Colors.yellow,
+                                  return scoreBar(
+                                      h,
+                                      w,
+                                      bestScoreBackgroundColor,
                                       "${"best_score".tr()}: ${noteViewModel.best20sScore}");
                                 },
                               )
@@ -58,7 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     DurationPreferences.MINUTE
                                 ? Observer(
                                     builder: (_) {
-                                      return scoreBar(h, w, Colors.yellow,
+                                      return scoreBar(
+                                          h,
+                                          w,
+                                          bestScoreBackgroundColor,
                                           "${"best_score".tr()}: ${noteViewModel.best1mScore}");
                                     },
                                   )
@@ -66,7 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                         DurationPreferences.FIVE_MIN
                                     ? Observer(
                                         builder: (_) {
-                                          return scoreBar(h, w, Colors.yellow,
+                                          return scoreBar(
+                                              h,
+                                              w,
+                                              bestScoreBackgroundColor,
                                               "${"best_score".tr()}: ${noteViewModel.best5mScore}");
                                         },
                                       )
@@ -82,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     return scoreBar(
                         h,
                         w,
-                        Colors.blueAccent.shade100,
+                        currentScoreBackgroundColor,
                         noteViewModel.durationPreferences ==
                                 DurationPreferences.NONE
                             ? "${"score".tr()}: ${noteViewModel.score}"

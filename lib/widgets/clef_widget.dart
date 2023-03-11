@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import '../stores/all_store.dart';
+import '../utils/colors.dart';
 
 class ClefWidget extends StatefulWidget {
   final BuildContext? context;
@@ -29,11 +30,11 @@ class _ClefWidgetState extends State<ClefWidget> {
           decoration: BoxDecoration(
             color: widget.isItTreble
                 ? allStore.isTrebleOn
-                    ? Colors.green
-                    : Colors.grey
+                    ? choosedClefBackgroundColor
+                    : notChoosedClefBackgroundColor
                 : allStore.isBassOn
-                    ? Colors.green
-                    : Colors.grey,
+                    ? choosedClefBackgroundColor
+                    : notChoosedClefBackgroundColor,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Padding(

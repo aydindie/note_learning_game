@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import '../constants/isDebug.dart';
 import '../models/note_model.dart';
 import '../piano/piano.dart';
+import '../utils/colors.dart';
 
 class NoteCard extends StatefulWidget {
   final NoteModel noteModel;
@@ -50,7 +51,7 @@ class _NoteCardState extends State<NoteCard> {
                       children: [
                         Text(
                           "${allStore.isBassOn ? "bass" : ""} ${allStore.isTrebleOn ? "Treble" : ""}",
-                          style: const TextStyle(color: Colors.red),
+                          style: TextStyle(color: debugTestColor),
                         ),
                         Text(widget.noteModel.notePic.toString()),
                         Text(widget.noteModel.noteId!.toString()),
@@ -74,10 +75,10 @@ class _NoteCardState extends State<NoteCard> {
                           notePosition:
                               getNotePosition(widget.noteModel.noteId!)),
                     ],
-                    clefColor: Colors.black,
+                    clefColor: clefColor,
                     noteRangeToClip: NoteRange.forClefs(
                         [getClef(widget.noteModel.noteId!)]), //onemsiz gibi
-                    noteColor: Colors.black),
+                    noteColor: noteColor),
               ),
               //;}) SizedBox(
               //   height: height / 6,

@@ -1,9 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:note_learning_game/stores/theme_store.dart';
+import 'package:provider/provider.dart';
 
 import '../constants/enums.dart';
 import '../stores/all_store.dart';
+import '../utils/colors.dart';
 import 'note_view.dart';
 
 class QuestionWidget extends StatelessWidget {
@@ -15,6 +18,7 @@ class QuestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeStore = Provider.of<ThemeStore>(context);
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
     return Observer(builder: (_) {
@@ -25,10 +29,36 @@ class QuestionWidget extends StatelessWidget {
             children: [
               Container(
                   height: h * 0.18,
-                  width: w * 0.8,
-                  decoration: const BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  width: w * 0.4,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: questionBoxShadow,
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        themeStore.isDarkMode
+                            ? questionBoxBorderColorDarkMode
+                            : questionBoxBorderColorLightMode,
+                        themeStore.isDarkMode
+                            ? questionBoxBorderColor2DarkMode
+                            : questionBoxBorderColor2LightMode,
+                      ],
+                    ),
+                    border: Border.all(
+                      color: themeStore.isDarkMode
+                          ? questionBorderDarkMode
+                          : questionBorderLightMode,
+                      width: 2,
+                    ),
+                    color: questionBackgroundColor,
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -46,10 +76,11 @@ class QuestionWidget extends StatelessWidget {
                   children: [
                     Container(
                       height: h * 0.18,
-                      width: w * 0.8,
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(193, 0, 0, 0),
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                      width: w * 0.4,
+                      decoration: BoxDecoration(
+                        color: hidedQuestionBackgroundColor,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15)),
                       ),
                       child: Center(
                         child: GestureDetector(
@@ -59,10 +90,10 @@ class QuestionWidget extends StatelessWidget {
                             viewModel.counterNotFinished();
                           },
                           child: Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.green,
+                            decoration: BoxDecoration(
+                              color: playButtonColor,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  const BorderRadius.all(Radius.circular(20)),
                             ),
                             child: const Icon(
                               Icons.play_arrow,

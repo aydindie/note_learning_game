@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../constants/enums.dart';
 import '../../stores/all_store.dart';
+import '../../utils/colors.dart';
 import '../../widgets/clef_widget.dart';
 import '../../widgets/duration_widget.dart';
 import '../../widgets/sound_on_off_widget.dart';
@@ -29,10 +30,10 @@ class _SettingsViewState extends State<SettingsView> {
     //LanguagePreferences dropdownValue = viewModel.languagePreferences;
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.grey,
+          backgroundColor: settingsAppBarBackgroundColor,
           title: Text('settings'.tr(),
-                  style: const TextStyle(
-                      color: Colors.black,
+                  style:  TextStyle(
+                      color: settingsAppBarTextColor,
                       fontSize: 25,
                       fontWeight: FontWeight.w400))
               .tr(),
@@ -41,7 +42,7 @@ class _SettingsViewState extends State<SettingsView> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+            icon:  Icon(Icons.arrow_back_ios, color: settingAppBarIconColor),
           )),
       body: Center(
         child: Column(

@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:note_learning_game/stores/all_store.dart';
 
 import '../constants/enums.dart';
+import '../utils/colors.dart';
 
 class DurationWidget extends StatefulWidget {
   final BuildContext context;
@@ -57,9 +58,9 @@ class _DurationWidgetState extends State<DurationWidget> {
 
 Color getColor(DurationPreferences durationPreferences, AllStore allStore) {
   if (allStore.durationPreferences == durationPreferences) {
-    return Colors.green;
+    return choosedDurationBackgroundColor;
   }
-  return Colors.grey;
+  return notChoosedDurationBackgroundColor;
 }
 
 Function() getMyFunction(

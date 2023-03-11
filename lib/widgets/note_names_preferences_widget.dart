@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:note_learning_game/stores/all_store.dart';
 
 import '../constants/enums.dart';
+import '../utils/colors.dart';
 
 class NoteNamesWiget extends StatefulWidget {
   final BuildContext context;
@@ -33,8 +34,8 @@ class _NoteNamesWigetState extends State<NoteNamesWiget> {
         height: MediaQuery.of(context).size.width * 0.12,
         decoration: BoxDecoration(
           color: allStore.noteNamesPreferences == widget.noteNamesPreferences
-              ? Colors.green
-              : Colors.grey,
+              ? choosedNoteNamesBackgroundColor
+              : notChoosedNoteNamesBackgroundColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(

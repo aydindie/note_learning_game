@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_learning_game/utils/colors.dart';
 
 import '../../models/onboarding_contents.dart';
 import '../../utils/size_config.dart';
@@ -20,22 +21,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   int _currentPage = 0;
-  List colors = const [
-    Color(0xffDAD3C8),
-    Color(0xffFFE5DE),
-    Color(0xffDCF6E6),
-  ];
+ 
 
   AnimatedContainer _buildDots({
     int? index,
   }) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(
           Radius.circular(50),
         ),
-        color: Color(0xFF000000),
+        color: onBoardLineColor,
       ),
       margin: const EdgeInsets.only(right: 5),
       height: 10,
@@ -51,7 +48,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     double height = SizeConfig.screenH!;
 
     return Scaffold(
-      backgroundColor: colors[_currentPage],
+      backgroundColor: onBoardColors[_currentPage],
       body: SafeArea(
         child: Column(
           children: [
@@ -121,7 +118,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               Navigator.pop(context);
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black,
+                              backgroundColor: onBoardElevatedButtonColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
@@ -152,9 +149,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     fontSize: (width <= 550) ? 13 : 17,
                                   ),
                                 ),
-                                child: const Text(
+                                child: Text(
                                   "SKIP",
-                                  style: TextStyle(color: Colors.black),
+                                  style: TextStyle(color: onBoardSkipTextColor),
                                 ),
                               ),
                               ElevatedButton(
@@ -165,7 +162,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.black,
+                                  backgroundColor: onBoardElevatedButtonColor,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   ),

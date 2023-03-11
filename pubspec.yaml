@@ -38,6 +38,9 @@ dependencies:
   shared_preferences: ^2.0.18
   easy_localization: ^3.0.1
 
+  # touchable opacity
+  touchable_opacity: ^1.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

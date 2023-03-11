@@ -5,14 +5,18 @@ import 'package:note_learning_game/stores/sound_store.dart';
 import 'package:note_learning_game/stores/theme_store.dart';
 import 'package:note_learning_game/ui/Home/home_view.dart';
 import 'package:provider/provider.dart';
-
+import "package:flutter/services.dart";
 import 'models/note_model.dart';
 import 'stores/all_store.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
 
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
+  await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
         supportedLocales: const [

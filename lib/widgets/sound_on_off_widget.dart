@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:note_learning_game/utils/colors.dart';
 import 'package:provider/provider.dart';
 
 import '../stores/sound_store.dart';
@@ -21,7 +22,7 @@ class _SoundOnOffWidgetState extends State<SoundOnOffWidget> {
     return Observer(builder: (_) {
       return Container(
         decoration: BoxDecoration(
-          color: soundStore.soundBool ? Colors.green : Colors.red,
+          color: soundStore.soundBool ? soundOnColor : soundOffColor,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Padding(

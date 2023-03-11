@@ -4,16 +4,18 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
+import 'package:touchable_opacity/touchable_opacity.dart';
 
 import '../constants/enums.dart';
 import '../stores/all_store.dart';
+import '../utils/colors.dart';
 
 class AnswersWidget extends StatelessWidget {
   const AnswersWidget({
     Key? key,
   }) : super(key: key);
 
-  final _crossAxisCount = 6;
+  final _crossAxisCount = 36;
   final _itemCount = 7;
 
   @override
@@ -32,47 +34,57 @@ class AnswersWidget extends StatelessWidget {
         itemCount: _itemCount,
         itemBuilder: (BuildContext context, int index) =>
             Center(child: Observer(builder: (_) {
-          return InkWell(
-              enableFeedback: false,
-              onTap: () {
-                if (viewModel.noteIndex % 7 == index) {
-                  if (viewModel.durationPreferences ==
-                      DurationPreferences.NONE) {
-                    viewModel.changeScore();
-                    viewModel.updateRandomIndex();
-                  } else if (viewModel.durationPreferences ==
-                      DurationPreferences.TWENTY) {
-                    viewModel.changeScore20s();
-                    viewModel.updateRandomIndex();
-                  } else if (viewModel.durationPreferences ==
-                      DurationPreferences.MINUTE) {
-                    viewModel.changeScore1m();
-                    viewModel.updateRandomIndex();
-                  } else if (viewModel.durationPreferences ==
-                      DurationPreferences.FIVE_MIN) {
-                    viewModel.changeScore5m();
-                    viewModel.updateRandomIndex();
+          return AnimatedContainer(
+            duration: const Duration(seconds: 1),
+            decoration: BoxDecoration(
+              color: (viewModel.noteIndex % 7 == index)
+                  ? correctAnswerBackgroundColor
+                  : wrongAnswerBackgroundColor,
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+            ),
+            child: TouchableOpacity(
+                //enableFeedback: false,
+                activeOpacity: 0.1,
+                onTap: () {
+                  if (viewModel.noteIndex % 7 == index) {
+                    if (viewModel.durationPreferences ==
+                        DurationPreferences.NONE) {
+                      viewModel.changeScore();
+                      viewModel.updateRandomIndex();
+                    } else if (viewModel.durationPreferences ==
+                        DurationPreferences.TWENTY) {
+                      viewModel.changeScore20s();
+                      viewModel.updateRandomIndex();
+                    } else if (viewModel.durationPreferences ==
+                        DurationPreferences.MINUTE) {
+                      viewModel.changeScore1m();
+                      viewModel.updateRandomIndex();
+                    } else if (viewModel.durationPreferences ==
+                        DurationPreferences.FIVE_MIN) {
+                      viewModel.changeScore5m();
+                      viewModel.updateRandomIndex();
+                    }
+                    //TODO: DİĞERLERİNİ EKLE
                   }
-                  //TODO: DİĞERLERİNİ EKLE
-                }
-              },
-              child: Container(
-                width: w / 3.2,
-                decoration: const BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
-                child: Center(
-                  child: Text(
-                    viewModel.defaultList[index],
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
+                },
+                child: Container(
+                  width: w / 3.2,
+                  decoration: BoxDecoration(
+                    color: answerBackgroundColor,
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
                   ),
-                ),
-              ));
+                  child: Center(
+                    child: Text(
+                      viewModel.defaultList[index],
+                      style: const TextStyle(
+                          fontSize: 25, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                )),
+          );
         })),
         staggeredTileBuilder: (int index) => StaggeredTile.count(
-            index == (_itemCount - 1) ? _crossAxisCount : 2, 1),
+            index == (_itemCount - 1) ? _crossAxisCount : 12, 9),
       ),
     );
   }
