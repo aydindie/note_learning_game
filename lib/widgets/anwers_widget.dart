@@ -40,7 +40,7 @@ class AnswersWidget extends StatelessWidget {
               color: (viewModel.noteIndex % 7 == index)
                   ? correctAnswerBackgroundColor
                   : wrongAnswerBackgroundColor,
-              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(25)),
             ),
             child: TouchableOpacity(
                 //enableFeedback: false,
@@ -71,20 +71,22 @@ class AnswersWidget extends StatelessWidget {
                   width: w / 3.2,
                   decoration: BoxDecoration(
                     color: answerBackgroundColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    borderRadius: const BorderRadius.all(Radius.circular(25)),
                   ),
                   child: Center(
                     child: Text(
                       viewModel.defaultList[index],
-                      style: const TextStyle(
-                          fontSize: 25, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w400,
+                          color: answersTextColor),
                     ),
                   ),
                 )),
           );
         })),
         staggeredTileBuilder: (int index) => StaggeredTile.count(
-            index == (_itemCount - 1) ? _crossAxisCount : 12, 9),
+            index == (_itemCount - 1) ? _crossAxisCount : 12, 7),
       ),
     );
   }

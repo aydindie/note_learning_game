@@ -24,6 +24,11 @@ class _SoundOnOffWidgetState extends State<SoundOnOffWidget> {
         decoration: BoxDecoration(
           color: soundStore.soundBool ? soundOnColor : soundOffColor,
           borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+            color:
+                soundStore.soundBool ? soundOnBorderColor : soundOffBorderColor,
+            width: 1,
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 11),
@@ -31,12 +36,14 @@ class _SoundOnOffWidgetState extends State<SoundOnOffWidget> {
             enableFeedback: false,
             onTap: () => soundStore.changeSound(),
             child: soundStore.soundBool
-                ? const Icon(
+                ? Icon(
                     Icons.volume_up,
+                    color: soundOnIconColor,
                     size: 31,
                   )
-                : const Icon(
+                : Icon(
                     Icons.volume_off,
+                    color: soundOffIconColor,
                     size: 31,
                   ),
           ),

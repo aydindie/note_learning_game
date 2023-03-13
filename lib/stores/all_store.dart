@@ -1,5 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api, constant_identifier_names
 
+import 'dart:async';
 import 'dart:math';
 
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
@@ -77,6 +78,7 @@ abstract class _AllStoreBase with Store {
   @action
   Future<void> changeDurationPreferences(
       DurationPreferences durationPreferences) async {
+        //  setAll();
     this.durationPreferences = durationPreferences;
     await SharedPreferenceHelper().saveDurationPreferences(durationPreferences);
   }
@@ -362,4 +364,58 @@ abstract class _AllStoreBase with Store {
     items = await homeService.getAllNotes();
     pageLifes = LifeState.DONE;
   }
+
+  //==================Timer==================
+  // @computed
+  // int get durationMs {
+  //   switch (durationPreferences) {
+  //     case DurationPreferences.TWENTY:
+  //       return 20 * 1000;
+  //     case DurationPreferences.MINUTE:
+  //       return 60 * 1000;
+  //     case DurationPreferences.FIVE_MIN:
+  //       return 5 * 60 * 1000;
+  //     case DurationPreferences.NONE:
+  //       return 0;
+
+  //     default:
+  //       return 0;
+  //   }
+  // }
+
+  // @observable
+  // double barWidth = 1.0;
+  // @observable
+  // int kalanMs = 20 * 1000;
+
+  // @action
+  // setAll() {
+  //   kalanMs = durationMs;
+  //   barWidth = 1.0;
+  // }
+
+  // @action
+  // void islem() {
+  //   kalanMs -= durationMiliseconds;
+  //   barWidth = kalanMs <= 0 ? 0 : kalanMs / durationMs;
+  // }
+
+  // int durationMiliseconds = 17;
+  // @action
+  // startTimer() {
+  //   setAll();
+  //   Timer.periodic(Duration(milliseconds: durationMiliseconds), (timer) {
+  //     if (kalanMs > 0) {
+  //       islem();
+  //     } else {
+  //       onTimerFinish();
+  //       timer.cancel();
+  //     }
+  //   });
+  // }
+
+  // @action
+  // void onTimerFinish() {
+  //   print("Timer Finished");
+  // }
 }
