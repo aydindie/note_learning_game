@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:note_learning_game/ui/Home/home_view.dart';
 import 'package:note_learning_game/utils/colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../models/onboarding_contents.dart';
 import '../../utils/size_config.dart';
@@ -21,7 +23,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   int _currentPage = 0;
- 
 
   AnimatedContainer _buildDots({
     int? index,
@@ -75,6 +76,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           contents[i].title,
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                            color: onboardingTextColor,
                             fontFamily: "Mulish",
                             fontWeight: FontWeight.w600,
                             fontSize: (width <= 550) ? 30 : 35,
@@ -84,6 +86,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Text(
                           contents[i].desc,
                           style: TextStyle(
+                            color: onboardingTextColor,
                             fontFamily: "Mulish",
                             fontWeight: FontWeight.w300,
                             fontSize: (width <= 550) ? 17 : 25,
@@ -114,8 +117,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ? Padding(
                           padding: const EdgeInsets.all(30),
                           child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.pop(context);
+                            onPressed: () async {
+                              SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
+                              await prefs.setBool('onboardShown', true);
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const MyHomePage()),
+                              );
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: onBoardElevatedButtonColor,
@@ -139,8 +149,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
+                                onPressed: () async {
+                                  SharedPreferences prefs =
+                                      await SharedPreferences.getInstance();
+                                  await prefs.setBool('onboardShown', true);
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const MyHomePage()),
+                                  );
                                 },
                                 style: TextButton.styleFrom(
                                   elevation: 0,

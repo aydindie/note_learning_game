@@ -16,6 +16,8 @@ class TopIconButtons extends StatefulWidget {
 class _TopIconButtonsState extends State<TopIconButtons> {
   @override
   Widget build(BuildContext context) {
+    final h = MediaQuery.of(context).size.height;
+    final w = MediaQuery.of(context).size.width;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -28,18 +30,18 @@ class _TopIconButtonsState extends State<TopIconButtons> {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const OnboardingScreen()));
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.info_outline,
-                  size: 31,
+                    size: h >= 400 ? 35 : 32,
                 )),
             IconButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const SettingsView()));
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.settings_outlined,
-                  size: 31,
+                  size: h >= 400 ? 35 : 32,
                 )),
           ],
         )

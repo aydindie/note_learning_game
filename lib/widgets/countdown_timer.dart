@@ -86,78 +86,84 @@ class _CountdownTimerState extends State<CountdownTimer> {
                       //     viewModel.countDownController.start();
                       //   },
                       //   child:
-                      CircularCountDownTimer(
-                    // timerin iç yuvarlağını dolduran renk
-                    backgroundGradient:  LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: timerBackgroundGradientColors,
-                    ),
-                    //akan zaman üstte
-                    fillGradient:  LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: timerFillGradientColors,
-                    ),
-                    //arkada kalan renk akmayan tüm zaman
-                    ringGradient:  SweepGradient(
-                      colors: timerRingGradientColors,
-                    ),
-
-                    duration: viewModel.defaultDuration,
-                    initialDuration: 0,
-                    controller: viewModel.countDownController,
+                      SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     height: MediaQuery.of(context).size.width / 4,
-                    ringColor: timerRingColor,
-                    fillColor: timerFillColor,
-                    backgroundColor: timerBackgroundColor,
-                    strokeWidth: 5.0,
-                    strokeCap: StrokeCap.round,
-                    textStyle: TextStyle(
-                        fontSize: 33.0,
-                        color: themeModel.isDarkMode
-                            ? timerDarkModeTextColor
-                            : timerLightModeTextColor,
-                        fontWeight: FontWeight.bold),
-                    textFormat: CountdownTextFormat.S,
-                    isReverse: true,
-                    isReverseAnimation: false,
-                    isTimerTextShown: true,
-                    autoStart: false,
-                    onStart: () {
-                      viewModel.resetScore20s();
-                      viewModel.resetScore1m();
-                      viewModel.resetScore5m();
-                      viewModel.counterStarted();
-                      viewModel.counterNotFinished();
-                    },
-                    onComplete: () {
-                      debugPrint('Countdown Ended');
-                      viewModel.counterStopped();
-                      viewModel.counterFinished();
-                      viewModel.resetScore20s();
-                      viewModel.resetScore1m();
-                      viewModel.resetScore5m();
-                    },
-                    onChange: (String timeStamp) {
-                      debugPrint('Countdown Changed $timeStamp');
-                    },
+                    child: CircularCountDownTimer(
+                      // timerin iç yuvarlağını dolduran renk
+                      // backgroundGradient: LinearGradient(
+                      //   begin: Alignment.topLeft,
+                      //   end: Alignment.bottomRight,
+                      //   colors: timerBackgroundGradientColors,
+                      // ),
+                      //akan zaman üstte
+                      // fillGradient: LinearGradient(
+                      //   begin: Alignment.topLeft,
+                      //   end: Alignment.bottomRight,
+                      //   colors: timerFillGradientColors,
+                      // ),
+                      //arkada kalan renk akmayan tüm zaman
+                      // ringGradient: SweepGradient(
+                      //   colors: timerRingGradientColors,
+                      // ),
 
-                    timeFormatterFunction:
-                        (defaultFormatterFunction, duration) {
-                      // if (duration.inMilliseconds ==
-                      //         viewModel.defaultDuration * 1000 ||
-                      //     duration.inMilliseconds == 0) {
-                      //   return "start".tr();
-                      // } else
+                      duration: viewModel.defaultDuration,
+                      initialDuration: 0,
+                      controller: viewModel.countDownController,
+                      width: MediaQuery.of(context).size.width / 4,
+                      height: MediaQuery.of(context).size.width / 4,
+                      ringColor: timerRingColor,
+                      fillColor: timerFillColor,
+                      backgroundColor: timerBackgroundColor,
+                      strokeWidth: 5.0,
+                      strokeCap: StrokeCap.round,
+                      textStyle: TextStyle(
+                          fontSize: 33.0,
+                          color: themeModel.isDarkMode
+                              ? timerDarkModeTextColor
+                              : timerLightModeTextColor,
+                          fontWeight: FontWeight.w300),
+                      textFormat: CountdownTextFormat.S,
+                      isReverse: true,
+                      isReverseAnimation: false,
+                      isTimerTextShown: true,
+                      autoStart: false,
+                      onStart: () {
+                        viewModel.resetScore20s();
+                        viewModel.resetScore1m();
+                        viewModel.resetScore5m();
+                        viewModel.counterStarted();
+                        viewModel.counterNotFinished();
+                      },
+                      onComplete: () {
+                        debugPrint('Countdown Ended');
+                        viewModel.counterStopped();
+                        viewModel.counterFinished();
+                        //burada skorlan sıfırlanmamalı o yüzden kaldırdım
 
-                      {
-                        return Function.apply(
-                            defaultFormatterFunction, [duration]);
-                      }
-                    },
-                    // ),
+                        // viewModel.resetScore20s();
+                        // viewModel.resetScore1m();
+                        // viewModel.resetScore5m();
+                      },
+                      onChange: (String timeStamp) {
+                        debugPrint('Countdown Changed $timeStamp');
+                      },
+
+                      timeFormatterFunction:
+                          (defaultFormatterFunction, duration) {
+                        // if (duration.inMilliseconds ==
+                        //         viewModel.defaultDuration * 1000 ||
+                        //     duration.inMilliseconds == 0) {
+                        //   return "start".tr();
+                        // } else
+
+                        {
+                          return Function.apply(
+                              defaultFormatterFunction, [duration]);
+                        }
+                      },
+                      // ),
+                    ),
                   );
                 }),
               ],

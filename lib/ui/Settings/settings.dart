@@ -32,7 +32,7 @@ class _SettingsViewState extends State<SettingsView> {
       appBar: AppBar(
           backgroundColor: settingsAppBarBackgroundColor,
           title: Text('settings'.tr(),
-                  style:  TextStyle(
+                  style: TextStyle(
                       color: settingsAppBarTextColor,
                       fontSize: 25,
                       fontWeight: FontWeight.w400))
@@ -42,30 +42,29 @@ class _SettingsViewState extends State<SettingsView> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon:  Icon(Icons.arrow_back_ios, color: settingAppBarIconColor),
+            icon: Icon(Icons.arrow_back_ios, color: settingAppBarIconColor),
           )),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextWidget(text: "sound".tr()),
-            const SizedBox(height: 10),
+            SizedBox(height: height * 0.012),
             // sound on off button with icon
             const SoundOnOffWidget(),
-            const SizedBox(height: 10),
+            SizedBox(height: height * 0.012),
             // dark mode on off button with icon
             TextWidget(text: "clef".tr()),
-            const SizedBox(height: 10),
+            SizedBox(height: height * 0.012),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ClefWidget(context: context, isItTreble: true),
                 SizedBox(width: width * 0.05),
                 ClefWidget(context: context, isItTreble: false),
-                SizedBox(width: width * 0.05),
               ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: height * 0.012),
             //note
             //==============DURATION BUTTONS=================
             TextWidget(text: "duration".tr()),
@@ -91,10 +90,10 @@ class _SettingsViewState extends State<SettingsView> {
               ],
             ),
 
-            const SizedBox(height: 10),
+            SizedBox(height: height * 0.012),
 
             TextWidget(text: "note_names_prefences".tr()),
-            const SizedBox(height: 10),
+            SizedBox(height: height * 0.012),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -117,7 +116,7 @@ class _SettingsViewState extends State<SettingsView> {
               ],
             ),
 
-            const SizedBox(height: 10),
+            SizedBox(height: height * 0.012),
 
             const TemaWidget(),
           ],

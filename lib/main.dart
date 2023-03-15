@@ -4,13 +4,18 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:note_learning_game/stores/sound_store.dart';
 import 'package:note_learning_game/stores/theme_store.dart';
 import 'package:note_learning_game/ui/Home/home_view.dart';
+import 'package:note_learning_game/ui/Onboard/onboarding.dart';
 import 'package:provider/provider.dart';
 import "package:flutter/services.dart";
+import 'package:shared_preferences/shared_preferences.dart';
 import 'models/note_model.dart';
 import 'stores/all_store.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool onboardShown = prefs.getBool('onboardShown') ?? false;
+  print('onboardShown $onboardShown');
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -28,13 +33,14 @@ void main() async {
         path:
             'assets/translations', // <-- change the path of the translation files
         fallbackLocale: const Locale('en', 'US'),
-        child: const MyApp()),
+        child: MyApp(onboardShown: onboardShown)),
   );
 }
 
 //DIKEY OLSUN
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool onboardShown;
+  const MyApp({super.key, required this.onboardShown});
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +53,7 @@ class MyApp extends StatelessWidget {
           create: (_) => NoteModel(),
         ),
         Provider(create: (_) => SoundStore()),
+
       ],
       child: Provider(
         create: (_) => ThemeStore(),
@@ -58,7 +65,9 @@ class MyApp extends StatelessWidget {
               supportedLocales: context.supportedLocales,
               locale: context.locale,
               theme: themeStore.themeData,
-              home: const MyHomePage(),
+              home:
+                  onboardShown ? const MyHomePage() : const OnboardingScreen(),
+              // routes: routeApp
             );
           },
         ),
@@ -66,3 +75,10 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+// //   Map<String, WidgetBuilder> get routeApp {
+// //     return {
+// //       "/": (context) => const MyHomePage(),
+// //       "/onBoarding": (context) => const OnboardingScreen(),
+// //     };
+// //   }
+// // }

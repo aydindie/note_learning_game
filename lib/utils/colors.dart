@@ -4,15 +4,19 @@ Color soundOnColor = Colors.green;
 Color soundOffColor = Colors.red;
 
 List onBoardColors = [
-  const Color(0xffDAD3C8),
-  const Color(0xffFFE5DE),
-  const Color(0xffDCF6E6),
+  const Color.fromARGB(255, 233, 194, 132),
+  const Color.fromARGB(255, 218, 211, 117),
+  const Color.fromARGB(255, 193, 230, 107),
+  const Color.fromARGB(255, 154, 230, 119),
+  const Color.fromARGB(255, 129, 227, 173),
+  const Color.fromARGB(255, 115, 229, 199),
 ];
+Color onboardingTextColor = Colors.black;
 Color onBoardLineColor = Colors.black;
 Color onBoardElevatedButtonColor = Colors.black;
 Color onBoardSkipTextColor = Colors.black;
-Color bestScoreBackgroundColor = Colors.yellow;
-Color currentScoreBackgroundColor = Colors.blueAccent.shade100;
+Color bestScoreBackgroundColor = const Color(0xffF5F864);
+Color currentScoreBackgroundColor = const Color(0xffACE2EE);
 Color timerRingColor = Colors.black;
 Color timerFillColor = Colors.blueAccent[100]!;
 Color timerBackgroundColor = Colors.transparent;
@@ -34,7 +38,7 @@ List<Color> timerRingGradientColors = [
   Colors.black87,
   Colors.black,
 ];
-Color questionBackgroundColor = Colors.grey;
+Color questionBackgroundColor = const Color.fromARGB(255, 209, 209, 209);
 Color hidedQuestionBackgroundColor = const Color.fromARGB(193, 0, 0, 0);
 Color playButtonColor = Colors.green;
 Color clefColor = Colors.black;

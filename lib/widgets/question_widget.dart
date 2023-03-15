@@ -29,34 +29,34 @@ class QuestionWidget extends StatelessWidget {
             children: [
               Container(
                   height: h * 0.18,
-                  width: w * 0.4,
+                  width: w * 0.8,
                   decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: questionBoxShadow,
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        themeStore.isDarkMode
-                            ? questionBoxBorderColorDarkMode
-                            : questionBoxBorderColorLightMode,
-                        themeStore.isDarkMode
-                            ? questionBoxBorderColor2DarkMode
-                            : questionBoxBorderColor2LightMode,
-                      ],
-                    ),
-                    border: Border.all(
-                      color: themeStore.isDarkMode
-                          ? questionBorderDarkMode
-                          : questionBorderLightMode,
-                      width: 2,
-                    ),
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: questionBoxShadow,
+                    //     spreadRadius: 5,
+                    //     blurRadius: 7,
+                    //     offset: const Offset(0, 3),
+                    //   ),
+                    // ],
+                    // gradient: LinearGradient(
+                    //   begin: Alignment.topLeft,
+                    //   end: Alignment.bottomRight,
+                    //   colors: [
+                    //     themeStore.isDarkMode
+                    //         ? questionBoxBorderColorDarkMode
+                    //         : questionBoxBorderColorLightMode,
+                    //     themeStore.isDarkMode
+                    //         ? questionBoxBorderColor2DarkMode
+                    //         : questionBoxBorderColor2LightMode,
+                    //   ],
+                    // ),
+                    // border: Border.all(
+                    //   color: themeStore.isDarkMode
+                    //       ? questionBorderDarkMode
+                    //       : questionBorderLightMode,
+                    //   width: 2,
+                    // ),
                     color: questionBackgroundColor,
                     borderRadius: const BorderRadius.all(Radius.circular(15)),
                   ),
@@ -76,7 +76,7 @@ class QuestionWidget extends StatelessWidget {
                   children: [
                     Container(
                       height: h * 0.18,
-                      width: w * 0.4,
+                      width: w * 0.8,
                       decoration: BoxDecoration(
                         color: hidedQuestionBackgroundColor,
                         borderRadius:
@@ -93,10 +93,11 @@ class QuestionWidget extends StatelessWidget {
                             decoration: BoxDecoration(
                               color: playButtonColor,
                               borderRadius:
-                                  const BorderRadius.all(Radius.circular(20)),
+                                  const BorderRadius.all(Radius.circular(50)),
                             ),
                             child: const Icon(
                               Icons.play_arrow,
+                              color: Colors.white,
                               size: 50,
                             ),
                           ),

@@ -106,12 +106,15 @@ abstract class _AllStoreBase with Store {
 
   void getTrebleFromShared() async {
     isTrebleOn = await SharedPreferenceHelper().getTrebleOn() ?? true;
+    updateRandomIndex();
   }
 
   @action
   Future<void> changeTreble() async {
     isTrebleOn = !isTrebleOn;
+
     await SharedPreferenceHelper().saveTrebleOn(isTrebleOn);
+    updateRandomIndex();
   }
   //===========isBassOn=================
 
@@ -120,12 +123,14 @@ abstract class _AllStoreBase with Store {
 
   void getBassFromShared() async {
     isBassOn = await SharedPreferenceHelper().getBassOn() ?? true;
+     updateRandomIndex();
   }
 
   @action
   Future<void> changeBass() async {
     isBassOn = !isBassOn;
     await SharedPreferenceHelper().saveBassOn(isBassOn);
+     updateRandomIndex();
   }
 
   // @observable

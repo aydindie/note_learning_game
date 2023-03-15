@@ -22,6 +22,7 @@ class AnswersWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
+    final ratio = w / h;
     final viewModel = Provider.of<AllStore>(context);
 
     return SizedBox(
@@ -77,14 +78,15 @@ class AnswersWidget extends StatelessWidget {
                     child: Text(
                       viewModel.defaultList[index],
                       style: const TextStyle(
-                          fontSize: 25, fontWeight: FontWeight.bold),
+                          fontSize: 35, fontWeight: FontWeight.w400),
                     ),
                   ),
                 )),
           );
         })),
         staggeredTileBuilder: (int index) => StaggeredTile.count(
-            index == (_itemCount - 1) ? _crossAxisCount : 12, 9),
+            index == (_itemCount - 1) ? _crossAxisCount : 12,
+            ratio >= 9 / 16 ? 8 : 9),
       ),
     );
   }

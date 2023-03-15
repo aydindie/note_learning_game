@@ -22,7 +22,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // controller
   @override
   Widget build(BuildContext context) {
     final noteViewModel = Provider.of<AllStore>(context);
@@ -37,80 +36,97 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               children: [
                 const TopIconButtons(),
-                const SizedBox(
-                  height: 2,
+                SizedBox(
+                  height: h * 0.02,
                 ),
                 Observer(builder: (_) {
-                  return Container(
-                    child: noteViewModel.durationPreferences ==
-                            DurationPreferences.NONE
-                        ? const SizedBox(
-                            height: 0,
-                          )
-                        : noteViewModel.durationPreferences ==
-                                DurationPreferences.TWENTY
-                            ? Observer(
-                                builder: (_) {
-                                  return scoreBar(
-                                      h,
-                                      w,
-                                      bestScoreBackgroundColor,
-                                      "${"best_score".tr()}: ${noteViewModel.best20sScore}");
-                                },
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Observer(
+                        builder: (_) {
+                          return Container(
+                            child: scoreBar(
+                                h,
+                                w,
+                                currentScoreBackgroundColor,
+                                noteViewModel.durationPreferences ==
+                                        DurationPreferences.NONE
+                                    ? "${"score".tr()}: ${noteViewModel.score}"
+                                    : noteViewModel.durationPreferences ==
+                                            DurationPreferences.TWENTY
+                                        ? "${"score".tr()}: ${noteViewModel.score20s}"
+                                        : noteViewModel.durationPreferences ==
+                                                DurationPreferences.MINUTE
+                                            ? "${"score".tr()}: ${noteViewModel.score1m}"
+                                            : noteViewModel
+                                                        .durationPreferences ==
+                                                    DurationPreferences.FIVE_MIN
+                                                ? "${"score".tr()}: ${noteViewModel.score5m}"
+                                                : "score".tr()),
+                          );
+                        },
+                      ),
+                      Container(
+                        child: noteViewModel.durationPreferences ==
+                                DurationPreferences.NONE
+                            ? const SizedBox(
+                                height: 0,
                               )
                             : noteViewModel.durationPreferences ==
-                                    DurationPreferences.MINUTE
-                                ? Observer(
-                                    builder: (_) {
-                                      return scoreBar(
-                                          h,
-                                          w,
-                                          bestScoreBackgroundColor,
-                                          "${"best_score".tr()}: ${noteViewModel.best1mScore}");
-                                    },
+                                    DurationPreferences.TWENTY
+                                ? Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Observer(
+                                        builder: (_) {
+                                          return scoreBar(
+                                              h,
+                                              w,
+                                              bestScoreBackgroundColor,
+                                              "${"best_score".tr()}: ${noteViewModel.best20sScore}");
+                                        },
+                                      ),
+                                    ],
                                   )
                                 : noteViewModel.durationPreferences ==
-                                        DurationPreferences.FIVE_MIN
+                                        DurationPreferences.MINUTE
                                     ? Observer(
                                         builder: (_) {
                                           return scoreBar(
                                               h,
                                               w,
                                               bestScoreBackgroundColor,
-                                              "${"best_score".tr()}: ${noteViewModel.best5mScore}");
+                                              "${"best_score".tr()}: ${noteViewModel.best1mScore}");
                                         },
                                       )
-                                    : null,
+                                    : noteViewModel.durationPreferences ==
+                                            DurationPreferences.FIVE_MIN
+                                        ? Observer(
+                                            builder: (_) {
+                                              return scoreBar(
+                                                  h,
+                                                  w,
+                                                  bestScoreBackgroundColor,
+                                                  "${"best_score".tr()}: ${noteViewModel.best5mScore}");
+                                            },
+                                          )
+                                        : null,
+                      ),
+                    ],
                   );
                 }),
+
+                SizedBox(
+                  height: h * 0.02,
+                ),
 
                 Observer(builder: (_) {
                   return const CountdownTimer();
                 }),
-                Observer(
-                  builder: (_) {
-                    return scoreBar(
-                        h,
-                        w,
-                        currentScoreBackgroundColor,
-                        noteViewModel.durationPreferences ==
-                                DurationPreferences.NONE
-                            ? "${"score".tr()}: ${noteViewModel.score}"
-                            : noteViewModel.durationPreferences ==
-                                    DurationPreferences.TWENTY
-                                ? "${"score".tr()}: ${noteViewModel.score20s}"
-                                : noteViewModel.durationPreferences ==
-                                        DurationPreferences.MINUTE
-                                    ? "${"score".tr()}: ${noteViewModel.score1m}"
-                                    : noteViewModel.durationPreferences ==
-                                            DurationPreferences.FIVE_MIN
-                                        ? "${"score".tr()}: ${noteViewModel.score5m}"
-                                        : "score".tr());
-                  },
-                ),
 
-                const SizedBox(
-                  height: 5,
+                SizedBox(
+                  height: h * 0.02,
                 ),
                 QuestionWidget(
                   viewModel: noteViewModel,
@@ -119,6 +135,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: h * 0.03,
                 ),
                 //numpad gridview
+
+                // const LinearStoreTimer(),
 
                 const AnswersWidget(),
 
@@ -142,18 +160,36 @@ class _MyHomePageState extends State<MyHomePage> {
 
   FittedBox scoreBar(double h, double w, Color color, String text) {
     return FittedBox(
-      child: Container(
-        alignment: Alignment.center,
-        height: h * 0.04,
-        width: w * 0.3,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
-        ),
-        child: Text(
-          text,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
+      child: Row(
+        children: [
+          Container(
+            height: h * 0.06,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black, width: 1),
+              color: color,
+              borderRadius: const BorderRadius.all(Radius.circular(25)),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                children: [
+                  Text(
+                    text,
+                    style: TextStyle(
+                        fontSize: h >= 400 ? 18 : 16,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black),
+                  ),
+                  Image.asset(
+                    "assets/images/treble.png",
+                    color: Colors.black,
+                    fit: BoxFit.fitHeight,
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

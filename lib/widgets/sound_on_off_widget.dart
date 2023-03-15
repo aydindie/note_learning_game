@@ -17,6 +17,8 @@ class SoundOnOffWidget extends StatefulWidget {
 class _SoundOnOffWidgetState extends State<SoundOnOffWidget> {
   @override
   Widget build(BuildContext context) {
+    final h = MediaQuery.of(context).size.height;
+    final w = MediaQuery.of(context).size.width;
     final soundStore = Provider.of<SoundStore>(context);
 
     return Observer(builder: (_) {
@@ -31,13 +33,13 @@ class _SoundOnOffWidgetState extends State<SoundOnOffWidget> {
             enableFeedback: false,
             onTap: () => soundStore.changeSound(),
             child: soundStore.soundBool
-                ? const Icon(
+                ? Icon(
                     Icons.volume_up,
-                    size: 31,
+                    size: h >= 400 ? 35 : 32,
                   )
-                : const Icon(
+                : Icon(
                     Icons.volume_off,
-                    size: 31,
+                    size: h >= 400 ? 35 : 32,
                   ),
           ),
         ),
