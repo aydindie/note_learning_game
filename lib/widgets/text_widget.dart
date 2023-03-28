@@ -9,14 +9,15 @@ class TextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          text,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-        ),
-      ],
+    final w = MediaQuery.of(context).size.width;
+    return SizedBox(
+      width: w * 0.8,
+      child: Text(
+        text,
+        maxLines: 2,
+        textAlign: TextAlign.center,
+        style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+      ),
     );
   }
 }

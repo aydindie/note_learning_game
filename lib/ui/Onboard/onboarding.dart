@@ -49,7 +49,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     double height = SizeConfig.screenH!;
 
     return Scaffold(
-      backgroundColor: onBoardColors[_currentPage],
+      backgroundColor: onBoardBackgroundColor,
       body: SafeArea(
         child: Column(
           children: [

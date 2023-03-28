@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:note_learning_game/widgets/sound_on_off_widget.dart';
 import 'package:note_learning_game/ui/Onboard/onboarding.dart';
+import 'package:provider/provider.dart';
 
+import '../stores/theme_store.dart';
 import '../ui/Settings/settings.dart';
+import '../utils/colors.dart';
 
 class TopIconButtons extends StatefulWidget {
   const TopIconButtons({
@@ -32,7 +35,8 @@ class _TopIconButtonsState extends State<TopIconButtons> {
                 },
                 icon: Icon(
                   Icons.info_outline,
-                    size: h >= 400 ? 35 : 32,
+                  size: h >= 400 ? 35 : 32,
+                  color: iconsColors,
                 )),
             IconButton(
                 onPressed: () {
@@ -42,6 +46,7 @@ class _TopIconButtonsState extends State<TopIconButtons> {
                 icon: Icon(
                   Icons.settings_outlined,
                   size: h >= 400 ? 35 : 32,
+                  color: iconsColors,
                 )),
           ],
         )

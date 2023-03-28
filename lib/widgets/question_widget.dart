@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:note_learning_game/stores/theme_store.dart';
-import 'package:provider/provider.dart';
 
 import '../constants/enums.dart';
 import '../stores/all_store.dart';
@@ -18,7 +18,6 @@ class QuestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeStore = Provider.of<ThemeStore>(context);
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
     return Observer(builder: (_) {
@@ -28,37 +27,10 @@ class QuestionWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                  height: h * 0.18,
+                  height: h * noteHeighttoOne,
                   width: w * 0.8,
-                  decoration: BoxDecoration(
-                    // boxShadow: [
-                    //   BoxShadow(
-                    //     color: questionBoxShadow,
-                    //     spreadRadius: 5,
-                    //     blurRadius: 7,
-                    //     offset: const Offset(0, 3),
-                    //   ),
-                    // ],
-                    // gradient: LinearGradient(
-                    //   begin: Alignment.topLeft,
-                    //   end: Alignment.bottomRight,
-                    //   colors: [
-                    //     themeStore.isDarkMode
-                    //         ? questionBoxBorderColorDarkMode
-                    //         : questionBoxBorderColorLightMode,
-                    //     themeStore.isDarkMode
-                    //         ? questionBoxBorderColor2DarkMode
-                    //         : questionBoxBorderColor2LightMode,
-                    //   ],
-                    // ),
-                    // border: Border.all(
-                    //   color: themeStore.isDarkMode
-                    //       ? questionBorderDarkMode
-                    //       : questionBorderLightMode,
-                    //   width: 2,
-                    // ),
-                    color: questionBackgroundColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -75,30 +47,36 @@ class QuestionWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      height: h * 0.18,
+                      clipBehavior: Clip.antiAlias,
+                      height: h * 0.2,
                       width: w * 0.8,
-                      decoration: BoxDecoration(
-                        color: hidedQuestionBackgroundColor,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15)),
+                      decoration: const BoxDecoration(
+                        // color: hidedQuestionBackgroundColor,
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
-                      child: Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            viewModel.countDownController.start();
-                            viewModel.counterStarted();
-                            viewModel.counterNotFinished();
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: playButtonColor,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(50)),
-                            ),
-                            child: const Icon(
-                              Icons.play_arrow,
-                              color: Colors.white,
-                              size: 50,
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: () {
+                              viewModel.countDownController.start();
+                              viewModel.counterStarted();
+                              viewModel.counterNotFinished();
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: playButtonbgColor,
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(50)),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.play_arrow_outlined,
+                                  color: playIconColor,
+                                  size: 60,
+                                ),
+                              ),
                             ),
                           ),
                         ),

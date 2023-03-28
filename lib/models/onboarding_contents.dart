@@ -1,3 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
+
+import '../constants/strings.dart';
+
 class OnboardingContents {
   final String title;
   final String image;
@@ -12,43 +16,38 @@ class OnboardingContents {
 
 List<OnboardingContents> contents = [
   OnboardingContents(
-    title: "Notaların sesine ulaşmak için sesi aç",
-    image: "assets/images/soundd.png",
-    desc:
-        "Ana ekrandan ve ayarlardan istediğiniz zaman açıp kapatabilirsin.Notayı tekrar dinlemek için notanın üzerine basabilirsin.",
+    title: "t".tr(),
+    image: contentAsset,
+    desc: "d".tr(),
   ),
   OnboardingContents(
-    title: "Oynadıkça öğren ve skorunu arttır.",
-    image: "assets/images/scores.png",
-    desc: "Oyun türüne göre ayrı en iyi ve anlık skorunu izleyebilirsin.",
+    title: "t1".tr(),
+    image: contentAsset1,
+    desc: "d1".tr(),
   ),
   //onboarding about duraiton
   OnboardingContents(
-    title: "Süreli oyunlarda süreyi ayarla",
-    image: "assets/images/duration.png",
-    desc:
-        "Süreli oyunlarda süreyi ayarlayabilir ve oyunu istediğin zaman durdurabilirsin.",
+    title: "t2".tr(),
+    image: contentAsset2,
+    desc: "d2".tr(),
   ),
   //onboarding about note  widget with play button
   OnboardingContents(
-    title: "Süreli oyunlarda oyunu başlat",
-    image: "assets/images/question.png",
-    desc:
-        "Süreli oyunlarda oyunu başlatmak için yeşil oynatma işaretine bas. Notayı tekrar dinlemek için notanın üzerine basabilirsin.",
+    title: "t3".tr(),
+    image: contentAsset3,
+    desc: "d3".tr(),
   ),
   //onboarding about note answer optons
   OnboardingContents(
-    title: "Notayı bil ve cevapları seç",
-    image: "assets/images/answers.png",
-    desc:
-        "Süreli oyunlarda cevapları seçmek için seçmek istediğin cevabın üzerine bas.",
+    title: "t4".tr(),
+    image: contentAsset4,
+    desc: "d4".tr(),
   ),
   //onboaard  tum ayarları ayarlardan düzeltebilirsin
   OnboardingContents(
-    title: "Her şeyi ayarla!",
-    image: "assets/images/allws.png",
-    desc:
-        "Tüm ayarları ayarlardan düzeltebilirsin. Ayarlardan istediğin zaman çıkış yapabilirsin.",
+    title: "t5".tr(),
+    image: contentAsset5,
+    desc: "d5".tr(),
   ),
 
   // OnboardingContents(

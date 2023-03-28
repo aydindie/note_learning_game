@@ -4,7 +4,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import '../stores/all_store.dart';
-import '../utils/colors.dart';
 
 class ClefWidget extends StatefulWidget {
   final BuildContext? context;
@@ -24,31 +23,45 @@ class _ClefWidgetState extends State<ClefWidget> {
   Widget build(BuildContext context) {
     final allStore = Provider.of<AllStore>(widget.context!);
     return Observer(builder: (_) {
-      return Container(
-          width: MediaQuery.of(context).size.width * 0.12,
-          height: MediaQuery.of(context).size.width * 0.16,
-          decoration: BoxDecoration(
-            color: widget.isItTreble
-                ? allStore.isTrebleOn
-                    ? choosedClefBackgroundColor
-                    : notChoosedClefBackgroundColor
-                : allStore.isBassOn
-                    ? choosedClefBackgroundColor
-                    : notChoosedClefBackgroundColor,
-            borderRadius: BorderRadius.circular(15),
+      return Column(
+        children: [
+          Container(
+              width: MediaQuery.of(context).size.width * 0.18,
+              height: MediaQuery.of(context).size.width * 0.24,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+                child: InkWell(
+                  enableFeedback: false,
+                  onTap: () => widget.isItTreble
+                      ? allStore.changeTreble()
+                      : allStore.changeBass(),
+                  child: Image(
+                    image: AssetImage(
+                        'assets/images/${widget.isItTreble ? 'treble.png' : 'bass.png'}'),
+                    color: Colors.white,
+                  ),
+                ),
+              )),
+          const SizedBox(height: 10),
+          CircleAvatar(
+            backgroundColor: (!allStore.isBassOn && !allStore.isTrebleOn)
+                ? Colors.black
+                : widget.isItTreble
+                    ? allStore.isTrebleOn
+                        ? Colors.black
+                        : Colors.transparent
+                    : allStore.isBassOn
+                        ? Colors.black
+                        : Colors.transparent,
+            radius: 7,
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-            child: InkWell(
-              enableFeedback: false,
-              onTap: () => widget.isItTreble
-                  ? allStore.changeTreble()
-                  : allStore.changeBass(),
-              child: Image(
-                  image: AssetImage(
-                      'assets/images/${widget.isItTreble ? 'treble.png' : 'bass.png'}')),
-            ),
-          ));
+        ],
+      );
     });
   }
 }

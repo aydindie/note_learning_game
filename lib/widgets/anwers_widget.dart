@@ -77,8 +77,10 @@ class AnswersWidget extends StatelessWidget {
                   child: Center(
                     child: Text(
                       viewModel.defaultList[index],
-                      style: const TextStyle(
-                          fontSize: 35, fontWeight: FontWeight.w400),
+                      style:  TextStyle(
+                          color: answerTextColor,
+                          fontSize: 35,
+                          fontWeight: FontWeight.w400),
                     ),
                   ),
                 )),
@@ -86,7 +88,7 @@ class AnswersWidget extends StatelessWidget {
         })),
         staggeredTileBuilder: (int index) => StaggeredTile.count(
             index == (_itemCount - 1) ? _crossAxisCount : 12,
-            ratio >= 9 / 16 ? 8 : 9),
+            ratio >= 0.5 ? 8 : 9),
       ),
     );
   }

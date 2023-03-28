@@ -1,6 +1,6 @@
 {
     "title": "Türkçe",
-    "best_score": "En iyi puan",
+    "best_score": "En iyi",
     "start": "Başla",
     "score": "Skor",
     "settings": "Ayarlar",
@@ -11,10 +11,23 @@
     "min": "dakika",
     "5min": "5 dakika",
     "none": "Hiçbiri",
-    "note_names_prefences": "Nota İsimlendirme Tercihleri",
+    "note_names_prefences": "Nota İsimlendirme",
     "language": "Dil",
     "english": "İngilizce",
     "german": "Almanca",
     "french": "Fransızca",
-    "turkish": "Türkçe"
+    "turkish": "Türkçe",
+    
+      "t": "Notaların sesine ulaşmak için sesi aç",
+      "d": "Ana ekrandan ve ayarlardan istediğiniz zaman açıp kapatabilirsin. Notayı tekrar dinlemek için notanın üzerine basabilirsin.",
+      "t1": "Oynadıkça öğren ve skorunu arttır.",
+      "d1": "Oyun türüne göre ayrı en iyi ve anlık skorunu izleyebilirsin.",
+      "t2": "Süreli oyunlarda süreyi ayarla",
+      "d2": "Süreli oyunlarda süreyi ayarlayabilir ve oyunu istediğin zaman durdurabilirsin.",
+      "t3": "Süreli oyunlarda oyunu başlat",
+      "d3": "Süreli oyunlarda oyunu başlatmak için yeşil oynatma işaretine bas. Notayı tekrar dinlemek için notanın üzerine basabilirsin.",
+      "t4": "Notayı bil ve cevapları seç",
+      "d4": "Süreli oyunlarda cevapları seçmek için seçmek istediğin cevabın üzerine bas.",
+      "t5": "Her şeyi ayarla!",
+      "d5": "Tüm ayarları ayarlardan düzeltebilirsin. Ayarlardan istediğin zaman çıkış yapabilirsin."
 }

@@ -1,6 +1,8 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:note_learning_game/stores/sound_store.dart';
 import 'package:note_learning_game/stores/theme_store.dart';
 import 'package:note_learning_game/ui/Home/home_view.dart';
@@ -23,62 +25,76 @@ void main() async {
 
   await EasyLocalization.ensureInitialized();
   runApp(
-    EasyLocalization(
-        supportedLocales: const [
-          Locale('en', 'US'),
-          Locale('tr', 'TR'),
-          Locale('de', 'DE'),
-          Locale('fr', 'FR'),
-        ],
-        path:
-            'assets/translations', // <-- change the path of the translation files
-        fallbackLocale: const Locale('en', 'US'),
-        child: MyApp(onboardShown: onboardShown)),
+    DevicePreview(
+      enabled: true,
+      builder: (context) {
+        return EasyLocalization(
+            supportedLocales: const [
+              Locale('en', 'US'),
+              Locale('tr', 'TR'),
+              Locale('de', 'DE'),
+              Locale('fr', 'FR'),
+            ],
+            path:
+                'assets/translations', // <-- change the path of the translation files
+            fallbackLocale: const Locale('en', 'US'),
+            child: MultiProvider(providers: [
+              // Provider<LocaleStore>(
+              //   create: (_) => LocaleStore(),
+              // ),
+              Provider<ThemeStore>(
+                create: (_) => ThemeStore(),
+              ),
+
+              Provider<AllStore>(
+                create: (_) => AllStore(),
+              ),
+              Provider<NoteModel>(
+                create: (_) => NoteModel(),
+              ),
+              Provider(create: (_) => SoundStore()),
+            ], child: MyApp(onboardShown: onboardShown)));
+      },
+    ),
   );
 }
 
 //DIKEY OLSUN
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   final bool onboardShown;
   const MyApp({super.key, required this.onboardShown});
 
   @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        Provider<AllStore>(
-          create: (_) => AllStore(),
-        ),
-        Provider<NoteModel>(
-          create: (_) => NoteModel(),
-        ),
-        Provider(create: (_) => SoundStore()),
+  State<MyApp> createState() => _MyAppState();
+}
 
-      ],
-      child: Provider(
-        create: (_) => ThemeStore(),
-        child: Observer(
-          builder: (context) {
-            final themeStore = Provider.of<ThemeStore>(context);
-            return MaterialApp(
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
-              theme: themeStore.themeData,
-              home:
-                  onboardShown ? const MyHomePage() : const OnboardingScreen(),
-              // routes: routeApp
-            );
-          },
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return Observer(builder: (context) {
+      return MaterialApp(
+        useInheritedMediaQuery: true,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        builder: DevicePreview.appBuilder,
+        debugShowCheckedModeBanner: false,
+        //TODO: burada tema değiştiğinde değişecek
+        // locale: DevicePreview.locale(context),
+        // theme: themeStore.themeData.copyWith(
+        //   textTheme: themeStore.themeData.textTheme.apply(
+        //     fontFamily: GoogleFonts.robotoSlab().fontFamily,
+        //   ),
+        // ),
+        theme: ThemeData(
+          textTheme: GoogleFonts.robotoSlabTextTheme(
+            Theme.of(context).textTheme,
+          ),
         ),
-      ),
-    );
+        home:
+            widget.onboardShown ? const MyHomePage() : const OnboardingScreen(),
+        // routes: routeApp
+      );
+    });
   }
 }
-// //   Map<String, WidgetBuilder> get routeApp {
-// //     return {
-// //       "/": (context) => const MyHomePage(),
-// //       "/onBoarding": (context) => const OnboardingScreen(),
-// //     };
-// //   }
-// // }

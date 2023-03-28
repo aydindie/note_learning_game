@@ -61,8 +61,8 @@ class ClefPainter extends CustomPainter with EquatableMixin {
       required this.noteRange,
       this.noteRangeToClip,
       this.noteImages = const [],
-      this.padding =
-          const EdgeInsets.all(8), //TODO: Dışardan padding verilebilir
+      this.padding = const EdgeInsets.symmetric(
+          vertical: 8), //TODO: Dışardan padding verilebilir
       this.clefColor = Colors.black,
       this.noteColor = Colors.black,
       this.lineHeight = 1})

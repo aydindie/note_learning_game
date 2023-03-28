@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import '../constants/enums.dart';
 import '../constants/isDebug.dart';
 import '../stores/all_store.dart';
-import '../stores/theme_store.dart';
 import '../utils/colors.dart';
 
 class CountdownTimer extends StatefulWidget {
@@ -22,7 +21,6 @@ class _CountdownTimerState extends State<CountdownTimer> {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<AllStore>(context);
-    final themeModel = Provider.of<ThemeStore>(context);
 
     return Observer(builder: (_) {
       //TODO: burada controllerin dispose olmaması için 0 pixellik bir container oluşturuldu. Bu çözüm geçici bir çözüm. Daha iyi bir çözüm bulunmalı.
@@ -42,9 +40,10 @@ class _CountdownTimerState extends State<CountdownTimer> {
                 strokeCap: StrokeCap.round,
                 textStyle: TextStyle(
                     fontSize: 33.0,
-                    color: themeModel.isDarkMode
-                        ? timerDarkModeTextColor
-                        : timerLightModeTextColor,
+                    color: //themeModel.isDarkMode
+                        // ?
+                        timerDarkModeTextColor,
+                    //  : timerLightModeTextColor,
                     fontWeight: FontWeight.bold),
                 isReverse: true,
                 autoStart: false,
@@ -90,23 +89,6 @@ class _CountdownTimerState extends State<CountdownTimer> {
                     width: MediaQuery.of(context).size.width / 4,
                     height: MediaQuery.of(context).size.width / 4,
                     child: CircularCountDownTimer(
-                      // timerin iç yuvarlağını dolduran renk
-                      // backgroundGradient: LinearGradient(
-                      //   begin: Alignment.topLeft,
-                      //   end: Alignment.bottomRight,
-                      //   colors: timerBackgroundGradientColors,
-                      // ),
-                      //akan zaman üstte
-                      // fillGradient: LinearGradient(
-                      //   begin: Alignment.topLeft,
-                      //   end: Alignment.bottomRight,
-                      //   colors: timerFillGradientColors,
-                      // ),
-                      //arkada kalan renk akmayan tüm zaman
-                      // ringGradient: SweepGradient(
-                      //   colors: timerRingGradientColors,
-                      // ),
-
                       duration: viewModel.defaultDuration,
                       initialDuration: 0,
                       controller: viewModel.countDownController,
@@ -119,9 +101,10 @@ class _CountdownTimerState extends State<CountdownTimer> {
                       strokeCap: StrokeCap.round,
                       textStyle: TextStyle(
                           fontSize: 33.0,
-                          color: themeModel.isDarkMode
-                              ? timerDarkModeTextColor
-                              : timerLightModeTextColor,
+                          color:
+                              // themeModel.isDarkMode?
+                              timerDarkModeTextColor,
+                          // : timerLightModeTextColor,
                           fontWeight: FontWeight.w300),
                       textFormat: CountdownTextFormat.S,
                       isReverse: true,

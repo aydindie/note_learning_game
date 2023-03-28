@@ -40,6 +40,8 @@ dependencies:
 
   # touchable opacity
   touchable_opacity: ^1.2.0
+  device_preview: ^1.1.0
+  google_fonts: ^4.0.3
 
 dev_dependencies:
   flutter_test:

@@ -1,66 +1,58 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
-Color soundOnColor = Colors.green;
-Color soundOffColor = Colors.red;
+//Sound
+Color soundBackgroundColor = Colors.black;
+Color soundIconColor = Colors.white;
+Color iconsColors = Colors.black;
+//OnBoarding
+Color onBoardBackgroundColor = Colors.white;
 
-List onBoardColors = [
-  const Color.fromARGB(255, 233, 194, 132),
-  const Color.fromARGB(255, 218, 211, 117),
-  const Color.fromARGB(255, 193, 230, 107),
-  const Color.fromARGB(255, 154, 230, 119),
-  const Color.fromARGB(255, 129, 227, 173),
-  const Color.fromARGB(255, 115, 229, 199),
-];
 Color onboardingTextColor = Colors.black;
 Color onBoardLineColor = Colors.black;
 Color onBoardElevatedButtonColor = Colors.black;
 Color onBoardSkipTextColor = Colors.black;
-Color bestScoreBackgroundColor = const Color(0xffF5F864);
-Color currentScoreBackgroundColor = const Color(0xffACE2EE);
-Color timerRingColor = Colors.black;
-Color timerFillColor = Colors.blueAccent[100]!;
+
+//score
+Color bestScoreBackgroundColor = Colors.black;
+Color currentScoreBackgroundColor = Colors.white;
+//Timer
+Color timerRingColor = Colors.grey;
+Color timerFillColor = Colors.black;
 Color timerBackgroundColor = Colors.transparent;
-Color timerDarkModeTextColor = Colors.white;
+Color timerDarkModeTextColor = Colors.black;
 Color timerLightModeTextColor = Colors.black;
-List<Color> timerBackgroundGradientColors = [
-  Colors.red,
-  Colors.green,
-  Colors.yellow
-];
-List<Color> timerFillGradientColors = [Colors.blue, Colors.purple, Colors.pink];
-List<Color> timerRingGradientColors = [
-  Colors.black,
-  Colors.black12,
-  Colors.black26,
-  Colors.black38,
-  Colors.black45,
-  Colors.black54,
-  Colors.black87,
-  Colors.black,
-];
-Color questionBackgroundColor = const Color.fromARGB(255, 209, 209, 209);
-Color hidedQuestionBackgroundColor = const Color.fromARGB(193, 0, 0, 0);
-Color playButtonColor = Colors.green;
-Color clefColor = Colors.black;
+//kullanımıyo
+
+//Question
+Color playButtonbgColor = Colors.black;
+Color playIconColor = Colors.white;
+Color clefColor = Color.fromARGB(255, 33, 20, 20);
 Color noteColor = Colors.black;
-Color debugTestColor = Colors.red;
-Color answerBackgroundColor = Colors.grey;
-Color settingsAppBarBackgroundColor = Colors.grey;
-Color settingsAppBarTextColor = Colors.black;
-Color settingAppBarIconColor = Colors.black;
-Color choosedClefBackgroundColor = Colors.green;
-Color notChoosedClefBackgroundColor = Colors.grey;
-Color choosedDurationBackgroundColor = Colors.green;
-Color notChoosedDurationBackgroundColor = Colors.grey;
-Color choosedNoteNamesBackgroundColor = Colors.green;
-Color notChoosedNoteNamesBackgroundColor = Colors.grey;
-Color correctAnswerBackgroundColor = Colors.green;
-Color wrongAnswerBackgroundColor = Colors.red;
-Color questionBoxShadow = const Color.fromARGB(51, 0, 0, 0).withOpacity(0.1);
-Color questionBoxBorderColorDarkMode = const Color.fromARGB(255, 215, 215, 215);
-Color questionBoxBorderColorLightMode = Colors.black.withOpacity(0.3);
-Color questionBoxBorderColor2DarkMode =
-    const Color.fromARGB(255, 224, 224, 224).withOpacity(0.5);
-Color questionBoxBorderColor2LightMode = Colors.black.withOpacity(0.1);
+Color debugTestColor = Color.fromARGB(255, 13, 80, 99);
+Color questionBoxShadow = Color.fromARGB(51, 19, 42, 117).withOpacity(0.1);
+Color questionBoxBorderColorDarkMode = Color.fromARGB(255, 178, 87, 87);
+
 Color questionBorderDarkMode = Colors.white;
 Color questionBorderLightMode = Colors.black;
+//Answer
+Color answerBackgroundColor = Colors.black;
+Color correctAnswerBackgroundColor = Colors.green;
+Color wrongAnswerBackgroundColor = Colors.red;
+Color answerBorderColor = Colors.black;
+//Settings
+Color settingsAppBarBackgroundColor = Colors.white;
+Color settingsAppBarTextColor = Colors.black;
+Color settingAppBarIconColor = Colors.black;
+Color choosedClefBackgroundColor = Colors.black;
+Color notChoosedClefBackgroundColor = Colors.black;
+Color choosedDurationBackgroundColor = Colors.black;
+Color notChoosedDurationBackgroundColor = Colors.black;
+Color choosedNoteNamesBackgroundColor = Colors.black;
+Color notChoosedNoteNamesBackgroundColor = Colors.black;
+Color answerTextColor = Colors.white;
+Color homescaffoldBgColor = Colors.white;
+Color settingsBackgroundColor = Colors.white;
+int noteLineHeight = 3;
+double noteHeighttoOne = 0.2;

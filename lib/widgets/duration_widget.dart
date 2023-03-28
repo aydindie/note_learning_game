@@ -31,26 +31,45 @@ class _DurationWidgetState extends State<DurationWidget> {
     final allStore = Provider.of<AllStore>(widget.context);
     //
     return Observer(builder: (_) {
-      return Container(
-        width: MediaQuery.of(context).size.width * 0.2,
-        height: MediaQuery.of(context).size.width * 0.12,
-        decoration: BoxDecoration(
-          color: getColor(widget.durationPreferences, allStore),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-          child: InkWell(
-              //enableFeedback: false,
-              onTap: () {
-                allStore.changeDurationPreferences(widget.durationPreferences);
-                allStore.restartCountDown();
-                allStore.countDownController.reset();
-              },
-              child: Center(
-                child: Text(widget.text.tr()),
-              )),
-        ),
+      return Column(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width * 0.2,
+            height: MediaQuery.of(context).size.width * 0.12,
+            decoration: BoxDecoration(
+              // border: Border.all(
+              //     color: selectedColor(widget.durationPreferences, allStore),
+              //     width: 3),
+              color: getColor(widget.durationPreferences, allStore),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+              child: InkWell(
+                  //enableFeedback: false,
+                  onTap: () {
+                    allStore
+                        .changeDurationPreferences(widget.durationPreferences);
+                    allStore.restartCountDown();
+                    allStore.countDownController.reset();
+                  },
+                  child: Center(
+                    child: FittedBox(
+                      child: Text(
+                        widget.text.tr(),
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  )),
+            ),
+          ),
+          const SizedBox(height: 5),
+          CircleAvatar(
+            backgroundColor:
+                selectedColor(widget.durationPreferences, allStore),
+            radius: 7,
+          ),
+        ],
       );
     });
   }
@@ -61,6 +80,14 @@ Color getColor(DurationPreferences durationPreferences, AllStore allStore) {
     return choosedDurationBackgroundColor;
   }
   return notChoosedDurationBackgroundColor;
+}
+
+Color selectedColor(
+    DurationPreferences durationPreferences, AllStore allStore) {
+  if (allStore.durationPreferences == durationPreferences) {
+    return Colors.black;
+  }
+  return Colors.transparent;
 }
 
 Function() getMyFunction(

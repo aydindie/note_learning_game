@@ -64,21 +64,43 @@ class _NoteCardState extends State<NoteCard> {
                       ],
                     )
                   : Container(),
-              Container(
-                child: ClefImage(
-                    size: Size(height / 6, height / 6),
-                    clef: getClef(widget.noteModel.noteId!),
-                    noteRange:
-                        NoteRange.forClefs([getClef(widget.noteModel.noteId!)]),
-                    noteImages: [
-                      NoteImage(
-                          notePosition:
-                              getNotePosition(widget.noteModel.noteId!)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: widget.noteModel.noteId! > 14
+                                ? noteHeighttoOne * height / 7
+                                : 0,
+                            bottom: widget.noteModel.noteId! > 14 ? 0 : 16.0),
+                        child: Container(
+                          width: 10,
+                          height: height * noteHeighttoOne * 0.52,
+                          color: Colors.black,
+                        ),
+                      )
                     ],
-                    clefColor: clefColor,
-                    noteRangeToClip: NoteRange.forClefs(
-                        [getClef(widget.noteModel.noteId!)]), //onemsiz gibi
-                    noteColor: noteColor),
+                  ),
+                  ClefImage(
+                      //TODO: BURDAN BUYUKLIGU AYARLA
+                      size: Size(height * noteHeighttoOne * 1.2,
+                          height * noteHeighttoOne),
+                      clef: getClef(widget.noteModel.noteId!),
+                      noteRange: NoteRange.forClefs(
+                          [getClef(widget.noteModel.noteId!)]),
+                      noteImages: [
+                        NoteImage(
+                            notePosition:
+                                getNotePosition(widget.noteModel.noteId!)),
+                      ],
+                      clefColor: clefColor,
+                      noteRangeToClip: NoteRange.forClefs(
+                          [getClef(widget.noteModel.noteId!)]), //onemsiz gibi
+                      noteColor: noteColor),
+                ],
               ),
               //;}) SizedBox(
               //   height: height / 6,

@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, unused_local_variable
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:note_learning_game/widgets/animated_switch.dart';
 import 'package:note_learning_game/widgets/note_names_preferences_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +11,6 @@ import '../../utils/colors.dart';
 import '../../widgets/clef_widget.dart';
 import '../../widgets/duration_widget.dart';
 import '../../widgets/sound_on_off_widget.dart';
-import '../../widgets/tema_widget.dart';
 import '../../widgets/text_widget.dart';
 
 class SettingsView extends StatefulWidget {
@@ -29,12 +29,12 @@ class _SettingsViewState extends State<SettingsView> {
 
     //LanguagePreferences dropdownValue = viewModel.languagePreferences;
     return Scaffold(
+      backgroundColor: settingsBackgroundColor,
       appBar: AppBar(
           backgroundColor: settingsAppBarBackgroundColor,
           title: Text('settings'.tr(),
-                  style: TextStyle(
+                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                       color: settingsAppBarTextColor,
-                      fontSize: 25,
                       fontWeight: FontWeight.w400))
               .tr(),
           centerTitle: true,
@@ -42,17 +42,23 @@ class _SettingsViewState extends State<SettingsView> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back_ios, color: settingAppBarIconColor),
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: settingAppBarIconColor,
+              size: 35,
+            ),
           )),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            SizedBox(height: height * 0.015),
             TextWidget(text: "sound".tr()),
-            SizedBox(height: height * 0.012),
+            SizedBox(height: height * 0.015),
+
             // sound on off button with icon
             const SoundOnOffWidget(),
-            SizedBox(height: height * 0.012),
+            divider(height),
             // dark mode on off button with icon
             TextWidget(text: "clef".tr()),
             SizedBox(height: height * 0.012),
@@ -64,10 +70,14 @@ class _SettingsViewState extends State<SettingsView> {
                 ClefWidget(context: context, isItTreble: false),
               ],
             ),
-            SizedBox(height: height * 0.012),
+            divider(height),
+
             //note
             //==============DURATION BUTTONS=================
             TextWidget(text: "duration".tr()),
+            SizedBox(
+              height: height * 0.012,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -89,6 +99,7 @@ class _SettingsViewState extends State<SettingsView> {
                     text: "none"),
               ],
             ),
+            divider(height),
 
             SizedBox(height: height * 0.012),
 
@@ -117,11 +128,21 @@ class _SettingsViewState extends State<SettingsView> {
             ),
 
             SizedBox(height: height * 0.012),
+            divider(height),
+            SizedBox(height: height * 0.012),
 
-            const TemaWidget(),
+            // const TemaWidget(),
+            // const AnimatedSwitch()
           ],
         ),
       ),
+    );
+  }
+
+  Divider divider(double height) {
+    return const Divider(
+      color: Colors.black,
+      thickness: 2,
     );
   }
 }

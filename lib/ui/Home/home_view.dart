@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/enums.dart';
+import '../../constants/strings.dart';
 import '../../stores/all_store.dart';
 import '../../utils/colors.dart';
 import '../../widgets/anwers_widget.dart';
@@ -30,6 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final w = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
           child: Center(
@@ -126,13 +128,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 }),
 
                 SizedBox(
-                  height: h * 0.02,
+                  height: h * 0.015,
                 ),
+                //nump
                 QuestionWidget(
                   viewModel: noteViewModel,
                 ),
                 SizedBox(
-                  height: h * 0.03,
+                  height: h * 0.015,
                 ),
                 //numpad gridview
 
@@ -158,39 +161,47 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  FittedBox scoreBar(double h, double w, Color color, String text) {
-    return FittedBox(
-      child: Row(
-        children: [
-          Container(
-            height: h * 0.06,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black, width: 1),
-              color: color,
-              borderRadius: const BorderRadius.all(Radius.circular(25)),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Row(
-                children: [
-                  Text(
-                    text,
-                    style: TextStyle(
-                        fontSize: h >= 400 ? 18 : 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black),
-                  ),
-                  Image.asset(
-                    "assets/images/treble.png",
-                    color: Colors.black,
+  Row scoreBar(
+    double h,
+    double w,
+    Color color,
+    String text,
+  ) {
+    return Row(
+      children: [
+        Container(
+          height: h * 0.06,
+          decoration: BoxDecoration(
+            border: Border.all(
+                color: color == Colors.black ? Colors.white : Colors.black,
+                width: 1),
+            color: color,
+            borderRadius: const BorderRadius.all(Radius.circular(50)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              children: [
+                Text(
+                  text,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      color:
+                          color == Colors.black ? Colors.white : Colors.black),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: Image.asset(
+                    clefAsset,
+                    color: color == Colors.black ? Colors.white : Colors.black,
                     fit: BoxFit.fitHeight,
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
