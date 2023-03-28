@@ -26,7 +26,7 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   runApp(
     DevicePreview(
-      enabled: true,
+      enabled: false,
       builder: (context) {
         return EasyLocalization(
             supportedLocales: const [
@@ -77,7 +77,7 @@ class _MyAppState extends State<MyApp> {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        builder: DevicePreview.appBuilder,
+        //   builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
         //TODO: burada tema değiştiğinde değişecek
         // locale: DevicePreview.locale(context),
