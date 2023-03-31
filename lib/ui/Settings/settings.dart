@@ -6,6 +6,7 @@ import 'package:note_learning_game/widgets/note_names_preferences_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/enums.dart';
+import '../../controller/language_controller.dart';
 import '../../stores/all_store.dart';
 import '../../utils/colors.dart';
 import '../../widgets/clef_widget.dart';
@@ -23,6 +24,7 @@ class SettingsView extends StatefulWidget {
 class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
+     context.watch<LanguageController>();
     final viewModel = Provider.of<AllStore>(context);
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
@@ -127,12 +129,8 @@ class _SettingsViewState extends State<SettingsView> {
               ],
             ),
 
-            SizedBox(height: height * 0.012),
-            divider(height),
-            SizedBox(height: height * 0.012),
-
             // const TemaWidget(),
-            // const AnimatedSwitch()
+            const AnimatedSwitch()
           ],
         ),
       ),

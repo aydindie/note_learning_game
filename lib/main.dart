@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:note_learning_game/controller/language_controller.dart';
 import 'package:note_learning_game/stores/sound_store.dart';
 import 'package:note_learning_game/stores/theme_store.dart';
 import 'package:note_learning_game/ui/Home/home_view.dart';
@@ -41,7 +42,7 @@ void main() async {
             child: MultiProvider(providers: [
               // Provider<LocaleStore>(
               //   create: (_) => LocaleStore(),
-              // ),
+              ChangeNotifierProvider(create: (_) => LanguageController()),
               Provider<ThemeStore>(
                 create: (_) => ThemeStore(),
               ),
@@ -91,8 +92,9 @@ class _MyAppState extends State<MyApp> {
             Theme.of(context).textTheme,
           ),
         ),
-        home:
-            widget.onboardShown ? const MyHomePage() : const OnboardingScreen(),
+        home: widget.onboardShown
+            ? const MyHomePage()
+            : OnboardingScreen(),
         // routes: routeApp
       );
     });

@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../constants/enums.dart';
 import '../../constants/strings.dart';
+import '../../controller/language_controller.dart';
 import '../../stores/all_store.dart';
 import '../../utils/colors.dart';
 import '../../widgets/anwers_widget.dart';
@@ -25,6 +26,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+     context.watch<LanguageController>();
     final noteViewModel = Provider.of<AllStore>(context);
 
     final h = MediaQuery.of(context).size.height;
@@ -37,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Center(
             child: Column(
               children: [
-                const TopIconButtons(),
+                 TopIconButtons(),
                 SizedBox(
                   height: h * 0.02,
                 ),

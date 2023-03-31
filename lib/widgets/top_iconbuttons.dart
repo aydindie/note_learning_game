@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_learning_game/widgets/sound_on_off_widget.dart';
 import 'package:note_learning_game/ui/Onboard/onboarding.dart';
-import 'package:provider/provider.dart';
 
-import '../stores/theme_store.dart';
 import '../ui/Settings/settings.dart';
 import '../utils/colors.dart';
 

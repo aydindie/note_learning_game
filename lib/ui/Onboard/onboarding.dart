@@ -1,10 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:note_learning_game/ui/Home/home_view.dart';
 import 'package:note_learning_game/utils/colors.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../controller/language_controller.dart';
 import '../../models/onboarding_contents.dart';
-import '../../utils/size_config.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -44,9 +46,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
-    double width = SizeConfig.screenW!;
-    double height = SizeConfig.screenH!;
+    Provider.of<LanguageController>(context, listen: false);
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: onBoardBackgroundColor,
@@ -67,13 +69,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       children: [
                         Image.asset(
                           contents[i].image,
-                          height: SizeConfig.blockV! * 35,
+                          height: height / 100 * 35,
                         ),
                         SizedBox(
                           height: (height >= 840) ? 60 : 30,
                         ),
                         Text(
-                          contents[i].title,
+                          contents[i].title.tr(),
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: onboardingTextColor,
@@ -84,7 +86,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         const SizedBox(height: 15),
                         Text(
-                          contents[i].desc,
+                          contents[i].desc.tr(),
                           style: TextStyle(
                             color: onboardingTextColor,
                             fontFamily: "Mulish",
