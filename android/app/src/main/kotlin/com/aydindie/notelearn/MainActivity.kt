@@ -1,4 +1,4 @@
-package com.example.note_learning_game
+package com.aydindie.notelearn
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -2,11 +2,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/enums.dart';
 import '../../constants/strings.dart';
 import '../../controller/language_controller.dart';
+import '../../service/admob_service.dart';
 import '../../stores/all_store.dart';
 import '../../utils/colors.dart';
 import '../../widgets/anwers_widget.dart';
@@ -24,6 +26,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  BannerAd? _banner;
+ 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _createBannerAd();
+   
+  }
+
   @override
   Widget build(BuildContext context) {
     context.watch<LanguageController>();
@@ -35,13 +47,14 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+          padding:
+              const EdgeInsets.symmetric(horizontal: 15.0).copyWith(top: 20),
           child: Center(
             child: Column(
               children: [
                 const TopIconButtons(),
                 SizedBox(
-                  height: h * 0.02,
+                  height: w / h > 0.5 ? h * 0.01 : h * 0.02,
                 ),
                 Observer(builder: (_) {
                   return Row(
@@ -122,22 +135,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 }),
 
                 SizedBox(
-                  height: h * 0.02,
+                  height: w / h > 0.5 ? h * 0.01 : h * 0.02,
                 ),
 
                 Observer(builder: (_) {
                   return const CountdownTimer();
                 }),
-
                 SizedBox(
-                  height: h * 0.015,
+                  height: w / h > 0.5 ? h * 0.01 : h * 0.015,
                 ),
+
                 //nump
                 QuestionWidget(
                   viewModel: noteViewModel,
                 ),
                 SizedBox(
-                  height: h * 0.015,
+                  height: w / h > 0.5 ? h * 0.01 : h * 0.015,
                 ),
                 //numpad gridview
 
@@ -160,6 +173,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
+      bottomNavigationBar: _banner == null
+          ? Container()
+          : Container(
+              margin: const EdgeInsets.only(),
+              height: 52,
+              child: AdWidget(ad: _banner!),
+            ),
     );
   }
 
@@ -206,13 +226,23 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
   }
+
+  //==============Create Ads================
+  void _createBannerAd() {
+    _banner = BannerAd(
+        size: AdSize.fullBanner,
+        adUnitId: AdMobService.bannerAdUnitId!,
+        listener: AdMobService.bannerListener,
+        request: const AdRequest())
+      ..load();
+  }
+
+
+
+  //=================Show Ads=================
+
 }
 
 
 
 
-//  Ink.image(
-//   fit: BoxFit.cover,
-//   image: const NetworkImage(
-//       'https://www.kindacode.com/wp-content/uploads/2022/07/bottle.jpeg'),
-// ),

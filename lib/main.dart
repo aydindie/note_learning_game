@@ -1,8 +1,8 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:note_learning_game/controller/language_controller.dart';
 import 'package:note_learning_game/stores/sound_store.dart';
 import 'package:note_learning_game/stores/theme_store.dart';
@@ -16,6 +16,7 @@ import 'stores/all_store.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.white));
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -28,10 +29,11 @@ void main() async {
 
   await EasyLocalization.ensureInitialized();
   runApp(
-    DevicePreview(
-      enabled: false,
-      builder: (context) {
-        return EasyLocalization(
+    // DevicePreview(
+    //   enabled: false,
+    //   builder: (context) {
+    //     return 
+        EasyLocalization(
             supportedLocales: const [
               Locale('en', 'US'),
               Locale('tr', 'TR'),
@@ -56,9 +58,10 @@ void main() async {
                 create: (_) => NoteModel(),
               ),
               Provider(create: (_) => SoundStore()),
-            ], child: MyApp(onboardShown: onboardShown)));
-      },
-    ),
+            ], child: MyApp(onboardShown: onboardShown)))
+    //         ;
+    //   },
+    // ),
   );
 }
 
@@ -76,6 +79,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Observer(builder: (context) {
       return MaterialApp(
+        title: "Note Learning Game",
         useInheritedMediaQuery: true,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,

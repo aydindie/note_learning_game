@@ -21,6 +21,8 @@ class _CountdownTimerState extends State<CountdownTimer> {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<AllStore>(context);
+    final h = MediaQuery.of(context).size.height;
+    final w = MediaQuery.of(context).size.width;
 
     return Observer(builder: (_) {
       //TODO: burada controllerin dispose olmaması için 0 pixellik bir container oluşturuldu. Bu çözüm geçici bir çözüm. Daha iyi bir çözüm bulunmalı.
@@ -86,8 +88,8 @@ class _CountdownTimerState extends State<CountdownTimer> {
                       //   },
                       //   child:
                       SizedBox(
-                    width: MediaQuery.of(context).size.width / 4,
-                    height: MediaQuery.of(context).size.width / 4,
+                    width: w / h > 0.5 ? w / 5 : w / 4,
+                    height: w / h > 0.5 ? w / 5 : w / 4,
                     child: CircularCountDownTimer(
                       duration: viewModel.defaultDuration,
                       initialDuration: 0,
