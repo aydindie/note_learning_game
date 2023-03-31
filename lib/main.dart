@@ -16,6 +16,8 @@ import 'stores/all_store.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.white));
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool onboardShown = prefs.getBool('onboardShown') ?? false;
   print('onboardShown $onboardShown');
@@ -92,9 +94,8 @@ class _MyAppState extends State<MyApp> {
             Theme.of(context).textTheme,
           ),
         ),
-        home: widget.onboardShown
-            ? const MyHomePage()
-            : OnboardingScreen(),
+        home:
+            widget.onboardShown ? const MyHomePage() : const OnboardingScreen(),
         // routes: routeApp
       );
     });

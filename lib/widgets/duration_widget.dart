@@ -41,7 +41,7 @@ class _DurationWidgetState extends State<DurationWidget> {
               //     color: selectedColor(widget.durationPreferences, allStore),
               //     width: 3),
               color: getColor(widget.durationPreferences, allStore),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(15),
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),

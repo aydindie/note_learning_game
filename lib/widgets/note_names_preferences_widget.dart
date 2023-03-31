@@ -39,7 +39,7 @@ class _NoteNamesWigetState extends State<NoteNamesWiget> {
                   allStore.noteNamesPreferences == widget.noteNamesPreferences
                       ? choosedNoteNamesBackgroundColor
                       : notChoosedNoteNamesBackgroundColor,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(15),
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),

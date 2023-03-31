@@ -170,7 +170,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   ),
                                 ),
                                 child: Text(
-                                  "SKIP",
+                                  "skip".tr(),
                                   style: TextStyle(color: onBoardSkipTextColor),
                                 ),
                               ),
@@ -195,7 +195,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   textStyle: TextStyle(
                                       fontSize: (width <= 550) ? 13 : 17),
                                 ),
-                                child: const Text("NEXT"),
+                                child: Text("next".tr()),
                               ),
                             ],
                           ),

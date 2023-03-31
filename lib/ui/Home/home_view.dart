@@ -26,20 +26,20 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-     context.watch<LanguageController>();
+    context.watch<LanguageController>();
     final noteViewModel = Provider.of<AllStore>(context);
 
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Padding(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
           child: Center(
             child: Column(
               children: [
-                 TopIconButtons(),
+                const TopIconButtons(),
                 SizedBox(
                   height: h * 0.02,
                 ),

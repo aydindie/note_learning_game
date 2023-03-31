@@ -54,7 +54,7 @@ class _AnimatedSwitchState extends State<AnimatedSwitch> {
           width: 70,
           duration: animationDuration,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(15),
             color: themeStore.isDarkMode
                 ? const Color(0xff565671)
                 : const Color(0xff989fd5),

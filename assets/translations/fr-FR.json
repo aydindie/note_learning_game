@@ -28,5 +28,7 @@
   "t4": "Identifiez les notes et choisissez les réponses",
   "d4": "Pour sélectionner une réponse dans les jeux chronométrés, appuyez sur la réponse que vous souhaitez choisir.",
   "t5": "Tout est personnalisable !",
-  "d5": "Vous pouvez ajuster tous les paramètres à partir des paramètres. Vous pouvez également quitter les paramètres à tout moment."
+  "d5": "Vous pouvez ajuster tous les paramètres à partir des paramètres. Vous pouvez également quitter les paramètres à tout moment.",
+  "skip":"Passer",
+  "next":"Suivant"
 }

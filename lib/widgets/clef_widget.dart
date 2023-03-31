@@ -26,8 +26,8 @@ class _ClefWidgetState extends State<ClefWidget> {
       return Column(
         children: [
           Container(
-              width: MediaQuery.of(context).size.width * 0.18,
-              height: MediaQuery.of(context).size.width * 0.24,
+              width: MediaQuery.of(context).size.width * 0.15,
+              height: MediaQuery.of(context).size.width * 0.2,
               decoration: BoxDecoration(
                 color: Colors.black,
                 borderRadius: BorderRadius.circular(15),
