@@ -21,10 +21,13 @@
 
 - 1.  Random aynı nota tekrar gelmemeli
 - 3. BaseView olayı
+
+
+## yapılanlar
+
+- dilleri main de de supported langs te de ekle ✅
+- renkleri constanta at ✅
+- PAKET ISMI ✅
 - 2.  Nota basıldığında ses çıkması ✅
 - aynı notayı dinleyebilmeli ✅
 - uygulama ilk açılırken default değerler olsun ardından değiştiğinde kaydedilsin storage ✅
-- dilleri main de de supported langs te de ekle ✅
-- renkleri constanta at ✅
-
-- PAKET ISMI ✅

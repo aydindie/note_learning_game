@@ -32,8 +32,8 @@ class _AnswersWidgetState extends State<AnswersWidget> {
     _createRewardedAd();
   }
 
-  int INTERSTITAL_AD_LIMIT = 5;
-  int REWARED_AD_LIMIT = 8;
+  int AD_CHANCE = 10;
+  int REWARED_AD_CHANCE = 5;
   RewardedAd? _rewardedAd;
   InterstitialAd? _interstitialAd;
   final _crossAxisCount = 36;
@@ -148,12 +148,14 @@ class _AnswersWidgetState extends State<AnswersWidget> {
   }
 
   void frogOnPressed() {
-    var random = Random().nextInt(INTERSTITAL_AD_LIMIT);
-    var random2 = Random().nextInt(REWARED_AD_LIMIT);
+    var random = Random().nextInt(AD_CHANCE);
+    var random2 = Random().nextInt(REWARED_AD_CHANCE);
     if (random == 0) {
-      showInterstitialAd();
-    } else if (random2 == 0) {
-      showRewardedAd();
+      if (random2 == 0) {
+        showRewardedAd();
+      } else {
+        showInterstitialAd();
+      }
     }
   }
 

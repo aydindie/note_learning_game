@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdMobService {
-  static const isTest = true;
+  static const isTest = false;
 
   static List<String> TEST_IDS = [
     "***REMOVED***", //TEST BANNER Banner
@@ -14,7 +14,7 @@ class AdMobService {
     "***REMOVED***", //TEST Ödüllü
   ];
   static List<String> RELEASE_AD_IDS = [
-"***REMOVED***", // RELEASE BANNER
+    "***REMOVED***", // RELEASE BANNER
     "***REMOVED***", //RELEASE Geçiş reklamı interstitial
     "***REMOVED***", //RELEASE Ödüllü
   ];
