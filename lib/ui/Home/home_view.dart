@@ -27,13 +27,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   BannerAd? _banner;
- 
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _createBannerAd();
-   
+    
   }
 
   @override
@@ -207,6 +207,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text(
                   text,
                   style: TextStyle(
+                      fontSize: w / h > 0.5 ? 16 : 20,
                       fontWeight: FontWeight.w400,
                       color:
                           color == Colors.black ? Colors.white : Colors.black),
@@ -236,13 +237,95 @@ class _MyHomePageState extends State<MyHomePage> {
         request: const AdRequest())
       ..load();
   }
-
-
-
-  //=================Show Ads=================
-
 }
 
+/*
+  Chip scoreBar(
+    double h,
+    double w,
+    Color color,
+    String text,
+  ) {
+    return Chip(
+      // onDeleted: () {},
+      // shape: RoundedRectangleBorder(
+      //   borderRadius: BorderRadius.circular(50),
+      // ),
 
+      // //trailing image
+      // deleteIcon: Image.asset(
+      //   clefAsset,
+      //   color: color == Colors.black ? Colors.white : Colors.black,
+      //   fit: BoxFit.fitHeight,
+      // ),
 
+      // //trailing icon
+      // deleteIconColor: color != Colors.black ? Colors.red : Colors.green,
+//chip border color
+      side: BorderSide(
+          color: color == Colors.black ? Colors.white : Colors.black, width: 1),
 
+      backgroundColor: color,
+      label: Container(
+        constraints: BoxConstraints(
+          maxWidth: w * 0.35,
+        ),
+        height: w / h > 0.5 ? 30 : 30,
+        child: FittedBox(
+          child: Row(
+            children: [
+              Text(
+                text,
+                style: TextStyle(
+                    fontSize: w / h > 0.5 ? 16 : 20,
+                    color: color == Colors.black ? Colors.white : Colors.black),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                child: Image.asset(
+                  clefAsset,
+                  color: color == Colors.black ? Colors.white : Colors.black,
+                  height: w / h > 0.5 ? 30 : 30,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+
+      // child: Container(
+      //   height: h * 0.06,
+      //   decoration: BoxDecoration(
+      //     border: Border.all(
+      //         color: color == Colors.black ? Colors.white : Colors.black,
+      //         width: 1),
+      //     color: color,
+      //     borderRadius: const BorderRadius.all(Radius.circular(50)),
+      //   ),
+      //   child: Padding(
+      //     padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      //     child: Row(
+      //       children: [
+      //         Text(
+      //           text,
+      //           style: TextStyle(
+      //               fontWeight: FontWeight.w400,
+      //               color:
+      //                   color == Colors.black ? Colors.white : Colors.black),
+      //         ),
+      //         Padding(
+      //           padding: const EdgeInsets.symmetric(vertical: 4.0),
+      //           child:
+      // Image.asset(
+      //             clefAsset,
+      //             color: color == Colors.black ? Colors.white : Colors.black,
+      //             fit: BoxFit.fitHeight,
+      //           ),
+      //         )
+      //       ],
+      //     ),
+      //   ),
+      // ),
+    );
+  }
+*/
