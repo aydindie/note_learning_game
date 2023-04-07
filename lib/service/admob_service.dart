@@ -2,12 +2,10 @@
 
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdMobService {
-  static const isTest = false;
-
   static List<String> TEST_IDS = [
     "***REMOVED***", //TEST BANNER Banner
     "***REMOVED***", // TEST Geçiş reklamı interstitial
@@ -21,7 +19,7 @@ class AdMobService {
 
   static String? get bannerAdUnitId {
     if (Platform.isAndroid) {
-      return isTest ? TEST_IDS[0] : RELEASE_AD_IDS[0];
+      return kDebugMode ? TEST_IDS[0] : RELEASE_AD_IDS[0];
     } else if (Platform.isIOS) {
       return "***REMOVED***";
     } else {
@@ -31,7 +29,7 @@ class AdMobService {
 
   static String? get interstitialUnitAdId {
     if (Platform.isAndroid) {
-      return isTest ? TEST_IDS[1] : RELEASE_AD_IDS[1];
+      return kDebugMode ? TEST_IDS[1] : RELEASE_AD_IDS[1];
     } else if (Platform.isIOS) {
       return "***REMOVED***";
     } else {
@@ -41,7 +39,7 @@ class AdMobService {
 
   static String? get rewardedAdUnitId {
     if (Platform.isAndroid) {
-      return isTest ? TEST_IDS[2] : RELEASE_AD_IDS[2];
+      return kDebugMode ? TEST_IDS[2] : RELEASE_AD_IDS[2];
     } else if (Platform.isIOS) {
       return "***REMOVED***";
     } else {
