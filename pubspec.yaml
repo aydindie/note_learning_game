@@ -62,14 +62,14 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#ffffff"
-  image: "assets/images/splash_logo_w_border.png"
+  image: "assets/images/without_newx512.png"
   branding: "assets/images/Group16(1).png"
   branding_mode: bottom
   android: true
   ios: true
 
   android_12:
-    image: "assets/images/splash_logo_w_border.png"
+    image: "assets/images/without_newx512.png"
     #image: assets/android12splash.png
     # The image parameter sets the splash screen icon image.  If this parameter is not specified,
     # the app's launcher icon will be used instead.
@@ -99,7 +99,7 @@ flutter_native_splash:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/logo1.png"
+  image_path: "assets/images/without_newx2000.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
 
 flutter:
