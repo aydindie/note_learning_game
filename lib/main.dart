@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -28,6 +29,7 @@ void main() async {
   ]);
 
   await EasyLocalization.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   runApp(
     // DevicePreview(
     //   enabled: false,
