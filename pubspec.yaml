@@ -51,6 +51,7 @@ dependencies:
 
   # ads
   google_mobile_ads: ^2.4.0
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -111,6 +112,7 @@ flutter:
     - assets/piano-mp3/
     - assets/images/
     - assets/translations/
+    - .env
 
   fonts:
     - family: Mulish
