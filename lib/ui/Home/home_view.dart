@@ -11,8 +11,8 @@ import '../../controller/language_controller.dart';
 import '../../service/admob_service.dart';
 import '../../stores/all_store.dart';
 import '../../utils/colors.dart';
+import '../../widgets/LinearTimer.dart';
 import '../../widgets/anwers_widget.dart';
-import '../../widgets/countdown_timer.dart';
 import '../../widgets/question_widget.dart';
 import '../../widgets/top_iconbuttons.dart';
 
@@ -134,6 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 }),
 
+
                 SizedBox(
                   height: w / h > 0.5 ? h * 0.01 : h * 0.02,
                 ),
@@ -145,6 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: w / h > 0.5 ? h * 0.01 : h * 0.015,
                 ),
 
+
                 //nump
                 QuestionWidget(
                   viewModel: noteViewModel,
@@ -153,6 +155,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: w / h > 0.5 ? h * 0.01 : h * 0.015,
                 ),
                 //numpad gridview
+                LinearTimer(
+                  durationMiliseconds: 10 * 1000,
+                  onTimerFinish: () {
+                    print("Timer finished");
+                  },
+                ),
+                SizedBox(
+                  height: h * 0.03,
+                ),
+                // const LinearStoreTimer(),
 
                 // const LinearStoreTimer(),
 
@@ -182,6 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
     );
   }
+
 
   Row scoreBar(
     double h,
@@ -225,6 +238,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ],
+
     );
   }
 

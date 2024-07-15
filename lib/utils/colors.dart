@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+
 //Sound
 Color soundBackgroundColor = Colors.black;
 Color soundIconColor = Colors.white;
@@ -9,10 +10,12 @@ Color iconsColors = Colors.black;
 //OnBoarding
 Color onBoardBackgroundColor = Colors.white;
 
+
 Color onboardingTextColor = Colors.black;
 Color onBoardLineColor = Colors.black;
 Color onBoardElevatedButtonColor = Colors.black;
 Color onBoardSkipTextColor = Colors.black;
+
 
 //score
 Color bestScoreBackgroundColor = Colors.black;
@@ -20,9 +23,11 @@ Color currentScoreBackgroundColor = Colors.white;
 //Timer
 Color timerRingColor = Colors.grey;
 Color timerFillColor = Colors.black;
+
 Color timerBackgroundColor = Colors.transparent;
 Color timerDarkModeTextColor = Colors.black;
 Color timerLightModeTextColor = Colors.black;
+
 //kullanımıyo
 
 //Question
@@ -56,3 +61,4 @@ Color homescaffoldBgColor = Colors.white;
 Color settingsBackgroundColor = Colors.white;
 int noteLineHeight = 3;
 double noteHeighttoOne = 0.2;
+

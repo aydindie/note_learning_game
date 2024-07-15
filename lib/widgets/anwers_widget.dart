@@ -70,7 +70,7 @@ class _AnswersWidgetState extends State<AnswersWidget> {
               color: (viewModel.noteIndex % 7 == index)
                   ? correctAnswerBackgroundColor
                   : wrongAnswerBackgroundColor,
-              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(25)),
             ),
             child: TouchableOpacity(
                 //enableFeedback: false,
@@ -106,23 +106,27 @@ class _AnswersWidgetState extends State<AnswersWidget> {
                   width: w / 3.2,
                   decoration: BoxDecoration(
                     color: answerBackgroundColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    borderRadius: const BorderRadius.all(Radius.circular(25)),
                   ),
                   child: Center(
                     child: Text(
                       viewModel.defaultList[index],
                       style: TextStyle(
+
                           color: answerTextColor,
                           fontSize: 35,
                           fontWeight: FontWeight.w400),
+
                     ),
                   ),
                 )),
           );
         })),
         staggeredTileBuilder: (int index) => StaggeredTile.count(
+
             index == (_itemCount - 1) ? _crossAxisCount : 12,
             ratio >= 0.5 ? 8 : 9),
+
       ),
     );
   }
