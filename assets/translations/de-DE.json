@@ -16,5 +16,20 @@
     "english": "Englisch",
     "german": "Deutsch",
     "french": "Französisch",
-    "turkish": "Türkisch"
+    "turkish": "Türkisch",
+"t": "Öffne den Ton, um die Noten zu hören",
+"d": "Du kannst den Ton jederzeit von der Startseite oder den Einstellungen aus ein- oder ausschalten. Du kannst auf die Note klicken, um sie erneut anzuhören.",
+"t1": "Lerne und verbessere deinen Punktestand, indem du spielst",
+"d1": "Je nach Spieltyp kannst du verschiedene Besten- und aktuellen Punktestände verfolgen.",
+"t2": "Stelle die Zeit in den zeitgebundenen Spielen ein",
+"d2": "Du kannst die Zeit in den zeitgebundenen Spielen einstellen und das Spiel jederzeit pausieren.",
+"t3": "Starte das Spiel in den zeitgebundenen Spielen",
+"d3": "Klicke auf das grüne Abspielsymbol, um das Spiel in den zeitgebundenen Spielen zu starten. Du kannst auf die Note klicken, um sie erneut anzuhören.",
+"t4": "Erkenne die Note und wähle die Antworten aus",
+"d4": "In den zeitgebundenen Spielen kannst du die Antworten auswählen, indem du auf die Antwort klickst, die du auswählen möchtest.",
+"t5": "Alles einstellen!",
+"d5": "Du kannst alle Einstellungen von den Einstellungen aus ändern. Du kannst jederzeit aus den Einstellungen aussteigen.",
+"skip": "Überspringen",
+"next": "Nächster"
+   
 }

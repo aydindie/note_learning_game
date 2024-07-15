@@ -29,25 +29,42 @@ class _NoteNamesWigetState extends State<NoteNamesWiget> {
   Widget build(BuildContext context) {
     final allStore = Provider.of<AllStore>(widget.context);
     return Observer(builder: (_) {
-      return Container(
-        width: MediaQuery.of(context).size.width * 0.2,
-        height: MediaQuery.of(context).size.width * 0.12,
-        decoration: BoxDecoration(
-          color: allStore.noteNamesPreferences == widget.noteNamesPreferences
-              ? choosedNoteNamesBackgroundColor
-              : notChoosedNoteNamesBackgroundColor,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-          child: InkWell(
-              enableFeedback: false,
-              onTap: () => allStore
-                  .changeNoteNamesPreferences(widget.noteNamesPreferences),
-              child: Center(
-                child: Text(widget.text),
-              )),
-        ),
+      return Column(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width * 0.23,
+            height: MediaQuery.of(context).size.width * 0.12,
+            decoration: BoxDecoration(
+              color:
+                  allStore.noteNamesPreferences == widget.noteNamesPreferences
+                      ? choosedNoteNamesBackgroundColor
+                      : notChoosedNoteNamesBackgroundColor,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+              child: InkWell(
+                  enableFeedback: false,
+                  onTap: () => allStore
+                      .changeNoteNamesPreferences(widget.noteNamesPreferences),
+                  child: Center(
+                    child: FittedBox(
+                      child: Text(widget.text,
+                          style: const TextStyle(color: Colors.white)),
+                    ),
+                  )),
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.width * 0.02,
+          ),
+          CircleAvatar(
+              backgroundColor:
+                  allStore.noteNamesPreferences == widget.noteNamesPreferences
+                      ? Colors.black
+                      : Colors.transparent,
+              radius: 7)
+        ],
       );
     });
   }

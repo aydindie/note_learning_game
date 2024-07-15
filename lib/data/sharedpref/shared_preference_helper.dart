@@ -136,6 +136,7 @@ class SharedPreferenceHelper {
 
     return ourIntsave;
   }
+
   //======================NoteNamesPreferences====================
   Future<NoteNamesPreferences?> getNoteNamesPreferences() async {
     SharedPreferences sharedPreference = await SharedPreferences.getInstance();

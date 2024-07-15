@@ -16,4 +16,7 @@ class Preferences {
   static const String best_score_20s = "best_score_20s";
   static const String best_score_1m = "best_score_1m";
   static const String best_score_5m = "best_score_5m";
+   static const String onboarding = "onboarding";
+
+
 }

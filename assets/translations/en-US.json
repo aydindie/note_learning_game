@@ -16,5 +16,19 @@
     "english": "English",
     "german": "German",
     "french": "French",
-    "turkish": "Turkish"
+    "turkish": "Turkish",
+ "t": "Turn up the volume to hear the notes",
+"d": "You can turn the sound on and off anytime from the home screen or the settings. Tap on a note to listen to it again.",
+"t1": "Learn as you play and increase your score",
+"d1": "You can view your best and current score separately according to the type of the game.",
+"t2": "Set the duration in timed games",
+"d2": "You can set the duration in timed games and pause the game whenever you want.",
+"t3": "Start the game in timed games",
+"d3": "Tap on the green play icon to start the game in timed games. Tap on a note to listen to it again.",
+"t4": "Recognize the notes and select the answers",
+"d4": "Tap on the answer you want to select in timed games.",
+"t5": "Customize everything!",
+"d5": "You can adjust all settings from the settings. You can also log out anytime from the settings.",
+"skip": "SKIP",
+"next": "NEXT"
 }

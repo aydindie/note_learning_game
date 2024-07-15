@@ -17,36 +17,26 @@ class SoundOnOffWidget extends StatefulWidget {
 class _SoundOnOffWidgetState extends State<SoundOnOffWidget> {
   @override
   Widget build(BuildContext context) {
+    final h = MediaQuery.of(context).size.height;
+    final w = MediaQuery.of(context).size.width;
     final soundStore = Provider.of<SoundStore>(context);
 
     return Observer(builder: (_) {
       return Container(
         decoration: BoxDecoration(
-          color: soundStore.soundBool ? soundOnColor : soundOffColor,
+          color: soundBackgroundColor,
           borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            color:
-                soundStore.soundBool ? soundOnBorderColor : soundOffBorderColor,
-            width: 1,
-          ),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 11),
           child: InkWell(
-            enableFeedback: false,
-            onTap: () => soundStore.changeSound(),
-            child: soundStore.soundBool
-                ? Icon(
-                    Icons.volume_up,
-                    color: soundOnIconColor,
-                    size: 31,
-                  )
-                : Icon(
-                    Icons.volume_off,
-                    color: soundOffIconColor,
-                    size: 31,
-                  ),
-          ),
+              enableFeedback: false,
+              onTap: () => soundStore.changeSound(),
+              child: Icon(
+                soundStore.soundBool ? Icons.volume_up : Icons.volume_off,
+                size: h >= 400 ? 35 : 32,
+                color: soundIconColor,
+              )),
         ),
       );
     });

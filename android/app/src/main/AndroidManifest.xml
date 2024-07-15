@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.note_learning_game">
+    package="com.aydindie.notelearn">
    <application
-        android:label="note_learning_game"
+        android:label="Learn Note"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -30,5 +30,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+            <!-- ca-app-pub-3265244036892964~1661772664 -->
+             <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3265244036892964~1661772664"/>
     </application>
 </manifest>

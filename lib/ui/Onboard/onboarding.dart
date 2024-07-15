@@ -1,8 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:note_learning_game/ui/Home/home_view.dart';
 import 'package:note_learning_game/utils/colors.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../controller/language_controller.dart';
 import '../../models/onboarding_contents.dart';
-import '../../utils/size_config.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -21,7 +25,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   int _currentPage = 0;
- 
 
   AnimatedContainer _buildDots({
     int? index,
@@ -43,12 +46,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
-    double width = SizeConfig.screenW!;
-    double height = SizeConfig.screenH!;
+    Provider.of<LanguageController>(context, listen: false);
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: onBoardColors[_currentPage],
+      backgroundColor: onBoardBackgroundColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -66,15 +69,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       children: [
                         Image.asset(
                           contents[i].image,
-                          height: SizeConfig.blockV! * 35,
+                          height: height / 100 * 35,
                         ),
                         SizedBox(
                           height: (height >= 840) ? 60 : 30,
                         ),
                         Text(
-                          contents[i].title,
+                          contents[i].title.tr(),
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                            color: onboardingTextColor,
                             fontFamily: "Mulish",
                             fontWeight: FontWeight.w600,
                             fontSize: (width <= 550) ? 30 : 35,
@@ -82,8 +86,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         const SizedBox(height: 15),
                         Text(
-                          contents[i].desc,
+                          contents[i].desc.tr(),
                           style: TextStyle(
+                            color: onboardingTextColor,
                             fontFamily: "Mulish",
                             fontWeight: FontWeight.w300,
                             fontSize: (width <= 550) ? 17 : 25,
@@ -114,8 +119,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ? Padding(
                           padding: const EdgeInsets.all(30),
                           child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.pop(context);
+                            onPressed: () async {
+                              SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
+                              await prefs.setBool('onboardShown', true);
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const MyHomePage()),
+                              );
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: onBoardElevatedButtonColor,
@@ -130,7 +142,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               textStyle:
                                   TextStyle(fontSize: (width <= 550) ? 13 : 17),
                             ),
-                            child: const Text("START"),
+                            child: const Text("start").tr(),
                           ),
                         )
                       : Padding(
@@ -139,8 +151,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
+                                onPressed: () async {
+                                  SharedPreferences prefs =
+                                      await SharedPreferences.getInstance();
+                                  await prefs.setBool('onboardShown', true);
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const MyHomePage()),
+                                  );
                                 },
                                 style: TextButton.styleFrom(
                                   elevation: 0,
@@ -150,7 +170,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   ),
                                 ),
                                 child: Text(
-                                  "SKIP",
+                                  "skip".tr(),
                                   style: TextStyle(color: onBoardSkipTextColor),
                                 ),
                               ),
@@ -175,7 +195,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   textStyle: TextStyle(
                                       fontSize: (width <= 550) ? 13 : 17),
                                 ),
-                                child: const Text("NEXT"),
+                                child: Text("next".tr()),
                               ),
                             ],
                           ),

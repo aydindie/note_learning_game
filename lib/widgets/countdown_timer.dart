@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import '../constants/enums.dart';
 import '../constants/isDebug.dart';
 import '../stores/all_store.dart';
-import '../stores/theme_store.dart';
 import '../utils/colors.dart';
 
 class CountdownTimer extends StatefulWidget {
@@ -22,7 +21,8 @@ class _CountdownTimerState extends State<CountdownTimer> {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<AllStore>(context);
-    final themeModel = Provider.of<ThemeStore>(context);
+    final h = MediaQuery.of(context).size.height;
+    final w = MediaQuery.of(context).size.width;
 
     return Observer(builder: (_) {
       //TODO: burada controllerin dispose olmaması için 0 pixellik bir container oluşturuldu. Bu çözüm geçici bir çözüm. Daha iyi bir çözüm bulunmalı.
@@ -42,9 +42,10 @@ class _CountdownTimerState extends State<CountdownTimer> {
                 strokeCap: StrokeCap.round,
                 textStyle: TextStyle(
                     fontSize: 33.0,
-                    color: themeModel.isDarkMode
-                        ? timerDarkModeTextColor
-                        : timerLightModeTextColor,
+                    color: //themeModel.isDarkMode
+                        // ?
+                        timerDarkModeTextColor,
+                    //  : timerLightModeTextColor,
                     fontWeight: FontWeight.bold),
                 isReverse: true,
                 autoStart: false,
@@ -86,78 +87,68 @@ class _CountdownTimerState extends State<CountdownTimer> {
                       //     viewModel.countDownController.start();
                       //   },
                       //   child:
-                      CircularCountDownTimer(
-                    // timerin iç yuvarlağını dolduran renk
-                    backgroundGradient:  LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: timerBackgroundGradientColors,
-                    ),
-                    //akan zaman üstte
-                    fillGradient:  LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: timerFillGradientColors,
-                    ),
-                    //arkada kalan renk akmayan tüm zaman
-                    ringGradient:  SweepGradient(
-                      colors: timerRingGradientColors,
-                    ),
+                      SizedBox(
+                    width: w / h > 0.5 ? w / 5 : w / 4,
+                    height: w / h > 0.5 ? w / 5 : w / 4,
+                    child: CircularCountDownTimer(
+                      duration: viewModel.defaultDuration,
+                      initialDuration: 0,
+                      controller: viewModel.countDownController,
+                      width: MediaQuery.of(context).size.width / 4,
+                      height: MediaQuery.of(context).size.width / 4,
+                      ringColor: timerRingColor,
+                      fillColor: timerFillColor,
+                      backgroundColor: timerBackgroundColor,
+                      strokeWidth: 5.0,
+                      strokeCap: StrokeCap.round,
+                      textStyle: TextStyle(
+                          fontSize: 33.0,
+                          color:
+                              // themeModel.isDarkMode?
+                              timerDarkModeTextColor,
+                          // : timerLightModeTextColor,
+                          fontWeight: FontWeight.w300),
+                      textFormat: CountdownTextFormat.S,
+                      isReverse: true,
+                      isReverseAnimation: false,
+                      isTimerTextShown: true,
+                      autoStart: false,
+                      onStart: () {
+                        viewModel.resetScore20s();
+                        viewModel.resetScore1m();
+                        viewModel.resetScore5m();
+                        viewModel.counterStarted();
+                        viewModel.counterNotFinished();
+                      },
+                      onComplete: () {
+                        debugPrint('Countdown Ended');
+                        viewModel.counterStopped();
+                        viewModel.counterFinished();
+                        //burada skorlan sıfırlanmamalı o yüzden kaldırdım
 
-                    duration: viewModel.defaultDuration,
-                    initialDuration: 0,
-                    controller: viewModel.countDownController,
-                    width: MediaQuery.of(context).size.width / 4,
-                    height: MediaQuery.of(context).size.width / 4,
-                    ringColor: timerRingColor,
-                    fillColor: timerFillColor,
-                    backgroundColor: timerBackgroundColor,
-                    strokeWidth: 5.0,
-                    strokeCap: StrokeCap.round,
-                    textStyle: TextStyle(
-                        fontSize: 33.0,
-                        color: themeModel.isDarkMode
-                            ? timerDarkModeTextColor
-                            : timerLightModeTextColor,
-                        fontWeight: FontWeight.bold),
-                    textFormat: CountdownTextFormat.S,
-                    isReverse: true,
-                    isReverseAnimation: false,
-                    isTimerTextShown: true,
-                    autoStart: false,
-                    onStart: () {
-                      viewModel.resetScore20s();
-                      viewModel.resetScore1m();
-                      viewModel.resetScore5m();
-                      viewModel.counterStarted();
-                      viewModel.counterNotFinished();
-                    },
-                    onComplete: () {
-                      debugPrint('Countdown Ended');
-                      viewModel.counterStopped();
-                      viewModel.counterFinished();
-                      viewModel.resetScore20s();
-                      viewModel.resetScore1m();
-                      viewModel.resetScore5m();
-                    },
-                    onChange: (String timeStamp) {
-                      debugPrint('Countdown Changed $timeStamp');
-                    },
+                        // viewModel.resetScore20s();
+                        // viewModel.resetScore1m();
+                        // viewModel.resetScore5m();
+                      },
+                      onChange: (String timeStamp) {
+                        debugPrint('Countdown Changed $timeStamp');
+                      },
 
-                    timeFormatterFunction:
-                        (defaultFormatterFunction, duration) {
-                      // if (duration.inMilliseconds ==
-                      //         viewModel.defaultDuration * 1000 ||
-                      //     duration.inMilliseconds == 0) {
-                      //   return "start".tr();
-                      // } else
+                      timeFormatterFunction:
+                          (defaultFormatterFunction, duration) {
+                        // if (duration.inMilliseconds ==
+                        //         viewModel.defaultDuration * 1000 ||
+                        //     duration.inMilliseconds == 0) {
+                        //   return "start".tr();
+                        // } else
 
-                      {
-                        return Function.apply(
-                            defaultFormatterFunction, [duration]);
-                      }
-                    },
-                    // ),
+                        {
+                          return Function.apply(
+                              defaultFormatterFunction, [duration]);
+                        }
+                      },
+                      // ),
+                    ),
                   );
                 }),
               ],

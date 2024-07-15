@@ -1,7 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
+
+import '../constants/strings.dart';
+
 class OnboardingContents {
-  final String title;
-  final String image;
-  final String desc;
+   String title;
+   String image;
+   String desc;
 
   OnboardingContents({
     required this.title,
@@ -12,20 +16,44 @@ class OnboardingContents {
 
 List<OnboardingContents> contents = [
   OnboardingContents(
-    title: "Track Your work and get the result",
-    image: "assets/images/image1.png",
-    desc: "Remember to keep track of your professional accomplishments.",
+    title: "t",
+    image: contentAsset,
+    desc: "d",
   ),
   OnboardingContents(
-    title: "Stay organized with team",
-    image: "assets/images/image2.png",
-    desc:
-        "But understanding the contributions our colleagues make to our teams and companies.",
+    title: "t1",
+    image: contentAsset1,
+    desc: "d1",
   ),
+  //onboarding about duraiton
   OnboardingContents(
-    title: "Get notified when work happens",
-    image: "assets/images/image3.png",
-    desc:
-        "Take control of notifications, collaborate live or on your own time.",
+    title: "t2",
+    image: contentAsset2,
+    desc: "d2",
   ),
+  //onboarding about note  widget with play button
+  OnboardingContents(
+    title: "t3",
+    image: contentAsset3,
+    desc: "d3",
+  ),
+  //onboarding about note answer optons
+  OnboardingContents(
+    title: "t4",
+    image: contentAsset4,
+    desc: "d4",
+  ),
+  //onboaard  tum ayarları ayarlardan düzeltebilirsin
+  OnboardingContents(
+    title: "t5",
+    image: contentAsset5,
+    desc: "d5",
+  ),
+
+  // OnboardingContents(
+  //   title: "Get notified when work happens",
+  //   image: "assets/images/image3.png",
+  //   desc:
+  //       "Take control of notifications, collaborate live or on your own time.",
+  // ),
 ];

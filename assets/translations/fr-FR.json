@@ -16,5 +16,19 @@
     "english": "Anglaise",
     "german": "Allemande",
     "french": "Français",
-    "turkish": "Turque"
+    "turkish": "Turque",
+"t": "Augmentez le volume pour entendre les notes",
+  "d": "Vous pouvez activer et désactiver le son à tout moment à partir de l'écran principal ou des paramètres. Appuyez sur une note pour l'écouter à nouveau.",
+  "t1": "Apprenez en jouant et améliorez votre score.",
+  "d1": "Selon le type de jeu, vous pouvez consulter votre meilleur score et votre score en temps réel.",
+  "t2": "Réglez la durée des jeux chronométrés",
+  "d2": "Vous pouvez régler la durée des jeux chronométrés et les arrêter quand vous le souhaitez.",
+  "t3": "Démarrez le jeu chronométré",
+  "d3": "Appuyez sur le bouton de lecture vert pour démarrer le jeu chronométré. Appuyez sur une note pour l'écouter à nouveau.",
+  "t4": "Identifiez les notes et choisissez les réponses",
+  "d4": "Pour sélectionner une réponse dans les jeux chronométrés, appuyez sur la réponse que vous souhaitez choisir.",
+  "t5": "Tout est personnalisable !",
+  "d5": "Vous pouvez ajuster tous les paramètres à partir des paramètres. Vous pouvez également quitter les paramètres à tout moment.",
+  "skip":"Passer",
+  "next":"Suivant"
 }

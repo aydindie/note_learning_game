@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+import '../../utils/colors.dart';
 import 'clef.dart';
 import 'clef_painter.dart';
 import 'note_range.dart';
@@ -22,7 +23,7 @@ class ClefImage extends StatelessWidget {
     required this.noteColor,
     this.size = Size.zero,
     NoteRange? noteRangeToClip,
-  })  : this.noteRangeToClip = noteRangeToClip ?? noteRange,
+  })  : noteRangeToClip = noteRangeToClip ?? noteRange,
         super(key: key);
 
   @override
@@ -34,7 +35,7 @@ class ClefImage extends StatelessWidget {
           noteColor: noteColor,
           noteRange: noteRange,
           noteRangeToClip: noteRangeToClip,
-          lineHeight: 1,
+          lineHeight: noteLineHeight,
           noteImages: noteImages,
         ),
         size: size,
