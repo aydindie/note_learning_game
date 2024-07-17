@@ -4,29 +4,6 @@ Download the app from the Google Play Store:
 [![Learn Note](image.png)](https://play.google.com/store/apps/details?id=com.aydindie.notelearn)
 
 
-## Added Features
-
-- **Ad-Free Version**: Implemented in-app purchase option to remove advertisements.
-- **Dark Mode**: Enabled dark mode for improved visibility in low-light environments.
-- **Vibrate**: Added haptic feedback for enhanced user interaction.
-- **Score Decrease**: Implemented feature to decrease user scores.
-- **Average Score**: Displayed average scores for better user engagement.
-- **Scoreboard**: Added scoreboard to track and display high scores.
-
-## Potential Future Features
-
-- Ensure random notes do not repeat consecutively.
-- Implement BaseView for cleaner UI management.
-
-## Completed Tasks
-
-- Added support for multiple languages in both `main.dart` and `supported_langs.dart` ✅
-- Defined colors as constants to maintain consistent theming ✅
-- Updated package name for clarity and consistency ✅
-- Implemented sound feedback when notes are tapped ✅
-- Enabled ability to replay the same note ✅
-- Initialized default values on app launch, with changes saved to storage ✅
-
 ## How to Configure
 
 To configure your project for different environments (development, testing, production), follow these steps:
@@ -61,3 +38,26 @@ in app images:
 <img src="Screenshot_1721076714.png" alt="image1" width="200" height="400">
 <img src="Screenshot_1721076698.png" alt="image1" width="200" height="400">
 <img src="Screenshot_1721076709.png" alt="image1" width="200" height="400">
+
+
+
+
+## Potential Future Features
+
+- Ensure random notes do not repeat consecutively.
+- Implement BaseView for cleaner UI management.
+- **Ad-Free Version**: Implemented in-app purchase option to remove advertisements.
+- **Dark Mode**: Enabled dark mode for improved visibility in low-light environments.
+- **Vibrate**: Added haptic feedback for enhanced user interaction.
+- **Score Decrease**: Implemented feature to decrease user scores.
+- **Average Score**: Displayed average scores for better user engagement.
+- **Scoreboard**: Added scoreboard to track and display high scores.
+## Completed Tasks
+
+- Added support for multiple languages in both `main.dart` and `supported_langs.dart` ✅
+- Defined colors as constants to maintain consistent theming ✅
+- Updated package name for clarity and consistency ✅
+- Implemented sound feedback when notes are tapped ✅
+- Enabled ability to replay the same note ✅
+- Initialized default values on app launch, with changes saved to storage ✅
+
