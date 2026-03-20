@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:mobx/mobx.dart' show reaction, ReactionDisposer;
 import 'package:provider/provider.dart';
 
 import '../../constants/enums.dart';
@@ -27,13 +28,40 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   BannerAd? _banner;
+  InterstitialAd? _interstitialAd;
+  ReactionDisposer? _gameOverReaction;
+  bool _reactionSetUp = false;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _createBannerAd();
-    
+    _createInterstitialAd();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_reactionSetUp) {
+      _reactionSetUp = true;
+      final viewModel = Provider.of<AllStore>(context, listen: false);
+      _gameOverReaction = reaction(
+        (_) => viewModel.isCounterFinished,
+        (bool finished) {
+          if (finished) {
+            _showInterstitialAd();
+          }
+        },
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _gameOverReaction?.call();
+    _banner?.dispose();
+    _interstitialAd?.dispose();
+    super.dispose();
   }
 
   @override
@@ -145,29 +173,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: w / h > 0.5 ? h * 0.01 : h * 0.015,
                 ),
 
-                //nump
                 QuestionWidget(
                   viewModel: noteViewModel,
                 ),
                 SizedBox(
                   height: w / h > 0.5 ? h * 0.01 : h * 0.015,
                 ),
-                //numpad gridview
-
-                // const LinearStoreTimer(),
 
                 const AnswersWidget(),
-
-                // Observer(builder: (_) {
-                //   return Center(
-                //     child: Switch(
-                //       value: themeStore.isDarkMode,
-                //       onChanged: (value) {
-                //         themeStore.toggleTheme();
-                //       },
-                //     ),
-                //   );
-                // }),
               ],
             ),
           ),
@@ -237,95 +250,31 @@ class _MyHomePageState extends State<MyHomePage> {
         request: const AdRequest())
       ..load();
   }
-}
 
-/*
-  Chip scoreBar(
-    double h,
-    double w,
-    Color color,
-    String text,
-  ) {
-    return Chip(
-      // onDeleted: () {},
-      // shape: RoundedRectangleBorder(
-      //   borderRadius: BorderRadius.circular(50),
-      // ),
-
-      // //trailing image
-      // deleteIcon: Image.asset(
-      //   clefAsset,
-      //   color: color == Colors.black ? Colors.white : Colors.black,
-      //   fit: BoxFit.fitHeight,
-      // ),
-
-      // //trailing icon
-      // deleteIconColor: color != Colors.black ? Colors.red : Colors.green,
-//chip border color
-      side: BorderSide(
-          color: color == Colors.black ? Colors.white : Colors.black, width: 1),
-
-      backgroundColor: color,
-      label: Container(
-        constraints: BoxConstraints(
-          maxWidth: w * 0.35,
-        ),
-        height: w / h > 0.5 ? 30 : 30,
-        child: FittedBox(
-          child: Row(
-            children: [
-              Text(
-                text,
-                style: TextStyle(
-                    fontSize: w / h > 0.5 ? 16 : 20,
-                    color: color == Colors.black ? Colors.white : Colors.black),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Image.asset(
-                  clefAsset,
-                  color: color == Colors.black ? Colors.white : Colors.black,
-                  height: w / h > 0.5 ? 30 : 30,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-
-      // child: Container(
-      //   height: h * 0.06,
-      //   decoration: BoxDecoration(
-      //     border: Border.all(
-      //         color: color == Colors.black ? Colors.white : Colors.black,
-      //         width: 1),
-      //     color: color,
-      //     borderRadius: const BorderRadius.all(Radius.circular(50)),
-      //   ),
-      //   child: Padding(
-      //     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      //     child: Row(
-      //       children: [
-      //         Text(
-      //           text,
-      //           style: TextStyle(
-      //               fontWeight: FontWeight.w400,
-      //               color:
-      //                   color == Colors.black ? Colors.white : Colors.black),
-      //         ),
-      //         Padding(
-      //           padding: const EdgeInsets.symmetric(vertical: 4.0),
-      //           child:
-      // Image.asset(
-      //             clefAsset,
-      //             color: color == Colors.black ? Colors.white : Colors.black,
-      //             fit: BoxFit.fitHeight,
-      //           ),
-      //         )
-      //       ],
-      //     ),
-      //   ),
-      // ),
-    );
+  void _createInterstitialAd() {
+    InterstitialAd.load(
+        adUnitId: AdMobService.interstitialUnitAdId!,
+        request: const AdRequest(),
+        adLoadCallback: InterstitialAdLoadCallback(
+          onAdLoaded: (ad) => _interstitialAd = ad,
+          onAdFailedToLoad: (LoadAdError error) => _interstitialAd = null,
+        ));
   }
-*/
+
+  void _showInterstitialAd() {
+    if (_interstitialAd != null) {
+      _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
+        onAdDismissedFullScreenContent: (ad) {
+          ad.dispose();
+          _createInterstitialAd();
+        },
+        onAdFailedToShowFullScreenContent: (ad, error) {
+          ad.dispose();
+          _createInterstitialAd();
+        },
+      );
+      _interstitialAd!.show();
+      _interstitialAd = null;
+    }
+  }
+}

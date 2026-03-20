@@ -98,6 +98,7 @@ class _MyAppState extends State<MyApp> {
         //   ),
         // ),
         theme: ThemeData(
+          useMaterial3: false,
           textTheme: GoogleFonts.robotoSlabTextTheme(
             Theme.of(context).textTheme,
           ),

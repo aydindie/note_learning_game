@@ -40,7 +40,7 @@ class QuestionWidget extends StatelessWidget {
           ),
           (viewModel.isCounterStarted &&
                       (!viewModel.isCounterFinished) &&
-                      viewModel.countDownController.isStarted) ||
+                      viewModel.countDownController.isStarted.value) ||
                   (viewModel.durationPreferences == DurationPreferences.NONE)
               ? Container()
               : Row(

@@ -131,6 +131,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: onBoardElevatedButtonColor,
+                              foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
@@ -140,7 +141,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   : EdgeInsets.symmetric(
                                       horizontal: width * 0.2, vertical: 25),
                               textStyle:
-                                  TextStyle(fontSize: (width <= 550) ? 13 : 17),
+                                  TextStyle(fontSize: (width <= 550) ? 16 : 20),
                             ),
                             child: const Text("start").tr(),
                           ),
@@ -166,7 +167,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   elevation: 0,
                                   textStyle: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: (width <= 550) ? 13 : 17,
+                                    fontSize: (width <= 550) ? 16 : 20,
                                   ),
                                 ),
                                 child: Text(
@@ -183,6 +184,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: onBoardElevatedButtonColor,
+                                  foregroundColor: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   ),
@@ -193,7 +195,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       : const EdgeInsets.symmetric(
                                           horizontal: 30, vertical: 25),
                                   textStyle: TextStyle(
-                                      fontSize: (width <= 550) ? 13 : 17),
+                                      fontSize: (width <= 550) ? 16 : 20),
                                 ),
                                 child: Text("next".tr()),
                               ),

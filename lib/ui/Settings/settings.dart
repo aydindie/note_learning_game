@@ -36,6 +36,8 @@ class _SettingsViewState extends State<SettingsView> {
       appBar: AppBar(
           elevation: 1,
           backgroundColor: settingsAppBarBackgroundColor,
+          surfaceTintColor: Colors.transparent,
+          foregroundColor: settingsAppBarTextColor,
           title: Text('settings'.tr(),
                   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                       color: settingsAppBarTextColor,

@@ -28,13 +28,13 @@ class _NoteCardState extends State<NoteCard> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final soundStore = Provider.of<SoundStore>(context);
-    final player = AudioCache();
+    final player = AudioPlayer();
     final allStore = Provider.of<AllStore>(context);
     // ignore: avoid_print
     print("piano-mp3/${widget.noteModel.generalName.toString()}.mp3");
     soundStore.soundBool
-        ? player
-            .play("piano-mp3/${widget.noteModel.generalName.toString()}.mp3")
+        ? player.play(AssetSource(
+            "piano-mp3/${widget.noteModel.generalName.toString()}.mp3"))
         : null;
     return InkWell(
       enableFeedback: false, //basarken buton sesi gelmemesi için
